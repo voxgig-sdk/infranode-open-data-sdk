@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "meta": {
+      "META00": {
+        "breaker_state": "s1e",
+        "enabled": false,
+        "source": "s20",
+        "id": "META00"
+      },
+      "META01": {
+        "breaker_state": "s3c",
+        "enabled": false,
+        "source": "s3e",
+        "id": "META01"
+      },
+      "META02": {
+        "breaker_state": "s5a",
+        "enabled": false,
+        "source": "s5c",
+        "id": "META02"
+      }
+    }
+  },
+  "new": {
+    "meta": {
+      "meta_ref01": {
+        "breaker_state": "s78",
+        "enabled": false,
+        "source": "s7a"
+      }
+    }
+  }
+}

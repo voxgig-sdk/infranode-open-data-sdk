@@ -1,0 +1,129 @@
+# Entity: meta
+
+main: kit: entity: meta: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "breaker_state"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "enabled"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "source"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "meta"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            header: [
+              {
+                kind: "header"
+                name: "if_none_match"
+                orig: "if_none_match"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: 50
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "asc"
+                kind: "query"
+                name: "order"
+                orig: "order"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/sources"
+          parts: [
+            "api"
+            "v1"
+            "sources"
+          ]
+          select: {
+            exist: [
+              "if_none_match"
+              "limit"
+              "offset"
+              "order"
+              "page"
+              "sort"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.meta`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/v1/openapi.yaml"
+          parts: [
+            "api"
+            "v1"
+            "openapi.yaml"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "city": {
+      "CITY00": {
+        "data": "s14",
+        "meta": {},
+        "slug": "SLUG01",
+        "id": "CITY00"
+      },
+      "CITY01": {
+        "data": "s28",
+        "meta": {},
+        "slug": "SLUG01",
+        "id": "CITY01"
+      },
+      "CITY02": {
+        "data": "s3c",
+        "meta": {},
+        "slug": "SLUG01",
+        "id": "CITY02"
+      }
+    }
+  },
+  "new": {
+    "city": {
+      "city_ref01": {
+        "data": "s50",
+        "meta": {}
+      }
+    }
+  }
+}

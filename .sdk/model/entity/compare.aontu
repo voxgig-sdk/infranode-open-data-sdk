@@ -1,0 +1,128 @@
+# Entity: compare
+
+main: kit: entity: compare: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "city"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "data"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "source_status"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "compare"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            header: [
+              {
+                kind: "header"
+                name: "if_none_match"
+                orig: "if_none_match"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "berlin,koeln,hamburg"
+                kind: "query"
+                name: "city"
+                orig: "city"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: 50
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "asc"
+                kind: "query"
+                name: "order"
+                orig: "order"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "resource"
+                orig: "resource"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/compare"
+          parts: [
+            "api"
+            "v1"
+            "compare"
+          ]
+          select: {
+            exist: [
+              "city"
+              "if_none_match"
+              "limit"
+              "offset"
+              "order"
+              "page"
+              "resource"
+              "sort"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

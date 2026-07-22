@@ -1,0 +1,30 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      description: "Open-Source-Proxy-REST-API für normalisierte offene Daten deutscher Großstädte. Bekannt sind 84 Städte über 100.000 Einwohner, davon 28 Kern-Städte mit voller Quellen-Abdeckung; weitere Städte werden über AGS- und geobasierte Quellen bedient. Jede Antwort folgt demselben kanonischen Envelope (data/meta/attribution) mit Lizenz-Tag und ehrlichem source_status (ok/no_data/disabled/not_covered). Teilabgedeckte Endpunkte (flood, webcams, traffic, road-events) liefern für eine nicht-abgedeckte Stadt 200 source_status=\"not_covered\" + meta.covered_cities statt eines leeren \"ok\"; die Abdeckung listet die Seite /abdeckung. Pfade tragen den vollen /api/v1-Prefix, damit die ausgelieferte Spec driftfrei zu den live registrierten Routen bleibt. Paginierung ist kanal-abhängig: direktes REST liefert Datenart-Listen voll, GPT-Actions und MCP sind serverseitig bzw. client-seitig auf ein Default-Limit gebunden; limit=all (bzw. ?all=1) erzwingt kanalunabhängig die Vollausgabe. Details siehe meta.pagination (Meta-Schema). Der Stadt-Slug im Pfad wird tolerant aufgelöst: der deutsche Name mit oder ohne Umlaute, beliebige Groß/Kleinschreibung, gängige englische Exonyme und Kurzformen führen zum kanonischen Slug (München/münchen/munich/munchen -> muenchen, cologne -> koeln, frankfurt -> frankfurt-am-main). Ein unbekannter Name liefert 404 mit einem \"Meintest du ...?\"-Hinweis auf den nächstliegenden Slug; die kanonischen Slugs listet GET /api/v1/cities."
+      license: {
+        name: "Apache-2.0"
+        url: "https://www.apache.org/licenses/LICENSE-2.0"
+      }
+      servers: [
+        {
+          description: "Öffentliche gehostete API, keylos (Standard)"
+          url: "https://infranode.dev"
+        }
+        {
+          description: "Lokaler Caddy-Ingress (Docker Compose)"
+          url: "http://localhost"
+        }
+      ]
+      summary: "Open-Source-Proxy-REST-API für normalisierte offene Daten deutscher Großstädte."
+      title: "InfraNode API"
+      version: "1.0.0"
+      website: "https://infranode.dev"
+    }
+  }
+}
+

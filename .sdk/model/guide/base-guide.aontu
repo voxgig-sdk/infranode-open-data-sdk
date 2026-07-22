@@ -1,0 +1,425 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 104
+  metrics: count: method: 104
+
+  entity: city: {
+    path: "/api/v1/cities": {
+      op: list: method: *GET
+    }
+    path: "/api/v1/cities/{slug}": {
+      rename: param: "slug": *"id"
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/accidents": {
+      action: "accident": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/air": {
+      action: "air": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/air-uba": {
+      action: "air_uba": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/base": {
+      action: "base": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/bathing-water": {
+      action: "bathing_water": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/bike-counts": {
+      action: "bike_count": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/business-registrations": {
+      action: "business_registration": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/charging": {
+      action: "charging": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/charging-status": {
+      action: "charging_status": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/civil-protection-warnings": {
+      action: "civil_protection_warning": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/construction": {
+      action: "construction": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/council-papers": {
+      action: "council_paper": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/crime-stats": {
+      action: "crime_stat": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/demographics": {
+      action: "demographic": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/district-heating": {
+      action: "district_heating": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/drinking-water": {
+      action: "drinking_water": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/education": {
+      action: "education": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/election": {
+      action: "election": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/energy": {
+      action: "energy": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/events": {
+      action: "event": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/fire-danger": {
+      action: "fire_danger": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/flood": {
+      action: "flood": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/fuel-prices": {
+      action: "fuel_price": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/geo": {
+      action: "geo": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/government-offices": {
+      action: "government_office": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/health": {
+      action: "health": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/heritage": {
+      action: "heritage": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/holidays": {
+      action: "holiday": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/hospitals-atlas": {
+      action: "hospitals_atla": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/icu-live": {
+      action: "icu_live": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/indicators": {
+      action: "indicator": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/insolvencies": {
+      action: "insolvency": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/land-values": {
+      action: "land_value": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/markets": {
+      action: "market": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/office-wait-times": {
+      action: "office_wait_time": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/overview": {
+      action: "overview": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/parcel-lockers": {
+      action: "parcel_locker": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/parking": {
+      action: "parking": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/playgrounds": {
+      action: "playground": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/pois": {
+      action: "poi": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/pollen-uv": {
+      action: "pollen_uv": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/population-density": {
+      action: "population_density": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/post-boxes": {
+      action: "post_box": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/post-offices": {
+      action: "post_office": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/power-load": {
+      action: "power_load": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/power-price": {
+      action: "power_price": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/public-tenders": {
+      action: "public_tender": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/public-toilets": {
+      action: "public_toilet": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/public-wifi": {
+      action: "public_wifi": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/recycling-centres": {
+      action: "recycling_centre": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/road-events": {
+      action: "road_event": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/sharing": {
+      action: "sharing": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/solar": {
+      action: "solar": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/solar-roofs": {
+      action: "solar_roof": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/station-arrivals": {
+      action: "station_arrival": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/station-departures": {
+      action: "station_departure": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/station-facilities": {
+      action: "station_facility": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/stations": {
+      action: "station": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/tax-rates": {
+      action: "tax_rate": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/tourism": {
+      action: "tourism": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/traffic": {
+      action: "traffic": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/transit": {
+      action: "transit": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/tree-cadastre": {
+      action: "tree_cadastre": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/unemployment": {
+      action: "unemployment": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/vehicle-registrations": {
+      action: "vehicle_registration": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/water-level": {
+      action: "water_level": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/weather": {
+      action: "weather": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/weather-warnings": {
+      action: "weather_warning": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/cities/{slug}/webcams": {
+      action: "webcam": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/tenders": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: compare: {
+    path: "/api/v1/compare": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: health: {
+    path: "/api/v1/health": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: live: {
+    path: "/api/v1/live/berlin/verkehrsmeldungen": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/dortmund/parking": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/eround/charging": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/frankfurt-am-main/departures": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/frankfurt-am-main/parking": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/hamburg/departures": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/hamburg/verkehrslage": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/hannover/verkehrsmeldungen": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/kiel/zaehlstellen": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/koeln/umweltzone": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/magdeburg/parking": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/nuernberg/departures": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/wuppertal/parking": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{city}/baustellen": {
+      action: "baustellen": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{city}/ereignisse": {
+      action: "ereignisse": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{city}/traffic-flow": {
+      action: "traffic_flow": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{city}/transit/departures": {
+      action: "transit_departure": {}
+      rename: param: "city": *"live_id"
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{city}/transit/routes/{route_id}/status": {
+      rename: param: "city": *"live_id"
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{city}/transit/trips/{trip_id}": {
+      rename: param: "city": *"live_id"
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/air": {
+      action: "air": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/air-uba": {
+      action: "air_uba": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/departures": {
+      action: "departure": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/flood": {
+      action: "flood": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/traffic": {
+      action: "traffic": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/water-level": {
+      action: "water_level": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/live/{slug}/webcams": {
+      action: "webcam": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: meta: {
+    path: "/api/v1/openapi.yaml": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/sources": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.meta`")|top
+    }
+  }
+
+  entity: station: {
+    path: "/api/v1/stations/{eva}/arrivals": {
+      action: "arrival": {}
+      op: load: method: *GET
+    }
+    path: "/api/v1/stations/{eva}/departures": {
+      action: "departure": {}
+      op: load: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,44 @@
+# BasicCityFlow
+
+main: kit: flow: BasicCityFlow:
+{
+  entity: "city",
+  kind: "basic",
+  name: "BasicCityFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "city_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "city_ref01",
+        srcdatavar: "city_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "city01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-city_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCityFlow"
+}

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "compare": {
+      "COMPARE00": {
+        "city": "s1e",
+        "data": {},
+        "source_status": "s20"
+      },
+      "COMPARE01": {
+        "city": "s3c",
+        "data": {},
+        "source_status": "s3e"
+      },
+      "COMPARE02": {
+        "city": "s5a",
+        "data": {},
+        "source_status": "s5c"
+      }
+    }
+  },
+  "new": {
+    "compare": {
+      "compare_ref01": {
+        "city": "s78",
+        "data": {},
+        "source_status": "s7a"
+      }
+    }
+  }
+}

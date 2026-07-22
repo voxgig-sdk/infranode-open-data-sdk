@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "station": {
+      "STATION00": {
+        "data": "s14",
+        "meta": {},
+        "eva": "EVA01",
+        "id": "STATION00"
+      },
+      "STATION01": {
+        "data": "s28",
+        "meta": {},
+        "eva": "EVA01",
+        "id": "STATION01"
+      },
+      "STATION02": {
+        "data": "s3c",
+        "meta": {},
+        "eva": "EVA01",
+        "id": "STATION02"
+      }
+    }
+  },
+  "new": {
+    "station": {
+      "station_ref01": {
+        "data": "s50",
+        "meta": {}
+      }
+    }
+  }
+}

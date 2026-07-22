@@ -1,0 +1,103 @@
+# Entity: station
+
+main: kit: entity: station: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "meta"
+      req: true
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "station"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "eva"
+                orig: "eva"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/stations/{eva}/arrivals"
+          parts: [
+            "api"
+            "v1"
+            "stations"
+            "{eva}"
+            "arrivals"
+          ]
+          select: {
+            "$action": "arrival"
+            exist: [
+              "eva"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "eva"
+                orig: "eva"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/stations/{eva}/departures"
+          parts: [
+            "api"
+            "v1"
+            "stations"
+            "{eva}"
+            "departures"
+          ]
+          select: {
+            "$action": "departure"
+            exist: [
+              "eva"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "station"
+      ]
+    ]
+  }
+
+
+
+}

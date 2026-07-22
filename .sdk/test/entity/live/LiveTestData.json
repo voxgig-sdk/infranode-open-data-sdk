@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "live": {
+      "LIVE00": {
+        "data": "s14",
+        "meta": {},
+        "live_id": "LIVE01",
+        "route_id": "ROUTE01",
+        "trip_id": "TRIP01",
+        "slug": "SLUG01",
+        "city": "CITY01",
+        "id": "LIVE00"
+      },
+      "LIVE01": {
+        "data": "s28",
+        "meta": {},
+        "live_id": "LIVE01",
+        "route_id": "ROUTE01",
+        "trip_id": "TRIP01",
+        "slug": "SLUG01",
+        "city": "CITY01",
+        "id": "LIVE01"
+      },
+      "LIVE02": {
+        "data": "s3c",
+        "meta": {},
+        "live_id": "LIVE01",
+        "route_id": "ROUTE01",
+        "trip_id": "TRIP01",
+        "slug": "SLUG01",
+        "city": "CITY01",
+        "id": "LIVE02"
+      }
+    }
+  },
+  "new": {
+    "live": {
+      "live_ref01": {
+        "data": "s50",
+        "meta": {}
+      }
+    }
+  }
+}

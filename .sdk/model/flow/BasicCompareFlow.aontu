@@ -1,0 +1,22 @@
+# BasicCompareFlow
+
+main: kit: flow: BasicCompareFlow:
+{
+  entity: "compare",
+  kind: "basic",
+  name: "BasicCompareFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "compare_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCompareFlow"
+}
