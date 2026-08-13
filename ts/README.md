@@ -35,7 +35,9 @@ const client = new InfranodeOpenDataSDK()
 
 ### 2. List city records
 
-`list()` resolves to an array of City objects — iterate it directly:
+`list()` resolves to an array of City ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const citys = await client.City().list()
@@ -136,7 +138,8 @@ Create a mock client for unit testing — no server required:
 const client = InfranodeOpenDataSDK.test()
 
 const city = await client.City().list()
-// city is a bare entity populated with mock response data
+// city is the entity, populated with mock response data
+// — call city.data() for the record itself
 console.log(city)
 ```
 
@@ -330,7 +333,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redi` |  |
+| `redis` |  |
 | `status` |  |
 | `version` |  |
 
@@ -447,7 +450,7 @@ Create an instance: `const health = client.Health()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redi` | `boolean` |  |
+| `redis` | `boolean` |  |
 | `status` | `string` |  |
 | `version` | `string` |  |
 

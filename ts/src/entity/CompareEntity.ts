@@ -37,7 +37,7 @@ class CompareEntity extends InfranodeOpenDataEntityBase<Compare> {
 
 
 
-  async list(this: any, reqmatch?: CompareListMatch, ctrl?: Control): Promise<Compare[]> {
+  async list(this: any, reqmatch?: CompareListMatch, ctrl?: Control): Promise<CompareEntity[]> {
 
     const utility = this._utility
 

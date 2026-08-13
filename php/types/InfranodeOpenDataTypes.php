@@ -51,7 +51,7 @@ class CompareListMatch
 /** Health entity data model. */
 class Health
 {
-    public bool $redi;
+    public bool $redis;
     public string $status;
     public string $version;
 }
@@ -59,7 +59,7 @@ class Health
 /** Request payload for Health#load. */
 class HealthLoadMatch
 {
-    public ?bool $redi = null;
+    public ?bool $redis = null;
     public ?string $status = null;
     public ?string $version = null;
 }

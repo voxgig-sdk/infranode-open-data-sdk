@@ -12,6 +12,12 @@ export interface City {
 
 export interface CityLoadMatch {
   id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'accident' | 'air' | 'air_uba' | 'base' | 'bathing_water' | 'bike_count' | 'business_registration' | 'charging' | 'charging_status' | 'civil_protection_warning' | 'construction' | 'council_paper' | 'crime_stat' | 'demographic' | 'district_heating' | 'drinking_water' | 'education' | 'election' | 'energy' | 'event' | 'fire_danger' | 'flood' | 'fuel_price' | 'geo' | 'government_office' | 'health' | 'heritage' | 'holiday' | 'hospitals_atla' | 'icu_live' | 'indicator' | 'insolvency' | 'land_value' | 'market' | 'office_wait_time' | 'overview' | 'parcel_locker' | 'parking' | 'playground' | 'poi' | 'pollen_uv' | 'population_density' | 'post_box' | 'post_office' | 'power_load' | 'power_price' | 'public_tender' | 'public_toilet' | 'public_wifi' | 'recycling_centre' | 'road_event' | 'sharing' | 'solar' | 'solar_roof' | 'station' | 'station_arrival' | 'station_departure' | 'station_facility' | 'tax_rate' | 'tourism' | 'traffic' | 'transit' | 'tree_cadastre' | 'unemployment' | 'vehicle_registration' | 'water_level' | 'weather' | 'weather_warning' | 'webcam'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface CityListMatch {
@@ -32,13 +38,13 @@ export interface CompareListMatch {
 }
 
 export interface Health {
-  redi: boolean
+  redis: boolean
   status: string
   version: string
 }
 
 export interface HealthLoadMatch {
-  redi?: boolean
+  redis?: boolean
   status?: string
   version?: string
 }
@@ -52,6 +58,12 @@ export interface LiveLoadMatch {
   live_id?: string
   route_id?: string
   trip_id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'air' | 'air_uba' | 'baustellen' | 'departure' | 'ereignisse' | 'flood' | 'traffic' | 'traffic_flow' | 'transit_departure' | 'water_level' | 'webcam'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Meta {
@@ -79,5 +91,11 @@ export interface Station {
 
 export interface StationLoadMatch {
   eva: string
+
+  // Selects a custom action instead of the plain load:
+  //   'arrival' | 'departure'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

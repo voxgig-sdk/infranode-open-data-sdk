@@ -23,8 +23,8 @@ module InfranodeOpenDataTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("INFRANODEOPENDATA_TEST_LIVE")
-    override = getenv("INFRANODEOPENDATA_TEST_OVERRIDE")
+    live = getenv("INFRANODE_OPEN_DATA_TEST_LIVE")
+    override = getenv("INFRANODE_OPEN_DATA_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module InfranodeOpenDataTestRunner
       end
     end
 
-    explain = getenv("INFRANODEOPENDATA_TEST_EXPLAIN")
-    m["INFRANODEOPENDATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("INFRANODE_OPEN_DATA_TEST_EXPLAIN")
+    m["INFRANODE_OPEN_DATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

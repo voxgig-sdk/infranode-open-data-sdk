@@ -225,7 +225,7 @@ local health = client:Health(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redi` | `boolean` | Yes |  |
+| `redis` | `boolean` | Yes |  |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 

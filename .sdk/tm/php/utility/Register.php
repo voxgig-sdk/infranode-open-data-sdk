@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ InfranodeOpenDataUtility::setRegistrar(function (InfranodeOpenDataUtility $u): v
     $u->prepare_params = [InfranodeOpenDataPrepareParams::class, 'call'];
     $u->prepare_path = [InfranodeOpenDataPreparePath::class, 'call'];
     $u->prepare_query = [InfranodeOpenDataPrepareQuery::class, 'call'];
+    $u->graphql_body = [InfranodeOpenDataGraphql::class, 'body'];
+    $u->graphql_errors = [InfranodeOpenDataGraphql::class, 'errors'];
     $u->result_basic = [InfranodeOpenDataResultBasic::class, 'call'];
     $u->result_body = [InfranodeOpenDataResultBody::class, 'call'];
     $u->result_headers = [InfranodeOpenDataResultHeaders::class, 'call'];

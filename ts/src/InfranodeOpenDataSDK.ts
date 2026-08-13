@@ -151,8 +151,29 @@ class InfranodeOpenDataSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('InfranodeOpenDataSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -213,45 +234,111 @@ class InfranodeOpenDataSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('InfranodeOpenDataSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('InfranodeOpenDataSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.City().list()` / `client.City().load({ id })`.
-  City(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  City(entopts?: Record<string, any>) {
     const self = this
-    return new CityEntity(self,data)
+    return new CityEntity(self, entopts)
   }
 
 
   // Entity access: `client.Compare().list()` / `client.Compare().load({ id })`.
-  Compare(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Compare(entopts?: Record<string, any>) {
     const self = this
-    return new CompareEntity(self,data)
+    return new CompareEntity(self, entopts)
   }
 
 
   // Entity access: `client.Health().list()` / `client.Health().load({ id })`.
-  Health(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Health(entopts?: Record<string, any>) {
     const self = this
-    return new HealthEntity(self,data)
+    return new HealthEntity(self, entopts)
   }
 
 
   // Entity access: `client.Live().list()` / `client.Live().load({ id })`.
-  Live(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Live(entopts?: Record<string, any>) {
     const self = this
-    return new LiveEntity(self,data)
+    return new LiveEntity(self, entopts)
   }
 
 
   // Entity access: `client.Meta().list()` / `client.Meta().load({ id })`.
-  Meta(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Meta(entopts?: Record<string, any>) {
     const self = this
-    return new MetaEntity(self,data)
+    return new MetaEntity(self, entopts)
   }
 
 
   // Entity access: `client.Station().list()` / `client.Station().load({ id })`.
-  Station(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Station(entopts?: Record<string, any>) {
     const self = this
-    return new StationEntity(self,data)
+    return new StationEntity(self, entopts)
   }
 
 

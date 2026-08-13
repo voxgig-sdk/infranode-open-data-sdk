@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ InfranodeOpenDataUtility.registrar = ->(u) {
   u.prepare_params = InfranodeOpenDataUtilities::PrepareParams
   u.prepare_path = InfranodeOpenDataUtilities::PreparePath
   u.prepare_query = InfranodeOpenDataUtilities::PrepareQuery
+  u.graphql_body = InfranodeOpenDataUtilities::GraphqlBody
+  u.graphql_errors = InfranodeOpenDataUtilities::GraphqlErrors
   u.result_basic = InfranodeOpenDataUtilities::ResultBasic
   u.result_body = InfranodeOpenDataUtilities::ResultBody
   u.result_headers = InfranodeOpenDataUtilities::ResultHeaders

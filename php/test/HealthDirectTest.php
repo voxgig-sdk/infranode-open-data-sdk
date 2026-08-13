@@ -65,11 +65,11 @@ function health_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "INFRANODEOPENDATA_TEST_HEALTH_ENTID" => [],
-        "INFRANODEOPENDATA_TEST_LIVE" => "FALSE",
+        "INFRANODE_OPEN_DATA_TEST_HEALTH_ENTID" => [],
+        "INFRANODE_OPEN_DATA_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["INFRANODEOPENDATA_TEST_LIVE"] === "TRUE";
+    $live = $env["INFRANODE_OPEN_DATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

@@ -79,7 +79,7 @@ CompareListMatch = Struct.new(
 
 # Health entity data model.
 #
-# @!attribute [rw] redi
+# @!attribute [rw] redis
 #   @return [Boolean]
 #
 # @!attribute [rw] status
@@ -88,7 +88,7 @@ CompareListMatch = Struct.new(
 # @!attribute [rw] version
 #   @return [String]
 Health = Struct.new(
-  :redi,
+  :redis,
   :status,
   :version,
   keyword_init: true
@@ -96,7 +96,7 @@ Health = Struct.new(
 
 # Request payload for Health#load.
 #
-# @!attribute [rw] redi
+# @!attribute [rw] redis
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] status
@@ -105,7 +105,7 @@ Health = Struct.new(
 # @!attribute [rw] version
 #   @return [String, nil]
 HealthLoadMatch = Struct.new(
-  :redi,
+  :redis,
   :status,
   :version,
   keyword_init: true

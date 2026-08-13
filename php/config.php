@@ -59,6 +59,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities',
                   'parts' => [
@@ -147,6 +148,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/public-tenders',
                   'parts' => [
@@ -233,6 +235,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/council-papers',
                   'parts' => [
@@ -317,6 +320,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/transit',
                   'parts' => [
@@ -391,6 +395,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/tenders',
                   'parts' => [
@@ -446,6 +451,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/stations',
                   'parts' => [
@@ -502,6 +508,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/traffic',
                   'parts' => [
@@ -550,6 +557,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/pois',
                   'parts' => [
@@ -587,6 +595,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}',
                   'parts' => [
@@ -625,6 +634,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/accidents',
                   'parts' => [
@@ -660,6 +670,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/air',
                   'parts' => [
@@ -695,6 +706,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/air-uba',
                   'parts' => [
@@ -730,6 +742,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/base',
                   'parts' => [
@@ -765,6 +778,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/bathing-water',
                   'parts' => [
@@ -800,6 +814,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/bike-counts',
                   'parts' => [
@@ -835,6 +850,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/business-registrations',
                   'parts' => [
@@ -870,6 +886,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/charging',
                   'parts' => [
@@ -905,6 +922,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/charging-status',
                   'parts' => [
@@ -940,6 +958,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/civil-protection-warnings',
                   'parts' => [
@@ -975,6 +994,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/construction',
                   'parts' => [
@@ -1010,6 +1030,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/crime-stats',
                   'parts' => [
@@ -1045,6 +1066,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/demographics',
                   'parts' => [
@@ -1080,6 +1102,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/district-heating',
                   'parts' => [
@@ -1115,6 +1138,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/drinking-water',
                   'parts' => [
@@ -1150,6 +1174,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/education',
                   'parts' => [
@@ -1185,6 +1210,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/election',
                   'parts' => [
@@ -1220,6 +1246,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/energy',
                   'parts' => [
@@ -1255,6 +1282,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/events',
                   'parts' => [
@@ -1290,6 +1318,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/fire-danger',
                   'parts' => [
@@ -1325,6 +1354,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/flood',
                   'parts' => [
@@ -1360,6 +1390,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/fuel-prices',
                   'parts' => [
@@ -1395,6 +1426,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/geo',
                   'parts' => [
@@ -1430,6 +1462,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/government-offices',
                   'parts' => [
@@ -1465,6 +1498,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/health',
                   'parts' => [
@@ -1500,6 +1534,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/heritage',
                   'parts' => [
@@ -1535,6 +1570,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/holidays',
                   'parts' => [
@@ -1570,6 +1606,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/hospitals-atlas',
                   'parts' => [
@@ -1605,6 +1642,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/icu-live',
                   'parts' => [
@@ -1640,6 +1678,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/indicators',
                   'parts' => [
@@ -1675,6 +1714,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/insolvencies',
                   'parts' => [
@@ -1710,6 +1750,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/land-values',
                   'parts' => [
@@ -1745,6 +1786,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/markets',
                   'parts' => [
@@ -1780,6 +1822,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/office-wait-times',
                   'parts' => [
@@ -1815,6 +1858,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/overview',
                   'parts' => [
@@ -1850,6 +1894,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/parcel-lockers',
                   'parts' => [
@@ -1885,6 +1930,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/parking',
                   'parts' => [
@@ -1920,6 +1966,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/playgrounds',
                   'parts' => [
@@ -1955,6 +2002,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/pollen-uv',
                   'parts' => [
@@ -1990,6 +2038,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/population-density',
                   'parts' => [
@@ -2025,6 +2074,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/post-boxes',
                   'parts' => [
@@ -2060,6 +2110,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/post-offices',
                   'parts' => [
@@ -2095,6 +2146,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/power-load',
                   'parts' => [
@@ -2130,6 +2182,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/power-price',
                   'parts' => [
@@ -2165,6 +2218,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/public-toilets',
                   'parts' => [
@@ -2200,6 +2254,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/public-wifi',
                   'parts' => [
@@ -2235,6 +2290,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/recycling-centres',
                   'parts' => [
@@ -2270,6 +2326,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/road-events',
                   'parts' => [
@@ -2305,6 +2362,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/sharing',
                   'parts' => [
@@ -2340,6 +2398,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/solar',
                   'parts' => [
@@ -2375,6 +2434,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/solar-roofs',
                   'parts' => [
@@ -2410,6 +2470,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/station-arrivals',
                   'parts' => [
@@ -2445,6 +2506,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/station-departures',
                   'parts' => [
@@ -2480,6 +2542,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/station-facilities',
                   'parts' => [
@@ -2515,6 +2578,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/tax-rates',
                   'parts' => [
@@ -2550,6 +2614,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/tourism',
                   'parts' => [
@@ -2585,6 +2650,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/tree-cadastre',
                   'parts' => [
@@ -2620,6 +2686,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/unemployment',
                   'parts' => [
@@ -2655,6 +2722,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/vehicle-registrations',
                   'parts' => [
@@ -2690,6 +2758,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/water-level',
                   'parts' => [
@@ -2725,6 +2794,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/weather',
                   'parts' => [
@@ -2760,6 +2830,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/weather-warnings',
                   'parts' => [
@@ -2795,6 +2866,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/webcams',
                   'parts' => [
@@ -2935,6 +3007,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/compare',
                   'parts' => [
@@ -2972,7 +3045,7 @@ class InfranodeOpenDataConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'redi',
+              'name' => 'redis',
               'req' => true,
               'type' => '`$BOOLEAN`',
               'index$' => 0,
@@ -3001,6 +3074,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/health',
                   'parts' => [
@@ -3070,6 +3144,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/transit/routes/{route_id}/status',
                   'parts' => [
@@ -3123,6 +3198,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/transit/departures',
                   'parts' => [
@@ -3175,6 +3251,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/transit/trips/{trip_id}',
                   'parts' => [
@@ -3227,6 +3304,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/departures',
                   'parts' => [
@@ -3263,6 +3341,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/air',
                   'parts' => [
@@ -3298,6 +3377,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/air-uba',
                   'parts' => [
@@ -3333,6 +3413,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/baustellen',
                   'parts' => [
@@ -3368,6 +3449,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/ereignisse',
                   'parts' => [
@@ -3403,6 +3485,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/flood',
                   'parts' => [
@@ -3438,6 +3521,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/traffic',
                   'parts' => [
@@ -3473,6 +3557,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/traffic-flow',
                   'parts' => [
@@ -3508,6 +3593,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/water-level',
                   'parts' => [
@@ -3543,6 +3629,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/webcams',
                   'parts' => [
@@ -3579,6 +3666,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/frankfurt-am-main/departures',
                   'parts' => [
@@ -3614,6 +3702,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/hamburg/departures',
                   'parts' => [
@@ -3649,6 +3738,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/nuernberg/departures',
                   'parts' => [
@@ -3672,6 +3762,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/berlin/verkehrsmeldungen',
                   'parts' => [
@@ -3691,6 +3782,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/dortmund/parking',
                   'parts' => [
@@ -3710,6 +3802,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/eround/charging',
                   'parts' => [
@@ -3729,6 +3822,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/frankfurt-am-main/parking',
                   'parts' => [
@@ -3748,6 +3842,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/hamburg/verkehrslage',
                   'parts' => [
@@ -3767,6 +3862,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/hannover/verkehrsmeldungen',
                   'parts' => [
@@ -3786,6 +3882,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/kiel/zaehlstellen',
                   'parts' => [
@@ -3805,6 +3902,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/koeln/umweltzone',
                   'parts' => [
@@ -3824,6 +3922,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/magdeburg/parking',
                   'parts' => [
@@ -3843,6 +3942,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/wuppertal/parking',
                   'parts' => [
@@ -3969,6 +4069,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/sources',
                   'parts' => [
@@ -4002,6 +4103,7 @@ class InfranodeOpenDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/openapi.yaml',
                   'parts' => [
@@ -4062,6 +4164,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/stations/{eva}/arrivals',
                   'parts' => [
@@ -4098,6 +4201,7 @@ class InfranodeOpenDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/stations/{eva}/departures',
                   'parts' => [

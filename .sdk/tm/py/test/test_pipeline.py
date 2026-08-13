@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import InfranodeOpenDataSDK
-from core.error import InfranodeOpenDataError
-from core.result import InfranodeOpenDataResult
-from core.response import InfranodeOpenDataResponse
-from core.spec import InfranodeOpenDataSpec
-from feature.base_feature import InfranodeOpenDataBaseFeature
+from projectname_sdk.core.error import InfranodeOpenDataError
+from projectname_sdk.core.result import InfranodeOpenDataResult
+from projectname_sdk.core.response import InfranodeOpenDataResponse
+from projectname_sdk.core.spec import InfranodeOpenDataSpec
+from projectname_sdk.feature.base_feature import InfranodeOpenDataBaseFeature
 
 
 def _client():

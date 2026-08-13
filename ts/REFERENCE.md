@@ -179,6 +179,94 @@ const city = client.City()
 | `data` | `any` | Yes |  |
 | `meta` | `Record<string, any>` | Yes |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `accident` | `/api/v1/cities/{slug}/accidents` | `client.City().load({ $action: 'accident', ... })` |
+| `air` | `/api/v1/cities/{slug}/air` | `client.City().load({ $action: 'air', ... })` |
+| `air_uba` | `/api/v1/cities/{slug}/air-uba` | `client.City().load({ $action: 'air_uba', ... })` |
+| `base` | `/api/v1/cities/{slug}/base` | `client.City().load({ $action: 'base', ... })` |
+| `bathing_water` | `/api/v1/cities/{slug}/bathing-water` | `client.City().load({ $action: 'bathing_water', ... })` |
+| `bike_count` | `/api/v1/cities/{slug}/bike-counts` | `client.City().load({ $action: 'bike_count', ... })` |
+| `business_registration` | `/api/v1/cities/{slug}/business-registrations` | `client.City().load({ $action: 'business_registration', ... })` |
+| `charging` | `/api/v1/cities/{slug}/charging` | `client.City().load({ $action: 'charging', ... })` |
+| `charging_status` | `/api/v1/cities/{slug}/charging-status` | `client.City().load({ $action: 'charging_status', ... })` |
+| `civil_protection_warning` | `/api/v1/cities/{slug}/civil-protection-warnings` | `client.City().load({ $action: 'civil_protection_warning', ... })` |
+| `construction` | `/api/v1/cities/{slug}/construction` | `client.City().load({ $action: 'construction', ... })` |
+| `council_paper` | `/api/v1/cities/{slug}/council-papers` | `client.City().load({ $action: 'council_paper', ... })` |
+| `crime_stat` | `/api/v1/cities/{slug}/crime-stats` | `client.City().load({ $action: 'crime_stat', ... })` |
+| `demographic` | `/api/v1/cities/{slug}/demographics` | `client.City().load({ $action: 'demographic', ... })` |
+| `district_heating` | `/api/v1/cities/{slug}/district-heating` | `client.City().load({ $action: 'district_heating', ... })` |
+| `drinking_water` | `/api/v1/cities/{slug}/drinking-water` | `client.City().load({ $action: 'drinking_water', ... })` |
+| `education` | `/api/v1/cities/{slug}/education` | `client.City().load({ $action: 'education', ... })` |
+| `election` | `/api/v1/cities/{slug}/election` | `client.City().load({ $action: 'election', ... })` |
+| `energy` | `/api/v1/cities/{slug}/energy` | `client.City().load({ $action: 'energy', ... })` |
+| `event` | `/api/v1/cities/{slug}/events` | `client.City().load({ $action: 'event', ... })` |
+| `fire_danger` | `/api/v1/cities/{slug}/fire-danger` | `client.City().load({ $action: 'fire_danger', ... })` |
+| `flood` | `/api/v1/cities/{slug}/flood` | `client.City().load({ $action: 'flood', ... })` |
+| `fuel_price` | `/api/v1/cities/{slug}/fuel-prices` | `client.City().load({ $action: 'fuel_price', ... })` |
+| `geo` | `/api/v1/cities/{slug}/geo` | `client.City().load({ $action: 'geo', ... })` |
+| `government_office` | `/api/v1/cities/{slug}/government-offices` | `client.City().load({ $action: 'government_office', ... })` |
+| `health` | `/api/v1/cities/{slug}/health` | `client.City().load({ $action: 'health', ... })` |
+| `heritage` | `/api/v1/cities/{slug}/heritage` | `client.City().load({ $action: 'heritage', ... })` |
+| `holiday` | `/api/v1/cities/{slug}/holidays` | `client.City().load({ $action: 'holiday', ... })` |
+| `hospitals_atla` | `/api/v1/cities/{slug}/hospitals-atlas` | `client.City().load({ $action: 'hospitals_atla', ... })` |
+| `icu_live` | `/api/v1/cities/{slug}/icu-live` | `client.City().load({ $action: 'icu_live', ... })` |
+| `indicator` | `/api/v1/cities/{slug}/indicators` | `client.City().load({ $action: 'indicator', ... })` |
+| `insolvency` | `/api/v1/cities/{slug}/insolvencies` | `client.City().load({ $action: 'insolvency', ... })` |
+| `land_value` | `/api/v1/cities/{slug}/land-values` | `client.City().load({ $action: 'land_value', ... })` |
+| `market` | `/api/v1/cities/{slug}/markets` | `client.City().load({ $action: 'market', ... })` |
+| `office_wait_time` | `/api/v1/cities/{slug}/office-wait-times` | `client.City().load({ $action: 'office_wait_time', ... })` |
+| `overview` | `/api/v1/cities/{slug}/overview` | `client.City().load({ $action: 'overview', ... })` |
+| `parcel_locker` | `/api/v1/cities/{slug}/parcel-lockers` | `client.City().load({ $action: 'parcel_locker', ... })` |
+| `parking` | `/api/v1/cities/{slug}/parking` | `client.City().load({ $action: 'parking', ... })` |
+| `playground` | `/api/v1/cities/{slug}/playgrounds` | `client.City().load({ $action: 'playground', ... })` |
+| `poi` | `/api/v1/cities/{slug}/pois` | `client.City().load({ $action: 'poi', ... })` |
+| `pollen_uv` | `/api/v1/cities/{slug}/pollen-uv` | `client.City().load({ $action: 'pollen_uv', ... })` |
+| `population_density` | `/api/v1/cities/{slug}/population-density` | `client.City().load({ $action: 'population_density', ... })` |
+| `post_box` | `/api/v1/cities/{slug}/post-boxes` | `client.City().load({ $action: 'post_box', ... })` |
+| `post_office` | `/api/v1/cities/{slug}/post-offices` | `client.City().load({ $action: 'post_office', ... })` |
+| `power_load` | `/api/v1/cities/{slug}/power-load` | `client.City().load({ $action: 'power_load', ... })` |
+| `power_price` | `/api/v1/cities/{slug}/power-price` | `client.City().load({ $action: 'power_price', ... })` |
+| `public_tender` | `/api/v1/cities/{slug}/public-tenders` | `client.City().load({ $action: 'public_tender', ... })` |
+| `public_toilet` | `/api/v1/cities/{slug}/public-toilets` | `client.City().load({ $action: 'public_toilet', ... })` |
+| `public_wifi` | `/api/v1/cities/{slug}/public-wifi` | `client.City().load({ $action: 'public_wifi', ... })` |
+| `recycling_centre` | `/api/v1/cities/{slug}/recycling-centres` | `client.City().load({ $action: 'recycling_centre', ... })` |
+| `road_event` | `/api/v1/cities/{slug}/road-events` | `client.City().load({ $action: 'road_event', ... })` |
+| `sharing` | `/api/v1/cities/{slug}/sharing` | `client.City().load({ $action: 'sharing', ... })` |
+| `solar` | `/api/v1/cities/{slug}/solar` | `client.City().load({ $action: 'solar', ... })` |
+| `solar_roof` | `/api/v1/cities/{slug}/solar-roofs` | `client.City().load({ $action: 'solar_roof', ... })` |
+| `station` | `/api/v1/cities/{slug}/stations` | `client.City().load({ $action: 'station', ... })` |
+| `station_arrival` | `/api/v1/cities/{slug}/station-arrivals` | `client.City().load({ $action: 'station_arrival', ... })` |
+| `station_departure` | `/api/v1/cities/{slug}/station-departures` | `client.City().load({ $action: 'station_departure', ... })` |
+| `station_facility` | `/api/v1/cities/{slug}/station-facilities` | `client.City().load({ $action: 'station_facility', ... })` |
+| `tax_rate` | `/api/v1/cities/{slug}/tax-rates` | `client.City().load({ $action: 'tax_rate', ... })` |
+| `tourism` | `/api/v1/cities/{slug}/tourism` | `client.City().load({ $action: 'tourism', ... })` |
+| `traffic` | `/api/v1/cities/{slug}/traffic` | `client.City().load({ $action: 'traffic', ... })` |
+| `transit` | `/api/v1/cities/{slug}/transit` | `client.City().load({ $action: 'transit', ... })` |
+| `tree_cadastre` | `/api/v1/cities/{slug}/tree-cadastre` | `client.City().load({ $action: 'tree_cadastre', ... })` |
+| `unemployment` | `/api/v1/cities/{slug}/unemployment` | `client.City().load({ $action: 'unemployment', ... })` |
+| `vehicle_registration` | `/api/v1/cities/{slug}/vehicle-registrations` | `client.City().load({ $action: 'vehicle_registration', ... })` |
+| `water_level` | `/api/v1/cities/{slug}/water-level` | `client.City().load({ $action: 'water_level', ... })` |
+| `weather` | `/api/v1/cities/{slug}/weather` | `client.City().load({ $action: 'weather', ... })` |
+| `weather_warning` | `/api/v1/cities/{slug}/weather-warnings` | `client.City().load({ $action: 'weather_warning', ... })` |
+| `webcam` | `/api/v1/cities/{slug}/webcams` | `client.City().load({ $action: 'webcam', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+City record — check the API definition for its shape.
+
+```ts
+const result = await client.City().load({
+  $action: 'accident',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -287,7 +375,7 @@ const health = client.Health()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redi` | `boolean` | Yes |  |
+| `redis` | `boolean` | Yes |  |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 
@@ -341,6 +429,36 @@ const live = client.Live()
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
 | `meta` | `Record<string, any>` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `air` | `/api/v1/live/{slug}/air` | `client.Live().load({ $action: 'air', ... })` |
+| `air_uba` | `/api/v1/live/{slug}/air-uba` | `client.Live().load({ $action: 'air_uba', ... })` |
+| `baustellen` | `/api/v1/live/{city}/baustellen` | `client.Live().load({ $action: 'baustellen', ... })` |
+| `departure` | `/api/v1/live/{slug}/departures` | `client.Live().load({ $action: 'departure', ... })` |
+| `ereignisse` | `/api/v1/live/{city}/ereignisse` | `client.Live().load({ $action: 'ereignisse', ... })` |
+| `flood` | `/api/v1/live/{slug}/flood` | `client.Live().load({ $action: 'flood', ... })` |
+| `traffic` | `/api/v1/live/{slug}/traffic` | `client.Live().load({ $action: 'traffic', ... })` |
+| `traffic_flow` | `/api/v1/live/{city}/traffic-flow` | `client.Live().load({ $action: 'traffic_flow', ... })` |
+| `transit_departure` | `/api/v1/live/{city}/transit/departures` | `client.Live().load({ $action: 'transit_departure', ... })` |
+| `water_level` | `/api/v1/live/{slug}/water-level` | `client.Live().load({ $action: 'water_level', ... })` |
+| `webcam` | `/api/v1/live/{slug}/webcams` | `client.Live().load({ $action: 'webcam', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Live record — check the API definition for its shape.
+
+```ts
+const result = await client.Live().load({
+  $action: 'air',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -452,6 +570,27 @@ const station = client.Station()
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
 | `meta` | `Record<string, any>` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `arrival` | `/api/v1/stations/{eva}/arrivals` | `client.Station().load({ $action: 'arrival', ... })` |
+| `departure` | `/api/v1/stations/{eva}/departures` | `client.Station().load({ $action: 'departure', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Station record — check the API definition for its shape.
+
+```ts
+const result = await client.Station().load({
+  $action: 'arrival',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 

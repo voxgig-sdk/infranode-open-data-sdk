@@ -51,7 +51,7 @@ Station is nested under eva, so provide the `eva`.
 
 ```php
 try {
-    // load() returns the bare Station record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Station record (throws on error).
     $station = $client->Station()->load(["eva" => "example_eva"]);
     print_r($station);
 } catch (\Throwable $err) {
@@ -142,7 +142,8 @@ $client = InfranodeOpenDataSDK::test([
     "entity" => ["city" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $city = $client->City()->list();
 print_r($city);
 ```
@@ -247,7 +248,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -292,7 +293,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redi` |  |
+| `redis` |  |
 | `status` |  |
 | `version` |  |
 
@@ -360,7 +361,7 @@ Create an instance: `$city = $client->City();`
 #### Example: Load
 
 ```php
-// load() returns the bare City record (throws on error).
+// load() returns the ENTITY — call data_get() for the City record (throws on error).
 $city = $client->City()->load(["id" => "city_id"]);
 ```
 
@@ -412,14 +413,14 @@ Create an instance: `$health = $client->Health();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redi` | `bool` |  |
+| `redis` | `bool` |  |
 | `status` | `string` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Health record (throws on error).
+// load() returns the ENTITY — call data_get() for the Health record (throws on error).
 $health = $client->Health()->load();
 ```
 
@@ -444,7 +445,7 @@ Create an instance: `$live = $client->Live();`
 #### Example: Load
 
 ```php
-// load() returns the bare Live record (throws on error).
+// load() returns the ENTITY — call data_get() for the Live record (throws on error).
 $live = $client->Live()->load();
 ```
 
@@ -471,7 +472,7 @@ Create an instance: `$meta = $client->Meta();`
 #### Example: Load
 
 ```php
-// load() returns the bare Meta record (throws on error).
+// load() returns the ENTITY — call data_get() for the Meta record (throws on error).
 $meta = $client->Meta()->load();
 ```
 
@@ -503,7 +504,7 @@ Create an instance: `$station = $client->Station();`
 #### Example: Load
 
 ```php
-// load() returns the bare Station record (throws on error).
+// load() returns the ENTITY — call data_get() for the Station record (throws on error).
 $station = $client->Station()->load(["eva" => "eva"]);
 ```
 

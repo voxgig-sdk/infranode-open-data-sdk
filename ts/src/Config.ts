@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'InfranodeOpenData',
   }
 
 
@@ -93,6 +93,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities",
               "parts": [
@@ -181,6 +182,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-tenders",
               "parts": [
@@ -267,6 +269,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/council-papers",
               "parts": [
@@ -351,6 +354,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/transit",
               "parts": [
@@ -425,6 +429,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/tenders",
               "parts": [
@@ -480,6 +485,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/stations",
               "parts": [
@@ -536,6 +542,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/traffic",
               "parts": [
@@ -584,6 +591,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/pois",
               "parts": [
@@ -621,6 +629,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}",
               "parts": [
@@ -659,6 +668,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/accidents",
               "parts": [
@@ -694,6 +704,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/air",
               "parts": [
@@ -729,6 +740,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/air-uba",
               "parts": [
@@ -764,6 +776,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/base",
               "parts": [
@@ -799,6 +812,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/bathing-water",
               "parts": [
@@ -834,6 +848,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/bike-counts",
               "parts": [
@@ -869,6 +884,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/business-registrations",
               "parts": [
@@ -904,6 +920,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/charging",
               "parts": [
@@ -939,6 +956,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/charging-status",
               "parts": [
@@ -974,6 +992,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/civil-protection-warnings",
               "parts": [
@@ -1009,6 +1028,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/construction",
               "parts": [
@@ -1044,6 +1064,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/crime-stats",
               "parts": [
@@ -1079,6 +1100,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/demographics",
               "parts": [
@@ -1114,6 +1136,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/district-heating",
               "parts": [
@@ -1149,6 +1172,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/drinking-water",
               "parts": [
@@ -1184,6 +1208,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/education",
               "parts": [
@@ -1219,6 +1244,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/election",
               "parts": [
@@ -1254,6 +1280,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/energy",
               "parts": [
@@ -1289,6 +1316,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/events",
               "parts": [
@@ -1324,6 +1352,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/fire-danger",
               "parts": [
@@ -1359,6 +1388,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/flood",
               "parts": [
@@ -1394,6 +1424,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/fuel-prices",
               "parts": [
@@ -1429,6 +1460,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/geo",
               "parts": [
@@ -1464,6 +1496,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/government-offices",
               "parts": [
@@ -1499,6 +1532,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/health",
               "parts": [
@@ -1534,6 +1568,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/heritage",
               "parts": [
@@ -1569,6 +1604,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/holidays",
               "parts": [
@@ -1604,6 +1640,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/hospitals-atlas",
               "parts": [
@@ -1639,6 +1676,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/icu-live",
               "parts": [
@@ -1674,6 +1712,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/indicators",
               "parts": [
@@ -1709,6 +1748,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/insolvencies",
               "parts": [
@@ -1744,6 +1784,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/land-values",
               "parts": [
@@ -1779,6 +1820,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/markets",
               "parts": [
@@ -1814,6 +1856,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/office-wait-times",
               "parts": [
@@ -1849,6 +1892,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/overview",
               "parts": [
@@ -1884,6 +1928,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/parcel-lockers",
               "parts": [
@@ -1919,6 +1964,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/parking",
               "parts": [
@@ -1954,6 +2000,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/playgrounds",
               "parts": [
@@ -1989,6 +2036,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/pollen-uv",
               "parts": [
@@ -2024,6 +2072,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/population-density",
               "parts": [
@@ -2059,6 +2108,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/post-boxes",
               "parts": [
@@ -2094,6 +2144,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/post-offices",
               "parts": [
@@ -2129,6 +2180,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/power-load",
               "parts": [
@@ -2164,6 +2216,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/power-price",
               "parts": [
@@ -2199,6 +2252,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-toilets",
               "parts": [
@@ -2234,6 +2288,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-wifi",
               "parts": [
@@ -2269,6 +2324,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/recycling-centres",
               "parts": [
@@ -2304,6 +2360,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/road-events",
               "parts": [
@@ -2339,6 +2396,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/sharing",
               "parts": [
@@ -2374,6 +2432,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/solar",
               "parts": [
@@ -2409,6 +2468,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/solar-roofs",
               "parts": [
@@ -2444,6 +2504,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-arrivals",
               "parts": [
@@ -2479,6 +2540,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-departures",
               "parts": [
@@ -2514,6 +2576,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-facilities",
               "parts": [
@@ -2549,6 +2612,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tax-rates",
               "parts": [
@@ -2584,6 +2648,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tourism",
               "parts": [
@@ -2619,6 +2684,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tree-cadastre",
               "parts": [
@@ -2654,6 +2720,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/unemployment",
               "parts": [
@@ -2689,6 +2756,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/vehicle-registrations",
               "parts": [
@@ -2724,6 +2792,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/water-level",
               "parts": [
@@ -2759,6 +2828,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/weather",
               "parts": [
@@ -2794,6 +2864,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/weather-warnings",
               "parts": [
@@ -2829,6 +2900,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/webcams",
               "parts": [
@@ -2969,6 +3041,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/compare",
               "parts": [
@@ -3006,7 +3079,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "redi",
+          "name": "redis",
           "req": true,
           "type": "`$BOOLEAN`",
           "index$": 0
@@ -3035,6 +3108,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/health",
               "parts": [
@@ -3104,6 +3178,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
               "parts": [
@@ -3157,6 +3232,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/departures",
               "parts": [
@@ -3209,6 +3285,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
               "parts": [
@@ -3261,6 +3338,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/departures",
               "parts": [
@@ -3297,6 +3375,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/air",
               "parts": [
@@ -3332,6 +3411,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/air-uba",
               "parts": [
@@ -3367,6 +3447,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/baustellen",
               "parts": [
@@ -3402,6 +3483,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/ereignisse",
               "parts": [
@@ -3437,6 +3519,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/flood",
               "parts": [
@@ -3472,6 +3555,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/traffic",
               "parts": [
@@ -3507,6 +3591,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/traffic-flow",
               "parts": [
@@ -3542,6 +3627,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/water-level",
               "parts": [
@@ -3577,6 +3663,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/webcams",
               "parts": [
@@ -3613,6 +3700,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/frankfurt-am-main/departures",
               "parts": [
@@ -3648,6 +3736,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hamburg/departures",
               "parts": [
@@ -3683,6 +3772,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/nuernberg/departures",
               "parts": [
@@ -3706,6 +3796,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/berlin/verkehrsmeldungen",
               "parts": [
@@ -3725,6 +3816,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/dortmund/parking",
               "parts": [
@@ -3744,6 +3836,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/eround/charging",
               "parts": [
@@ -3763,6 +3856,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/frankfurt-am-main/parking",
               "parts": [
@@ -3782,6 +3876,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hamburg/verkehrslage",
               "parts": [
@@ -3801,6 +3896,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hannover/verkehrsmeldungen",
               "parts": [
@@ -3820,6 +3916,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/kiel/zaehlstellen",
               "parts": [
@@ -3839,6 +3936,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/koeln/umweltzone",
               "parts": [
@@ -3858,6 +3956,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/magdeburg/parking",
               "parts": [
@@ -3877,6 +3976,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/wuppertal/parking",
               "parts": [
@@ -4003,6 +4103,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/sources",
               "parts": [
@@ -4036,6 +4137,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/openapi.yaml",
               "parts": [
@@ -4096,6 +4198,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/stations/{eva}/arrivals",
               "parts": [
@@ -4132,6 +4235,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/stations/{eva}/departures",
               "parts": [

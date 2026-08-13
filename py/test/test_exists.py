@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# InfranodeOpenData SDK exists test
 
 import pytest
 from infranodeopendata_sdk import InfranodeOpenDataSDK

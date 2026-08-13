@@ -53,6 +53,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities",
                 ["parts"] = {
@@ -141,6 +142,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/public-tenders",
                 ["parts"] = {
@@ -227,6 +229,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/council-papers",
                 ["parts"] = {
@@ -311,6 +314,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/transit",
                 ["parts"] = {
@@ -385,6 +389,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/tenders",
                 ["parts"] = {
@@ -440,6 +445,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/stations",
                 ["parts"] = {
@@ -496,6 +502,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/traffic",
                 ["parts"] = {
@@ -544,6 +551,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/pois",
                 ["parts"] = {
@@ -581,6 +589,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}",
                 ["parts"] = {
@@ -619,6 +628,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/accidents",
                 ["parts"] = {
@@ -654,6 +664,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/air",
                 ["parts"] = {
@@ -689,6 +700,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/air-uba",
                 ["parts"] = {
@@ -724,6 +736,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/base",
                 ["parts"] = {
@@ -759,6 +772,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/bathing-water",
                 ["parts"] = {
@@ -794,6 +808,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/bike-counts",
                 ["parts"] = {
@@ -829,6 +844,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/business-registrations",
                 ["parts"] = {
@@ -864,6 +880,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/charging",
                 ["parts"] = {
@@ -899,6 +916,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/charging-status",
                 ["parts"] = {
@@ -934,6 +952,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/civil-protection-warnings",
                 ["parts"] = {
@@ -969,6 +988,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/construction",
                 ["parts"] = {
@@ -1004,6 +1024,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/crime-stats",
                 ["parts"] = {
@@ -1039,6 +1060,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/demographics",
                 ["parts"] = {
@@ -1074,6 +1096,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/district-heating",
                 ["parts"] = {
@@ -1109,6 +1132,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/drinking-water",
                 ["parts"] = {
@@ -1144,6 +1168,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/education",
                 ["parts"] = {
@@ -1179,6 +1204,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/election",
                 ["parts"] = {
@@ -1214,6 +1240,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/energy",
                 ["parts"] = {
@@ -1249,6 +1276,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/events",
                 ["parts"] = {
@@ -1284,6 +1312,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/fire-danger",
                 ["parts"] = {
@@ -1319,6 +1348,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/flood",
                 ["parts"] = {
@@ -1354,6 +1384,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/fuel-prices",
                 ["parts"] = {
@@ -1389,6 +1420,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/geo",
                 ["parts"] = {
@@ -1424,6 +1456,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/government-offices",
                 ["parts"] = {
@@ -1459,6 +1492,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/health",
                 ["parts"] = {
@@ -1494,6 +1528,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/heritage",
                 ["parts"] = {
@@ -1529,6 +1564,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/holidays",
                 ["parts"] = {
@@ -1564,6 +1600,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/hospitals-atlas",
                 ["parts"] = {
@@ -1599,6 +1636,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/icu-live",
                 ["parts"] = {
@@ -1634,6 +1672,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/indicators",
                 ["parts"] = {
@@ -1669,6 +1708,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/insolvencies",
                 ["parts"] = {
@@ -1704,6 +1744,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/land-values",
                 ["parts"] = {
@@ -1739,6 +1780,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/markets",
                 ["parts"] = {
@@ -1774,6 +1816,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/office-wait-times",
                 ["parts"] = {
@@ -1809,6 +1852,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/overview",
                 ["parts"] = {
@@ -1844,6 +1888,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/parcel-lockers",
                 ["parts"] = {
@@ -1879,6 +1924,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/parking",
                 ["parts"] = {
@@ -1914,6 +1960,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/playgrounds",
                 ["parts"] = {
@@ -1949,6 +1996,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/pollen-uv",
                 ["parts"] = {
@@ -1984,6 +2032,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/population-density",
                 ["parts"] = {
@@ -2019,6 +2068,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/post-boxes",
                 ["parts"] = {
@@ -2054,6 +2104,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/post-offices",
                 ["parts"] = {
@@ -2089,6 +2140,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/power-load",
                 ["parts"] = {
@@ -2124,6 +2176,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/power-price",
                 ["parts"] = {
@@ -2159,6 +2212,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/public-toilets",
                 ["parts"] = {
@@ -2194,6 +2248,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/public-wifi",
                 ["parts"] = {
@@ -2229,6 +2284,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/recycling-centres",
                 ["parts"] = {
@@ -2264,6 +2320,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/road-events",
                 ["parts"] = {
@@ -2299,6 +2356,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/sharing",
                 ["parts"] = {
@@ -2334,6 +2392,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/solar",
                 ["parts"] = {
@@ -2369,6 +2428,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/solar-roofs",
                 ["parts"] = {
@@ -2404,6 +2464,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/station-arrivals",
                 ["parts"] = {
@@ -2439,6 +2500,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/station-departures",
                 ["parts"] = {
@@ -2474,6 +2536,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/station-facilities",
                 ["parts"] = {
@@ -2509,6 +2572,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/tax-rates",
                 ["parts"] = {
@@ -2544,6 +2608,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/tourism",
                 ["parts"] = {
@@ -2579,6 +2644,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/tree-cadastre",
                 ["parts"] = {
@@ -2614,6 +2680,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/unemployment",
                 ["parts"] = {
@@ -2649,6 +2716,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/vehicle-registrations",
                 ["parts"] = {
@@ -2684,6 +2752,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/water-level",
                 ["parts"] = {
@@ -2719,6 +2788,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/weather",
                 ["parts"] = {
@@ -2754,6 +2824,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/weather-warnings",
                 ["parts"] = {
@@ -2789,6 +2860,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/cities/{slug}/webcams",
                 ["parts"] = {
@@ -2929,6 +3001,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/compare",
                 ["parts"] = {
@@ -2966,7 +3039,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "redi",
+            ["name"] = "redis",
             ["req"] = true,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 0,
@@ -2995,6 +3068,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/health",
                 ["parts"] = {
@@ -3064,6 +3138,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{city}/transit/routes/{route_id}/status",
                 ["parts"] = {
@@ -3117,6 +3192,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{city}/transit/departures",
                 ["parts"] = {
@@ -3169,6 +3245,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{city}/transit/trips/{trip_id}",
                 ["parts"] = {
@@ -3221,6 +3298,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/departures",
                 ["parts"] = {
@@ -3257,6 +3335,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/air",
                 ["parts"] = {
@@ -3292,6 +3371,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/air-uba",
                 ["parts"] = {
@@ -3327,6 +3407,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{city}/baustellen",
                 ["parts"] = {
@@ -3362,6 +3443,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{city}/ereignisse",
                 ["parts"] = {
@@ -3397,6 +3479,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/flood",
                 ["parts"] = {
@@ -3432,6 +3515,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/traffic",
                 ["parts"] = {
@@ -3467,6 +3551,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{city}/traffic-flow",
                 ["parts"] = {
@@ -3502,6 +3587,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/water-level",
                 ["parts"] = {
@@ -3537,6 +3623,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/{slug}/webcams",
                 ["parts"] = {
@@ -3573,6 +3660,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/frankfurt-am-main/departures",
                 ["parts"] = {
@@ -3608,6 +3696,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/hamburg/departures",
                 ["parts"] = {
@@ -3643,6 +3732,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/nuernberg/departures",
                 ["parts"] = {
@@ -3666,6 +3756,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/berlin/verkehrsmeldungen",
                 ["parts"] = {
@@ -3685,6 +3776,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/dortmund/parking",
                 ["parts"] = {
@@ -3704,6 +3796,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/eround/charging",
                 ["parts"] = {
@@ -3723,6 +3816,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/frankfurt-am-main/parking",
                 ["parts"] = {
@@ -3742,6 +3836,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/hamburg/verkehrslage",
                 ["parts"] = {
@@ -3761,6 +3856,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/hannover/verkehrsmeldungen",
                 ["parts"] = {
@@ -3780,6 +3876,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/kiel/zaehlstellen",
                 ["parts"] = {
@@ -3799,6 +3896,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/koeln/umweltzone",
                 ["parts"] = {
@@ -3818,6 +3916,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/magdeburg/parking",
                 ["parts"] = {
@@ -3837,6 +3936,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/live/wuppertal/parking",
                 ["parts"] = {
@@ -3963,6 +4063,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/sources",
                 ["parts"] = {
@@ -3996,6 +4097,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/openapi.yaml",
                 ["parts"] = {
@@ -4056,6 +4158,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/stations/{eva}/arrivals",
                 ["parts"] = {
@@ -4092,6 +4195,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/stations/{eva}/departures",
                 ["parts"] = {

@@ -26,8 +26,8 @@ import {
 describe('CompareEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when INFRANODEOPENDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('INFRANODEOPENDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when INFRANODE_OPEN_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('INFRANODE_OPEN_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = InfranodeOpenDataSDK.test()
@@ -63,7 +63,7 @@ describe('CompareEntity', async () => {
     const compare_ref01_ent = client.Compare()
     const compare_ref01_match: any = {}
 
-    const compare_ref01_list = await compare_ref01_ent.list(compare_ref01_match)
+    const compare_ref01_list = (await compare_ref01_ent.list(compare_ref01_match)).map((e: any) => e.data())
 
 
   })

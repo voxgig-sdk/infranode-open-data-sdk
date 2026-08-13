@@ -43,8 +43,8 @@ class InfranodeOpenDataTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('INFRANODEOPENDATA_TEST_LIVE');
-        $override = self::getenv('INFRANODEOPENDATA_TEST_OVERRIDE');
+        $live = self::getenv('INFRANODE_OPEN_DATA_TEST_LIVE');
+        $override = self::getenv('INFRANODE_OPEN_DATA_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class InfranodeOpenDataTestRunner
             }
         }
 
-        $explain = self::getenv('INFRANODEOPENDATA_TEST_EXPLAIN');
+        $explain = self::getenv('INFRANODE_OPEN_DATA_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['INFRANODEOPENDATA_TEST_EXPLAIN'] = $explain;
+            $m['INFRANODE_OPEN_DATA_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

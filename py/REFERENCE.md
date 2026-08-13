@@ -224,7 +224,7 @@ health = client.Health()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redi` | `bool` | Yes |  |
+| `redis` | `bool` | Yes |  |
 | `status` | `str` | Yes |  |
 | `version` | `str` | Yes |  |
 

@@ -53,6 +53,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities",
 								"parts": []any{
@@ -68,7 +69,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -140,6 +140,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/public-tenders",
 								"parts": []any{
@@ -225,6 +226,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/council-papers",
 								"parts": []any{
@@ -308,6 +310,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/transit",
 								"parts": []any{
@@ -382,6 +385,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/tenders",
 								"parts": []any{
@@ -436,6 +440,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/stations",
 								"parts": []any{
@@ -491,6 +496,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/traffic",
 								"parts": []any{
@@ -538,6 +544,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/pois",
 								"parts": []any{
@@ -575,6 +582,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}",
 								"parts": []any{
@@ -613,6 +621,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/accidents",
 								"parts": []any{
@@ -648,6 +657,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/air",
 								"parts": []any{
@@ -683,6 +693,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/air-uba",
 								"parts": []any{
@@ -718,6 +729,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/base",
 								"parts": []any{
@@ -753,6 +765,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/bathing-water",
 								"parts": []any{
@@ -788,6 +801,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/bike-counts",
 								"parts": []any{
@@ -823,6 +837,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/business-registrations",
 								"parts": []any{
@@ -858,6 +873,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/charging",
 								"parts": []any{
@@ -893,6 +909,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/charging-status",
 								"parts": []any{
@@ -928,6 +945,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/civil-protection-warnings",
 								"parts": []any{
@@ -963,6 +981,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/construction",
 								"parts": []any{
@@ -998,6 +1017,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/crime-stats",
 								"parts": []any{
@@ -1033,6 +1053,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/demographics",
 								"parts": []any{
@@ -1068,6 +1089,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/district-heating",
 								"parts": []any{
@@ -1103,6 +1125,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/drinking-water",
 								"parts": []any{
@@ -1138,6 +1161,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/education",
 								"parts": []any{
@@ -1173,6 +1197,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/election",
 								"parts": []any{
@@ -1208,6 +1233,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/energy",
 								"parts": []any{
@@ -1243,6 +1269,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/events",
 								"parts": []any{
@@ -1278,6 +1305,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/fire-danger",
 								"parts": []any{
@@ -1313,6 +1341,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/flood",
 								"parts": []any{
@@ -1348,6 +1377,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/fuel-prices",
 								"parts": []any{
@@ -1383,6 +1413,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/geo",
 								"parts": []any{
@@ -1418,6 +1449,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/government-offices",
 								"parts": []any{
@@ -1453,6 +1485,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/health",
 								"parts": []any{
@@ -1488,6 +1521,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/heritage",
 								"parts": []any{
@@ -1523,6 +1557,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/holidays",
 								"parts": []any{
@@ -1558,6 +1593,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/hospitals-atlas",
 								"parts": []any{
@@ -1593,6 +1629,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/icu-live",
 								"parts": []any{
@@ -1628,6 +1665,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/indicators",
 								"parts": []any{
@@ -1663,6 +1701,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/insolvencies",
 								"parts": []any{
@@ -1698,6 +1737,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/land-values",
 								"parts": []any{
@@ -1733,6 +1773,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/markets",
 								"parts": []any{
@@ -1768,6 +1809,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/office-wait-times",
 								"parts": []any{
@@ -1803,6 +1845,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/overview",
 								"parts": []any{
@@ -1838,6 +1881,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/parcel-lockers",
 								"parts": []any{
@@ -1873,6 +1917,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/parking",
 								"parts": []any{
@@ -1908,6 +1953,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/playgrounds",
 								"parts": []any{
@@ -1943,6 +1989,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/pollen-uv",
 								"parts": []any{
@@ -1978,6 +2025,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/population-density",
 								"parts": []any{
@@ -2013,6 +2061,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/post-boxes",
 								"parts": []any{
@@ -2048,6 +2097,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/post-offices",
 								"parts": []any{
@@ -2083,6 +2133,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/power-load",
 								"parts": []any{
@@ -2118,6 +2169,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/power-price",
 								"parts": []any{
@@ -2153,6 +2205,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/public-toilets",
 								"parts": []any{
@@ -2188,6 +2241,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/public-wifi",
 								"parts": []any{
@@ -2223,6 +2277,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/recycling-centres",
 								"parts": []any{
@@ -2258,6 +2313,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/road-events",
 								"parts": []any{
@@ -2293,6 +2349,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/sharing",
 								"parts": []any{
@@ -2328,6 +2385,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/solar",
 								"parts": []any{
@@ -2363,6 +2421,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/solar-roofs",
 								"parts": []any{
@@ -2398,6 +2457,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/station-arrivals",
 								"parts": []any{
@@ -2433,6 +2493,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/station-departures",
 								"parts": []any{
@@ -2468,6 +2529,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/station-facilities",
 								"parts": []any{
@@ -2503,6 +2565,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/tax-rates",
 								"parts": []any{
@@ -2538,6 +2601,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/tourism",
 								"parts": []any{
@@ -2573,6 +2637,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/tree-cadastre",
 								"parts": []any{
@@ -2608,6 +2673,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/unemployment",
 								"parts": []any{
@@ -2643,6 +2709,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/vehicle-registrations",
 								"parts": []any{
@@ -2678,6 +2745,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/water-level",
 								"parts": []any{
@@ -2713,6 +2781,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/weather",
 								"parts": []any{
@@ -2748,6 +2817,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/weather-warnings",
 								"parts": []any{
@@ -2783,6 +2853,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/webcams",
 								"parts": []any{
@@ -2805,7 +2876,6 @@ func MakeConfig() map[string]any {
 								"index$": 70,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -2923,6 +2993,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/compare",
 								"parts": []any{
@@ -2949,7 +3020,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2960,7 +3030,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "redi",
+						"name": "redis",
 						"req": true,
 						"type": "`$BOOLEAN`",
 						"index$": 0,
@@ -2989,6 +3059,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/health",
 								"parts": []any{
@@ -3004,7 +3075,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -3058,6 +3128,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
 								"parts": []any{
@@ -3111,6 +3182,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/transit/departures",
 								"parts": []any{
@@ -3163,6 +3235,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
 								"parts": []any{
@@ -3215,6 +3288,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/departures",
 								"parts": []any{
@@ -3251,6 +3325,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/air",
 								"parts": []any{
@@ -3286,6 +3361,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/air-uba",
 								"parts": []any{
@@ -3321,6 +3397,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/baustellen",
 								"parts": []any{
@@ -3356,6 +3433,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/ereignisse",
 								"parts": []any{
@@ -3391,6 +3469,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/flood",
 								"parts": []any{
@@ -3426,6 +3505,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/traffic",
 								"parts": []any{
@@ -3461,6 +3541,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/traffic-flow",
 								"parts": []any{
@@ -3496,6 +3577,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/water-level",
 								"parts": []any{
@@ -3531,6 +3613,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/webcams",
 								"parts": []any{
@@ -3567,6 +3650,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/frankfurt-am-main/departures",
 								"parts": []any{
@@ -3602,6 +3686,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/hamburg/departures",
 								"parts": []any{
@@ -3637,6 +3722,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/nuernberg/departures",
 								"parts": []any{
@@ -3660,6 +3746,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/berlin/verkehrsmeldungen",
 								"parts": []any{
@@ -3679,6 +3766,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/dortmund/parking",
 								"parts": []any{
@@ -3698,6 +3786,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/eround/charging",
 								"parts": []any{
@@ -3717,6 +3806,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/frankfurt-am-main/parking",
 								"parts": []any{
@@ -3736,6 +3826,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/hamburg/verkehrslage",
 								"parts": []any{
@@ -3755,6 +3846,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/hannover/verkehrsmeldungen",
 								"parts": []any{
@@ -3774,6 +3866,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/kiel/zaehlstellen",
 								"parts": []any{
@@ -3793,6 +3886,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/koeln/umweltzone",
 								"parts": []any{
@@ -3812,6 +3906,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/magdeburg/parking",
 								"parts": []any{
@@ -3831,6 +3926,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/wuppertal/parking",
 								"parts": []any{
@@ -3848,7 +3944,6 @@ func MakeConfig() map[string]any {
 								"index$": 25,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -3957,6 +4052,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/sources",
 								"parts": []any{
@@ -3981,7 +4077,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -3990,6 +4085,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/openapi.yaml",
 								"parts": []any{
@@ -4005,7 +4101,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -4050,6 +4145,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/stations/{eva}/arrivals",
 								"parts": []any{
@@ -4086,6 +4182,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/stations/{eva}/departures",
 								"parts": []any{
@@ -4108,7 +4205,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

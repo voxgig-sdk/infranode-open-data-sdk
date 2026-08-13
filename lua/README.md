@@ -271,7 +271,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redi` |  |
+| `redis` |  |
 | `status` |  |
 | `version` |  |
 
@@ -388,7 +388,7 @@ Create an instance: `local health = client:Health(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redi` | `boolean` |  |
+| `redis` | `boolean` |  |
 | `status` | `string` |  |
 | `version` | `string` |  |
 

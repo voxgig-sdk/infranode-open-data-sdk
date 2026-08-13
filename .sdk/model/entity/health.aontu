@@ -6,7 +6,7 @@ main: kit: entity: health: {
 
   fields: [
     {
-      name: "redi"
+      name: "redis"
       req: true
       type: "`$BOOLEAN`"
     }

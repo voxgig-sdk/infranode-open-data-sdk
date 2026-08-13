@@ -235,7 +235,7 @@ fmt.Println(health.GetName()) // "health"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redi` | `bool` | Yes |  |
+| `redis` | `bool` | Yes |  |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 

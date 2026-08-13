@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = InfranodeOpenDataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = InfranodeOpenDataSDK.test({
+  entity: {
+    city: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const citys = await client.City().list()
-// citys is an array of bare City records populated with mock data
+// citys is an array of City entities, populated with mock data
+// — call citys[0].data() for the record itself
 console.log(citys)
 ```
 
@@ -110,7 +119,7 @@ import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data'
 
 const client = new InfranodeOpenDataSDK()
 
-// List all citys (returns City[])
+// List all citys (returns CityEntity[] — .data() for the record)
 const citys = await client.City().list()
 for (const city of citys) {
   console.log(city)
@@ -202,7 +211,7 @@ $client = new InfranodeOpenDataSDK();
 $citys = $client->City()->list();
 print_r($citys);
 
-// Load a specific city (returns the bare record; throws on error)
+// Load a specific city (returns the ENTITY; call data_get() for the record; throws on error)
 $city = $client->City()->load(["id" => "example_id"]);
 print_r($city);
 ```
@@ -242,7 +251,7 @@ client = InfranodeOpenDataSDK.new
 citys = client.City.list
 puts citys
 
-# Load a specific city (returns the bare record; raises on error)
+# Load a specific city (returns the ENTITY; call data_get for the record)
 city = client.City.load({ "id" => "example_id" })
 puts city
 ```
@@ -379,6 +388,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://infranode.dev](https://infranode.dev)
 

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from infranodeopendata_sdk.utility.voxgig_struct import voxgig_struct as vs
 from infranodeopendata_sdk import InfranodeOpenDataSDK
-from core import helpers
+from infranodeopendata_sdk.core import helpers
 from test import runner
 
 
@@ -95,11 +95,11 @@ def _meta_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "INFRANODEOPENDATA_TEST_META_ENTID": {},
-        "INFRANODEOPENDATA_TEST_LIVE": "FALSE",
+        "INFRANODE_OPEN_DATA_TEST_META_ENTID": {},
+        "INFRANODE_OPEN_DATA_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("INFRANODEOPENDATA_TEST_LIVE") == "TRUE"
+    live = env.get("INFRANODE_OPEN_DATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

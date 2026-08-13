@@ -228,7 +228,7 @@ health = client.Health
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redi` | `Boolean` | Yes |  |
+| `redis` | `Boolean` | Yes |  |
 | `status` | `String` | Yes |  |
 | `version` | `String` | Yes |  |
 

@@ -70,11 +70,11 @@ function station_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["INFRANODEOPENDATA_TEST_STATION_ENTID"] = {},
-    ["INFRANODEOPENDATA_TEST_LIVE"] = "FALSE",
+    ["INFRANODE_OPEN_DATA_TEST_STATION_ENTID"] = {},
+    ["INFRANODE_OPEN_DATA_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["INFRANODEOPENDATA_TEST_LIVE"] == "TRUE"
+  local live = env["INFRANODE_OPEN_DATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

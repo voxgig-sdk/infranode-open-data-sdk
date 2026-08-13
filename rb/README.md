@@ -50,7 +50,7 @@ Station is nested under eva, so provide the `eva`.
 
 ```ruby
 begin
-  # load returns the bare Station record (raises on error).
+  # load returns the ENTITY — call data_get for the Station record (raises on error).
   station = client.Station.load({ "eva" => "example_eva" })
   puts station
 rescue => err
@@ -136,7 +136,8 @@ client = InfranodeOpenDataSDK.test({
   "entity" => { "city" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 city = client.City.list()
 puts city
 ```
@@ -282,7 +283,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redi` |  |
+| `redis` |  |
 | `status` |  |
 | `version` |  |
 
@@ -350,7 +351,7 @@ Create an instance: `city = client.City`
 #### Example: Load
 
 ```ruby
-# load returns the bare City record (raises on error).
+# load returns the ENTITY — call data_get for the City record (raises on error).
 city = client.City.load({ "id" => "city_id" })
 ```
 
@@ -402,14 +403,14 @@ Create an instance: `health = client.Health`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redi` | `Boolean` |  |
+| `redis` | `Boolean` |  |
 | `status` | `String` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Health record (raises on error).
+# load returns the ENTITY — call data_get for the Health record (raises on error).
 health = client.Health.load()
 ```
 
@@ -434,7 +435,7 @@ Create an instance: `live = client.Live`
 #### Example: Load
 
 ```ruby
-# load returns the bare Live record (raises on error).
+# load returns the ENTITY — call data_get for the Live record (raises on error).
 live = client.Live.load()
 ```
 
@@ -461,7 +462,7 @@ Create an instance: `meta = client.Meta`
 #### Example: Load
 
 ```ruby
-# load returns the bare Meta record (raises on error).
+# load returns the ENTITY — call data_get for the Meta record (raises on error).
 meta = client.Meta.load()
 ```
 
@@ -493,7 +494,7 @@ Create an instance: `station = client.Station`
 #### Example: Load
 
 ```ruby
-# load returns the bare Station record (raises on error).
+# load returns the ENTITY — call data_get for the Station record (raises on error).
 station = client.Station.load({ "eva" => "eva" })
 ```
 

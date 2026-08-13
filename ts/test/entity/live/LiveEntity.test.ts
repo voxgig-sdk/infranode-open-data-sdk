@@ -26,8 +26,8 @@ import {
 describe('LiveEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when INFRANODEOPENDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('INFRANODEOPENDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when INFRANODE_OPEN_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('INFRANODE_OPEN_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = InfranodeOpenDataSDK.test()

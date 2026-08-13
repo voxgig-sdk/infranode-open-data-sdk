@@ -28,12 +28,12 @@
 ---@field source_status? string
 
 ---@class Health
----@field redi boolean
+---@field redis boolean
 ---@field status string
 ---@field version string
 
 ---@class HealthLoadMatch
----@field redi? boolean
+---@field redis? boolean
 ---@field status? string
 ---@field version? string
 
