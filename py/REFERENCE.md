@@ -287,7 +287,7 @@ live = client.Live()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Live().load()
+result = client.Live().load({"live_id": "live_id", "trip_id": "trip_id"})
 ```
 
 ### Common Methods

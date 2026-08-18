@@ -11,7 +11,7 @@
 ---@field meta table
 
 ---@class CityLoadMatch
----@field id? string
+---@field id string
 
 ---@class CityListMatch
 ---@field data? any
@@ -42,9 +42,8 @@
 ---@field meta table
 
 ---@class LiveLoadMatch
----@field live_id? string
----@field route_id? string
----@field trip_id? string
+---@field live_id string
+---@field trip_id string
 
 ---@class Meta
 ---@field breaker_state string

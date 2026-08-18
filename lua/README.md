@@ -47,14 +47,14 @@ for _, item in ipairs(citys) do
 end
 ```
 
-### 3. Load a station
+### 3. Load a live
 
-Station is nested under eva, so provide the `eva`.
+Live is nested under live, so provide the `live_id`.
 
 ```lua
-local station, err = client:Station():load({ eva = "example_eva" })
+local live, err = client:Live():load({ live_id = "example_live_id", trip_id = "example_trip_id" })
 if err then error(err) end
-print(station)
+print(live)
 ```
 
 
@@ -419,7 +419,7 @@ Create an instance: `local live = client:Live(nil)`
 #### Example: Load
 
 ```lua
-local live, err = client:Live():load()
+local live, err = client:Live():load({ live_id = "live_id", trip_id = "trip_id" })
 ```
 
 

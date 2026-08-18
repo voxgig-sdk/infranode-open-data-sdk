@@ -44,15 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load a station
+### 3. Load a live
 
-Station is nested under eva, so provide the `eva`.
+Live is nested under live, so provide the `live_id`.
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the Station record (raises on error).
-  station = client.Station.load({ "eva" => "example_eva" })
-  puts station
+  # load returns the ENTITY — call data_get for the Live record (raises on error).
+  live = client.Live.load({ "live_id" => "example_live_id", "trip_id" => "example_trip_id" })
+  puts live
 rescue => err
   warn "load failed: #{err}"
 end
@@ -436,7 +436,7 @@ Create an instance: `live = client.Live`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Live record (raises on error).
-live = client.Live.load()
+live = client.Live.load({ "live_id" => "live_id", "trip_id" => "trip_id" })
 ```
 
 

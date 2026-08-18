@@ -47,17 +47,18 @@ for (const city of citys) {
 }
 ```
 
-### 3. Load a station
+### 3. Load a live
 
-Station is nested under eva, so provide the `eva`.
+Live is nested under live, so provide the `live_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const station = await client.Station().load({
-    eva: 'example_eva',
+  const live = await client.Live().load({
+    live_id: 'example_live_id',
+    trip_id: 'example_trip_id',
   })
-  console.log(station)
+  console.log(live)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -481,7 +482,7 @@ Create an instance: `const live = client.Live()`
 #### Example: Load
 
 ```ts
-const live = await client.Live().load()
+const live = await client.Live().load({ live_id: 'live_id', trip_id: 'trip_id' })
 ```
 
 

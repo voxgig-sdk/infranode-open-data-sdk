@@ -50,15 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a station
+### 3. Load a live
 
-Station is nested under eva, so provide the `eva`.
+Live is nested under live, so provide the `live_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    station = client.Station().load({"eva": "example_eva"})
-    print(station)
+    live = client.Live().load({"live_id": "example_live_id", "trip_id": "example_trip_id"})
+    print(live)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -433,7 +433,7 @@ Create an instance: `live = client.Live()`
 #### Example: Load
 
 ```python
-live = client.Live().load()
+live = client.Live().load({"live_id": "live_id", "trip_id": "trip_id"})
 ```
 
 

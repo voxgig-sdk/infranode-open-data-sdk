@@ -40,7 +40,7 @@ class InfranodeOpenDataSDK
         $utility = new InfranodeOpenDataUtility();
         $this->_utility = $utility;
 
-        $config = InfranodeOpenDataConfig::make_config();
+        $config = InfranodeOpenDataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -40,7 +40,7 @@ class MetaEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = InfranodeOpenDataConfig::make_config();
+        $cfg = InfranodeOpenDataConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = InfranodeOpenDataSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

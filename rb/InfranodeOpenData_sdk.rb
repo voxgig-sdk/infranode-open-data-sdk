@@ -28,7 +28,7 @@ class InfranodeOpenDataSDK
     utility = InfranodeOpenDataUtility.new
     @_utility = utility
 
-    config = InfranodeOpenDataConfig.make_config
+    config = InfranodeOpenDataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

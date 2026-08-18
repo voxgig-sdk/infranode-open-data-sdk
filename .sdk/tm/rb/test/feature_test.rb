@@ -15,7 +15,7 @@ require_relative "../InfranodeOpenData_sdk"
 module InfranodeOpenDataFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = InfranodeOpenDataConfig.make_config["feature"]
+    f = InfranodeOpenDataConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

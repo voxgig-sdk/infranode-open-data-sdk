@@ -461,7 +461,7 @@ Create an instance: `live := client.Live(nil)`
 #### Example: Load
 
 ```go
-live, err := client.Live(nil).Load(nil, nil)
+live, err := client.Live(nil).Load(map[string]any{"live_id": "live_id", "trip_id": "trip_id"}, nil)
 if err != nil {
     panic(err)
 }

@@ -24,7 +24,7 @@ City = Struct.new(
 # Request payload for City#load.
 #
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 CityLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -127,16 +127,12 @@ Live = Struct.new(
 # Request payload for Live#load.
 #
 # @!attribute [rw] live_id
-#   @return [String, nil]
-#
-# @!attribute [rw] route_id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] trip_id
-#   @return [String, nil]
+#   @return [String]
 LiveLoadMatch = Struct.new(
   :live_id,
-  :route_id,
   :trip_id,
   keyword_init: true
 )

@@ -21,7 +21,7 @@ class City(TypedDict):
     meta: dict
 
 
-class CityLoadMatch(TypedDict, total=False):
+class CityLoadMatch(TypedDict):
     id: str
 
 
@@ -62,9 +62,8 @@ class Live(TypedDict):
     meta: dict
 
 
-class LiveLoadMatch(TypedDict, total=False):
+class LiveLoadMatch(TypedDict):
     live_id: str
-    route_id: str
     trip_id: str
 
 

@@ -289,7 +289,7 @@ local live = client:Live(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Live():load()
+local result, err = client:Live():load({ live_id = "live_id", trip_id = "trip_id" })
 ```
 
 ### Common Methods

@@ -298,7 +298,7 @@ fmt.Println(live.GetName()) // "live"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Live(nil).Load(nil, nil)
+result, err := client.Live(nil).Load(map[string]any{"live_id": "live_id", "trip_id": "trip_id"}, nil)
 if err != nil {
     panic(err)
 }

@@ -22,7 +22,7 @@ class City
 /** Request payload for City#load. */
 class CityLoadMatch
 {
-    public ?string $id = null;
+    public string $id;
 }
 
 /** Request payload for City#list. */
@@ -74,9 +74,8 @@ class Live
 /** Request payload for Live#load. */
 class LiveLoadMatch
 {
-    public ?string $live_id = null;
-    public ?string $route_id = null;
-    public ?string $trip_id = null;
+    public string $live_id;
+    public string $trip_id;
 }
 
 /** Meta entity data model. */

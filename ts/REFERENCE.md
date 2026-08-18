@@ -467,7 +467,7 @@ const result = await client.Live().load({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Live().load()
+const result = await client.Live().load({ live_id: 'live_id', trip_id: 'trip_id' })
 ```
 
 ### Common Methods

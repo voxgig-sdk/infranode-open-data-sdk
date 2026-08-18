@@ -20,7 +20,7 @@ type City struct {
 
 // CityLoadMatch is the typed request payload for City.LoadTyped.
 type CityLoadMatch struct {
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 }
 
 // CityListMatch is the typed request payload for City.ListTyped.
@@ -65,9 +65,8 @@ type Live struct {
 
 // LiveLoadMatch is the typed request payload for Live.LoadTyped.
 type LiveLoadMatch struct {
-	LiveId *string `json:"live_id,omitempty"`
-	RouteId *string `json:"route_id,omitempty"`
-	TripId *string `json:"trip_id,omitempty"`
+	LiveId string `json:"live_id"`
+	TripId string `json:"trip_id"`
 }
 
 // Meta is the typed data model for the meta entity.
