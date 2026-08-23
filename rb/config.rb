@@ -19,6 +19,9 @@ module InfranodeOpenDataConfig
     {
       "main" => {
         "name" => "InfranodeOpenData",
+        "slug" => "infranode-open-data",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -52,6 +55,7 @@ module InfranodeOpenDataConfig
             {
               "name" => "meta",
               "req" => true,
+              "short" => "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
               "type" => "`$OBJECT`",
             },
           ],
@@ -2753,6 +2757,7 @@ module InfranodeOpenDataConfig
             {
               "name" => "redis",
               "req" => true,
+              "short" => "true wenn Redis erreichbar (Ping erfolgreich)",
               "type" => "`$BOOLEAN`",
             },
             {

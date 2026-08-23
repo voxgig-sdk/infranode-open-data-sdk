@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "InfranodeOpenData",
+			"slug": "infranode-open-data",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -44,6 +47,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "meta",
 						"req": true,
+						"short": "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -2745,6 +2749,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "redis",
 						"req": true,
+						"short": "true wenn Redis erreichbar (Ping erfolgreich)",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{

@@ -6,7 +6,7 @@ The Golang SDK for the InfranodeOpenData API — an entity-oriented client using
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.City(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -275,7 +275,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"data"` |  |
-| `"meta"` |  |
+| `"meta"` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
 
@@ -297,7 +297,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `"redis"` |  |
+| `"redis"` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `"status"` |  |
 | `"version"` |  |
 
@@ -360,7 +360,7 @@ Create an instance: `city := client.City(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any` |  |
-| `meta` | `map[string]any` |  |
+| `meta` | `map[string]any` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load
 
@@ -426,7 +426,7 @@ Create an instance: `health := client.Health(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redis` | `bool` |  |
+| `redis` | `bool` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` |  |
 | `version` | `string` |  |
 

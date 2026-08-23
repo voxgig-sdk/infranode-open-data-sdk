@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -312,7 +312,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `data` |  |
-| `meta` |  |
+| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: list, load.
 
@@ -334,7 +334,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redis` |  |
+| `redis` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` |  |
 | `version` |  |
 
@@ -397,7 +397,7 @@ Create an instance: `const city = client.City()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any` |  |
-| `meta` | `Record<string, any>` |  |
+| `meta` | `Record<string, any>` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load
 
@@ -451,7 +451,7 @@ Create an instance: `const health = client.Health()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redis` | `boolean` |  |
+| `redis` | `boolean` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` |  |
 | `version` | `string` |  |
 

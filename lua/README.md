@@ -249,7 +249,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `data` |  |
-| `meta` |  |
+| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
 
@@ -271,7 +271,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redis` |  |
+| `redis` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` |  |
 | `version` |  |
 
@@ -334,7 +334,7 @@ Create an instance: `local city = client:City(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any` |  |
-| `meta` | `table` |  |
+| `meta` | `table` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load
 
@@ -388,7 +388,7 @@ Create an instance: `local health = client:Health(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redis` | `boolean` |  |
+| `redis` | `boolean` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` |  |
 | `version` | `string` |  |
 

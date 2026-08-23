@@ -261,7 +261,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `data` |  |
-| `meta` |  |
+| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
 
@@ -283,7 +283,7 @@ API path: `/api/v1/compare`
 
 | Field | Description |
 | --- | --- |
-| `redis` |  |
+| `redis` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` |  |
 | `version` |  |
 
@@ -346,7 +346,7 @@ Create an instance: `city = client.City`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `Object` |  |
-| `meta` | `Hash` |  |
+| `meta` | `Hash` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load
 
@@ -403,7 +403,7 @@ Create an instance: `health = client.Health`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `redis` | `Boolean` |  |
+| `redis` | `Boolean` | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `String` |  |
 | `version` | `String` |  |
 

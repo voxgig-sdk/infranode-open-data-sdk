@@ -113,7 +113,7 @@ $city = $client->City();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `mixed` | Yes |  |
-| `meta` | `array` | Yes |  |
+| `meta` | `array` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Operations
 
@@ -227,7 +227,7 @@ $health = $client->Health();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redis` | `bool` | Yes |  |
+| `redis` | `bool` | Yes | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 

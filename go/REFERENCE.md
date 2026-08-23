@@ -119,7 +119,7 @@ fmt.Println(city.GetName()) // "city"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
-| `meta` | `map[string]any` | Yes |  |
+| `meta` | `map[string]any` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Operations
 
@@ -235,7 +235,7 @@ fmt.Println(health.GetName()) // "health"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redis` | `bool` | Yes |  |
+| `redis` | `bool` | Yes | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 

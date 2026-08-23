@@ -177,7 +177,7 @@ const city = client.City()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
-| `meta` | `Record<string, any>` | Yes |  |
+| `meta` | `Record<string, any>` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Actions
 
@@ -375,7 +375,7 @@ const health = client.Health()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redis` | `boolean` | Yes |  |
+| `redis` | `boolean` | Yes | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 

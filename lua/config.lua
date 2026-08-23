@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "InfranodeOpenData",
+      slug = "infranode-open-data",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -40,6 +43,7 @@ local function make_config()
           {
             ["name"] = "meta",
             ["req"] = true,
+            ["short"] = "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
             ["type"] = "`$OBJECT`",
           },
         },
@@ -2741,6 +2745,7 @@ local function make_config()
           {
             ["name"] = "redis",
             ["req"] = true,
+            ["short"] = "true wenn Redis erreichbar (Ping erfolgreich)",
             ["type"] = "`$BOOLEAN`",
           },
           {

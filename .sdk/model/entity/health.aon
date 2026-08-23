@@ -8,6 +8,7 @@ main: kit: entity: health: {
     {
       name: "redis"
       req: true
+      short: "true wenn Redis erreichbar (Ping erfolgreich)"
       type: "`$BOOLEAN`"
     }
     {

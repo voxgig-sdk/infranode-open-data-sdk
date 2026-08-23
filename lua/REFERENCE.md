@@ -111,7 +111,7 @@ local city = client:City(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
-| `meta` | `table` | Yes |  |
+| `meta` | `table` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Operations
 
@@ -225,7 +225,7 @@ local health = client:Health(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redis` | `boolean` | Yes |  |
+| `redis` | `boolean` | Yes | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `string` | Yes |  |
 | `version` | `string` | Yes |  |
 

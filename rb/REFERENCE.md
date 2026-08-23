@@ -114,7 +114,7 @@ city = client.City
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `Object` | Yes |  |
-| `meta` | `Hash` | Yes |  |
+| `meta` | `Hash` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Operations
 
@@ -228,7 +228,7 @@ health = client.Health
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `redis` | `Boolean` | Yes |  |
+| `redis` | `Boolean` | Yes | true wenn Redis erreichbar (Ping erfolgreich) |
 | `status` | `String` | Yes |  |
 | `version` | `String` | Yes |  |
 
