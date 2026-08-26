@@ -8,6 +8,7 @@
 
 ---@class City
 ---@field data any
+---@field id? string
 ---@field meta table
 
 ---@class CityLoadMatch
@@ -15,6 +16,7 @@
 
 ---@class CityListMatch
 ---@field data? any
+---@field id? string
 ---@field meta? table
 
 ---@class Compare

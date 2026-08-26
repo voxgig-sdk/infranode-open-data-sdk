@@ -38,7 +38,7 @@ try {
     // list() returns an array of City records — iterate directly.
     $citys = $client->City()->list();
     foreach ($citys as $item) {
-        echo $item["data"] . "\n";
+        echo $item["id"] . " " . $item["data"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -271,6 +271,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 | `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
@@ -356,6 +357,7 @@ Create an instance: `$city = $client->City();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `mixed` |  |
+| `id` | `string` |  |
 | `meta` | `array` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load

@@ -263,6 +263,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 | `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
@@ -348,6 +349,7 @@ Create an instance: `city = client.City()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `Any` |  |
+| `id` | `str` |  |
 | `meta` | `dict` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load

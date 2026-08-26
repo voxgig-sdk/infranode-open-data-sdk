@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -84,6 +85,10 @@ class Config {
           "name": "data",
           "req": true,
           "type": "`$ANY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "meta",

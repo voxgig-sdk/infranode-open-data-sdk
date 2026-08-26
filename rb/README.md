@@ -37,7 +37,7 @@ begin
   # list returns an Array of City records — iterate directly.
   citys = client.City.list
   citys.each do |item|
-    puts "#{item["data"]}"
+    puts "#{item["id"]} #{item["data"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -261,6 +261,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 | `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
@@ -346,6 +347,7 @@ Create an instance: `city = client.City`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `Object` |  |
+| `id` | `String` |  |
 | `meta` | `Hash` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load

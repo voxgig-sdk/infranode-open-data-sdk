@@ -121,13 +121,19 @@ func TestCityEntity(t *testing.T) {
 		}
 
 		// LOAD
-		cityRef01MatchDt0 := map[string]any{}
+		cityRef01MatchDt0 := map[string]any{
+			"id": cityRef01Data["id"],
+		}
 		cityRef01DataDt0Loaded, err := cityRef01Ent.Load(cityRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if cityRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		cityRef01DataDt0LoadResult := core.ToMapAny(entityData(cityRef01DataDt0Loaded))
+		if cityRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if cityRef01DataDt0LoadResult["id"] != cityRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

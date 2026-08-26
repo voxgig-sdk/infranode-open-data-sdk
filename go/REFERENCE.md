@@ -119,6 +119,7 @@ fmt.Println(city.GetName()) // "city"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
+| `id` | `string` | No |  |
 | `meta` | `map[string]any` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Operations

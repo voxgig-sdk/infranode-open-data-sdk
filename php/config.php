@@ -42,6 +42,7 @@ class InfranodeOpenDataConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -65,6 +66,10 @@ class InfranodeOpenDataConfig
               'name' => 'data',
               'req' => true,
               'type' => '`$ANY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'meta',

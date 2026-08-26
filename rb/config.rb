@@ -28,6 +28,7 @@ module InfranodeOpenDataConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -51,6 +52,10 @@ module InfranodeOpenDataConfig
               "name" => "data",
               "req" => true,
               "type" => "`$ANY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "meta",

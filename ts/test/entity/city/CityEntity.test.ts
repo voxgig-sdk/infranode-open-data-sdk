@@ -66,6 +66,12 @@ describe('CityEntity', async () => {
     const city_ref01_list = (await city_ref01_ent.list(city_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const city_ref01_match_dt0: any = {}
+    city_ref01_match_dt0.id = city_ref01_data.id
+    const city_ref01_data_dt0 = (await city_ref01_ent.load(city_ref01_match_dt0)).data()
+    assert(city_ref01_data_dt0.id === city_ref01_data.id)
+
 
   })
 })

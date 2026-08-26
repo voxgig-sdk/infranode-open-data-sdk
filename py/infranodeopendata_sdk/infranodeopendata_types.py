@@ -16,9 +16,13 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class City(TypedDict):
+class CityRequired(TypedDict):
     data: Any
     meta: dict
+
+
+class City(CityRequired, total=False):
+    id: str
 
 
 class CityLoadMatch(TypedDict):
@@ -27,6 +31,7 @@ class CityLoadMatch(TypedDict):
 
 class CityListMatch(TypedDict, total=False):
     data: Any
+    id: str
     meta: dict
 
 

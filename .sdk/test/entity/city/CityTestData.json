@@ -2,29 +2,29 @@
   "existing": {
     "city": {
       "CITY00": {
-        "data": "s14",
+        "data": "s1e",
+        "id": "CITY00",
         "meta": {},
-        "slug": "SLUG01",
-        "id": "CITY00"
+        "slug": "SLUG01"
       },
       "CITY01": {
-        "data": "s28",
+        "data": "s3c",
+        "id": "CITY01",
         "meta": {},
-        "slug": "SLUG01",
-        "id": "CITY01"
+        "slug": "SLUG01"
       },
       "CITY02": {
-        "data": "s3c",
+        "data": "s5a",
+        "id": "CITY02",
         "meta": {},
-        "slug": "SLUG01",
-        "id": "CITY02"
+        "slug": "SLUG01"
       }
     }
   },
   "new": {
     "city": {
       "city_ref01": {
-        "data": "s50",
+        "data": "s78",
         "meta": {}
       }
     }

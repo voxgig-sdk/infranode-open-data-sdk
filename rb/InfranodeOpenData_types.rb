@@ -13,10 +13,14 @@
 # @!attribute [rw] data
 #   @return [Object]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] meta
 #   @return [Hash]
 City = Struct.new(
   :data,
+  :id,
   :meta,
   keyword_init: true
 )
@@ -35,10 +39,14 @@ CityLoadMatch = Struct.new(
 # @!attribute [rw] data
 #   @return [Object, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 CityListMatch = Struct.new(
   :data,
+  :id,
   :meta,
   keyword_init: true
 )

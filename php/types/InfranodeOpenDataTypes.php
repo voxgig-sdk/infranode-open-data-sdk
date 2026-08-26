@@ -16,6 +16,7 @@ declare(strict_types=1);
 class City
 {
     public mixed $data;
+    public ?string $id = null;
     public array $meta;
 }
 
@@ -29,6 +30,7 @@ class CityLoadMatch
 class CityListMatch
 {
     public mixed $data = null;
+    public ?string $id = null;
     public ?array $meta = null;
 }
 

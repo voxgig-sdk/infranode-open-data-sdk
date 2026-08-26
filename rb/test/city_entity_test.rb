@@ -83,9 +83,13 @@ class CityEntityTest < Minitest::Test
     assert city_ref01_list_result.is_a?(Array)
 
     # LOAD
-    city_ref01_match_dt0 = {}
+    city_ref01_match_dt0 = {
+      "id" => city_ref01_data["id"],
+    }
     city_ref01_data_dt0_loaded = city_ref01_ent.load(city_ref01_match_dt0, nil)
-    assert !city_ref01_data_dt0_loaded.nil?
+    city_ref01_data_dt0_load_result = Helpers.to_map(city_ref01_data_dt0_loaded.respond_to?(:data_get) ? city_ref01_data_dt0_loaded.data_get : city_ref01_data_dt0_loaded)
+    assert !city_ref01_data_dt0_load_result.nil?
+    assert_equal city_ref01_data_dt0_load_result["id"], city_ref01_data["id"]
 
   end
 end

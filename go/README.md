@@ -275,6 +275,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"data"` |  |
+| `"id"` |  |
 | `"meta"` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
@@ -360,6 +361,7 @@ Create an instance: `city := client.City(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any` |  |
+| `id` | `string` |  |
 | `meta` | `map[string]any` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load

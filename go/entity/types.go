@@ -15,6 +15,7 @@ import (
 // City is the typed data model for the city entity.
 type City struct {
 	Data any `json:"data"`
+	Id *string `json:"id,omitempty"`
 	Meta map[string]any `json:"meta"`
 }
 
@@ -26,6 +27,7 @@ type CityLoadMatch struct {
 // CityListMatch is the typed request payload for City.ListTyped.
 type CityListMatch struct {
 	Data *any `json:"data,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Meta *map[string]any `json:"meta,omitempty"`
 }
 

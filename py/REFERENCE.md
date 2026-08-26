@@ -108,6 +108,7 @@ city = client.City()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `Any` | Yes |  |
+| `id` | `str` | No |  |
 | `meta` | `dict` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Operations

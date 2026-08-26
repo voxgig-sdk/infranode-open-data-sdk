@@ -93,9 +93,13 @@ class CityEntityTest extends TestCase
         $this->assertIsArray($city_ref01_list_result);
 
         // LOAD
-        $city_ref01_match_dt0 = [];
+        $city_ref01_match_dt0 = [
+            "id" => $city_ref01_data["id"],
+        ];
         $city_ref01_data_dt0_loaded = $city_ref01_ent->load($city_ref01_match_dt0, null);
-        $this->assertNotNull($city_ref01_data_dt0_loaded);
+        $city_ref01_data_dt0_load_result = Helpers::to_map(is_object($city_ref01_data_dt0_loaded) && method_exists($city_ref01_data_dt0_loaded, 'data_get') ? $city_ref01_data_dt0_loaded->data_get() : $city_ref01_data_dt0_loaded);
+        $this->assertNotNull($city_ref01_data_dt0_load_result);
+        $this->assertEquals($city_ref01_data_dt0_load_result["id"], $city_ref01_data["id"]);
 
     }
 }

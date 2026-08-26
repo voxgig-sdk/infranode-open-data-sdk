@@ -163,7 +163,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -312,6 +312,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 | `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: list, load.
@@ -397,6 +398,7 @@ Create an instance: `const city = client.City()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any` |  |
+| `id` | `string` |  |
 | `meta` | `Record<string, any>` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load

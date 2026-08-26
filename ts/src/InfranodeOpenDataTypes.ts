@@ -7,6 +7,7 @@
 
 export interface City {
   data: any
+  id?: string
   meta: Record<string, any>
 }
 
@@ -22,6 +23,7 @@ export interface CityLoadMatch {
 
 export interface CityListMatch {
   data?: any
+  id?: string
   meta?: Record<string, any>
 }
 

@@ -177,6 +177,7 @@ const city = client.City()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
+| `id` | `string` | No |  |
 | `meta` | `Record<string, any>` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 ### Actions

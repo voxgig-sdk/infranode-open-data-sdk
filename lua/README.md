@@ -43,7 +43,7 @@ local citys, err = client:City():list()
 if err then error(err) end
 
 for _, item in ipairs(citys) do
-  print(item["data"])
+  print(item["id"], item["data"])
 end
 ```
 
@@ -249,6 +249,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `data` |  |
+| `id` |  |
 | `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 Operations: List, Load.
@@ -334,6 +335,7 @@ Create an instance: `local city = client:City(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `data` | `any` |  |
+| `id` | `string` |  |
 | `meta` | `table` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
 
 #### Example: Load

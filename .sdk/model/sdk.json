@@ -40,12 +40,22 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "meta",
               "req": true,
               "short": "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
               "type": "`$OBJECT`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "city",
           "op": {
             "list": {
@@ -4208,6 +4218,7 @@
             }
           },
           "title": "In-memory mock transport for testing without a live server",
+          "transport": "base",
           "version": "0.0.1"
         }
       },
@@ -4482,6 +4493,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4540,6 +4552,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4614,6 +4627,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4694,6 +4708,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4752,6 +4767,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4816,6 +4832,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4885,6 +4902,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4959,6 +4977,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
