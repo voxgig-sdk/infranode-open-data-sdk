@@ -44,10 +44,17 @@ class Compare(CompareRequired, total=False):
     data: dict
 
 
-class CompareListMatch(TypedDict, total=False):
+class CompareListMatchRequired(TypedDict):
     city: str
-    data: dict
-    source_status: str
+    resource: str
+
+
+class CompareListMatch(CompareListMatchRequired, total=False):
+    limit: int
+    offset: int
+    order: str
+    page: int
+    sort: str
 
 
 class Health(TypedDict):
@@ -85,9 +92,11 @@ class MetaLoadMatch(TypedDict, total=False):
 
 
 class MetaListMatch(TypedDict, total=False):
-    breaker_state: str
-    enabled: bool
-    source: str
+    limit: int
+    offset: int
+    order: str
+    page: int
+    sort: str
 
 
 class Station(TypedDict):

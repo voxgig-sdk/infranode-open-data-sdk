@@ -34,9 +34,13 @@ export interface Compare {
 }
 
 export interface CompareListMatch {
-  city?: string
-  data?: Record<string, any>
-  source_status?: string
+  city: string
+  limit?: number
+  offset?: number
+  order?: string
+  page?: number
+  resource: string
+  sort?: string
 }
 
 export interface Health {
@@ -80,9 +84,11 @@ export interface MetaLoadMatch {
 }
 
 export interface MetaListMatch {
-  breaker_state?: string
-  enabled?: boolean
-  source?: string
+  limit?: number
+  offset?: number
+  order?: string
+  page?: number
+  sort?: string
 }
 
 export interface Station {

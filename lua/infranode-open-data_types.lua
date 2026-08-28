@@ -25,9 +25,13 @@
 ---@field source_status string
 
 ---@class CompareListMatch
----@field city? string
----@field data? table
----@field source_status? string
+---@field city string
+---@field limit? number
+---@field offset? number
+---@field order? string
+---@field page? number
+---@field resource string
+---@field sort? string
 
 ---@class Health
 ---@field redis boolean
@@ -58,9 +62,11 @@
 ---@field source? string
 
 ---@class MetaListMatch
----@field breaker_state? string
----@field enabled? boolean
----@field source? string
+---@field limit? number
+---@field offset? number
+---@field order? string
+---@field page? number
+---@field sort? string
 
 ---@class Station
 ---@field data any

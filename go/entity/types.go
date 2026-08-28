@@ -40,9 +40,13 @@ type Compare struct {
 
 // CompareListMatch is the typed request payload for Compare.ListTyped.
 type CompareListMatch struct {
-	City *string `json:"city,omitempty"`
-	Data *map[string]any `json:"data,omitempty"`
-	SourceStatus *string `json:"source_status,omitempty"`
+	City string `json:"city"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Order *string `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Resource string `json:"resource"`
+	Sort *string `json:"sort,omitempty"`
 }
 
 // Health is the typed data model for the health entity.
@@ -87,9 +91,11 @@ type MetaLoadMatch struct {
 
 // MetaListMatch is the typed request payload for Meta.ListTyped.
 type MetaListMatch struct {
-	BreakerState *string `json:"breaker_state,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Source *string `json:"source,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Order *string `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Sort *string `json:"sort,omitempty"`
 }
 
 // Station is the typed data model for the station entity.

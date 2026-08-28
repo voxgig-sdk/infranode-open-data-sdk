@@ -45,9 +45,13 @@ class Compare
 /** Request payload for Compare#list. */
 class CompareListMatch
 {
-    public ?string $city = null;
-    public ?array $data = null;
-    public ?string $source_status = null;
+    public string $city;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?string $order = null;
+    public ?int $page = null;
+    public string $resource;
+    public ?string $sort = null;
 }
 
 /** Health entity data model. */
@@ -99,9 +103,11 @@ class MetaLoadMatch
 /** Request payload for Meta#list. */
 class MetaListMatch
 {
-    public ?string $breaker_state = null;
-    public ?bool $enabled = null;
-    public ?string $source = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?string $order = null;
+    public ?int $page = null;
+    public ?string $sort = null;
 }
 
 /** Station entity data model. */

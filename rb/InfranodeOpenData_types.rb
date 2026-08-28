@@ -71,17 +71,33 @@ Compare = Struct.new(
 # Request payload for Compare#list.
 #
 # @!attribute [rw] city
+#   @return [String]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] order
 #   @return [String, nil]
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] source_status
+# @!attribute [rw] resource
+#   @return [String]
+#
+# @!attribute [rw] sort
 #   @return [String, nil]
 CompareListMatch = Struct.new(
   :city,
-  :data,
-  :source_status,
+  :limit,
+  :offset,
+  :order,
+  :page,
+  :resource,
+  :sort,
   keyword_init: true
 )
 
@@ -181,18 +197,26 @@ MetaLoadMatch = Struct.new(
 
 # Request payload for Meta#list.
 #
-# @!attribute [rw] breaker_state
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] order
 #   @return [String, nil]
 #
-# @!attribute [rw] enabled
-#   @return [Boolean, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] source
+# @!attribute [rw] sort
 #   @return [String, nil]
 MetaListMatch = Struct.new(
-  :breaker_state,
-  :enabled,
-  :source,
+  :limit,
+  :offset,
+  :order,
+  :page,
+  :sort,
   keyword_init: true
 )
 
