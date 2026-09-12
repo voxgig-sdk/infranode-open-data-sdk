@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -97,6 +108,10 @@ class Config {
           "type": "`$OBJECT`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "city",
       "op": {
         "list": {
@@ -108,16 +123,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities",
-              "parts": [
-                "api",
-                "v1",
-                "cities"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities"
+              ]
             }
           ]
         },
@@ -180,12 +206,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-tenders",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "public-tenders"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "public-tenders"
+                }
               ],
               "select": {
                 "$action": "public_tender",
@@ -202,7 +238,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "public-tenders"
+              ]
             },
             {
               "args": {
@@ -253,12 +296,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/council-papers",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "council-papers"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "council-papers"
+                }
               ],
               "select": {
                 "$action": "council_paper",
@@ -274,7 +327,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "council-papers"
+              ]
             },
             {
               "args": {
@@ -324,12 +384,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/transit",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "transit"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "transit"
+                }
               ],
               "select": {
                 "$action": "transit",
@@ -345,7 +415,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "transit"
+              ]
             },
             {
               "args": {
@@ -387,10 +464,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/tenders",
-              "parts": [
-                "api",
-                "v1",
-                "tenders"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "tenders"
+                }
               ],
               "select": {
                 "exist": [
@@ -404,7 +487,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "tenders"
+              ]
             },
             {
               "args": {
@@ -435,12 +523,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/stations",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "stations"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "stations"
+                }
               ],
               "select": {
                 "$action": "station",
@@ -453,7 +551,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "stations"
+              ]
             },
             {
               "args": {
@@ -484,12 +589,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/traffic",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "traffic"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "traffic"
+                }
               ],
               "select": {
                 "$action": "traffic",
@@ -502,7 +617,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "traffic"
+              ]
             },
             {
               "args": {
@@ -528,12 +650,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/pois",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "pois"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "pois"
+                }
               ],
               "select": {
                 "$action": "poi",
@@ -545,7 +677,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "pois"
+              ]
             },
             {
               "args": {
@@ -562,17 +701,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "slug": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -581,7 +728,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -598,12 +751,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/accidents",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "accidents"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "accidents"
+                }
               ],
               "select": {
                 "$action": "accident",
@@ -614,7 +777,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "accidents"
+              ]
             },
             {
               "args": {
@@ -631,12 +801,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/air",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "air"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "air"
+                }
               ],
               "select": {
                 "$action": "air",
@@ -647,7 +827,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "air"
+              ]
             },
             {
               "args": {
@@ -664,12 +851,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/air-uba",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "air-uba"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "air-uba"
+                }
               ],
               "select": {
                 "$action": "air_uba",
@@ -680,7 +877,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "air-uba"
+              ]
             },
             {
               "args": {
@@ -697,12 +901,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/base",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "base"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "base"
+                }
               ],
               "select": {
                 "$action": "base",
@@ -713,7 +927,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "base"
+              ]
             },
             {
               "args": {
@@ -730,12 +951,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/bathing-water",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "bathing-water"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "bathing-water"
+                }
               ],
               "select": {
                 "$action": "bathing_water",
@@ -746,7 +977,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "bathing-water"
+              ]
             },
             {
               "args": {
@@ -763,12 +1001,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/bike-counts",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "bike-counts"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "bike-counts"
+                }
               ],
               "select": {
                 "$action": "bike_count",
@@ -779,7 +1027,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "bike-counts"
+              ]
             },
             {
               "args": {
@@ -796,12 +1051,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/business-registrations",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "business-registrations"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "business-registrations"
+                }
               ],
               "select": {
                 "$action": "business_registration",
@@ -812,7 +1077,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "business-registrations"
+              ]
             },
             {
               "args": {
@@ -829,12 +1101,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/charging",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "charging"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "charging"
+                }
               ],
               "select": {
                 "$action": "charging",
@@ -845,7 +1127,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "charging"
+              ]
             },
             {
               "args": {
@@ -862,12 +1151,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/charging-status",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "charging-status"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "charging-status"
+                }
               ],
               "select": {
                 "$action": "charging_status",
@@ -878,7 +1177,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "charging-status"
+              ]
             },
             {
               "args": {
@@ -895,12 +1201,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/civil-protection-warnings",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "civil-protection-warnings"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "civil-protection-warnings"
+                }
               ],
               "select": {
                 "$action": "civil_protection_warning",
@@ -911,7 +1227,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "civil-protection-warnings"
+              ]
             },
             {
               "args": {
@@ -928,12 +1251,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/construction",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "construction"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "construction"
+                }
               ],
               "select": {
                 "$action": "construction",
@@ -944,7 +1277,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "construction"
+              ]
             },
             {
               "args": {
@@ -961,12 +1301,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/crime-stats",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "crime-stats"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "crime-stats"
+                }
               ],
               "select": {
                 "$action": "crime_stat",
@@ -977,7 +1327,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "crime-stats"
+              ]
             },
             {
               "args": {
@@ -994,12 +1351,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/demographics",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "demographics"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "demographics"
+                }
               ],
               "select": {
                 "$action": "demographic",
@@ -1010,7 +1377,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "demographics"
+              ]
             },
             {
               "args": {
@@ -1027,12 +1401,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/district-heating",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "district-heating"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "district-heating"
+                }
               ],
               "select": {
                 "$action": "district_heating",
@@ -1043,7 +1427,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "district-heating"
+              ]
             },
             {
               "args": {
@@ -1060,12 +1451,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/drinking-water",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "drinking-water"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "drinking-water"
+                }
               ],
               "select": {
                 "$action": "drinking_water",
@@ -1076,7 +1477,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "drinking-water"
+              ]
             },
             {
               "args": {
@@ -1093,12 +1501,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/education",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "education"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "education"
+                }
               ],
               "select": {
                 "$action": "education",
@@ -1109,7 +1527,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "education"
+              ]
             },
             {
               "args": {
@@ -1126,12 +1551,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/election",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "election"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "election"
+                }
               ],
               "select": {
                 "$action": "election",
@@ -1142,7 +1577,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "election"
+              ]
             },
             {
               "args": {
@@ -1159,12 +1601,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/energy",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "energy"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "energy"
+                }
               ],
               "select": {
                 "$action": "energy",
@@ -1175,7 +1627,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "energy"
+              ]
             },
             {
               "args": {
@@ -1192,12 +1651,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/events",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "events"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "events"
+                }
               ],
               "select": {
                 "$action": "event",
@@ -1208,7 +1677,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "events"
+              ]
             },
             {
               "args": {
@@ -1225,12 +1701,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/fire-danger",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "fire-danger"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "fire-danger"
+                }
               ],
               "select": {
                 "$action": "fire_danger",
@@ -1241,7 +1727,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "fire-danger"
+              ]
             },
             {
               "args": {
@@ -1258,12 +1751,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/flood",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "flood"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "flood"
+                }
               ],
               "select": {
                 "$action": "flood",
@@ -1274,7 +1777,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "flood"
+              ]
             },
             {
               "args": {
@@ -1291,12 +1801,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/fuel-prices",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "fuel-prices"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "fuel-prices"
+                }
               ],
               "select": {
                 "$action": "fuel_price",
@@ -1307,7 +1827,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "fuel-prices"
+              ]
             },
             {
               "args": {
@@ -1324,12 +1851,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/geo",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "geo"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "geo"
+                }
               ],
               "select": {
                 "$action": "geo",
@@ -1340,7 +1877,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "geo"
+              ]
             },
             {
               "args": {
@@ -1357,12 +1901,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/government-offices",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "government-offices"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "government-offices"
+                }
               ],
               "select": {
                 "$action": "government_office",
@@ -1373,7 +1927,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "government-offices"
+              ]
             },
             {
               "args": {
@@ -1390,12 +1951,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/health",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "health"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "health"
+                }
               ],
               "select": {
                 "$action": "health",
@@ -1406,7 +1977,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "health"
+              ]
             },
             {
               "args": {
@@ -1423,12 +2001,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/heritage",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "heritage"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "heritage"
+                }
               ],
               "select": {
                 "$action": "heritage",
@@ -1439,7 +2027,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "heritage"
+              ]
             },
             {
               "args": {
@@ -1456,12 +2051,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/holidays",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "holidays"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "holidays"
+                }
               ],
               "select": {
                 "$action": "holiday",
@@ -1472,7 +2077,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "holidays"
+              ]
             },
             {
               "args": {
@@ -1489,12 +2101,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/hospitals-atlas",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "hospitals-atlas"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "hospitals-atlas"
+                }
               ],
               "select": {
                 "$action": "hospitals_atla",
@@ -1505,7 +2127,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "hospitals-atlas"
+              ]
             },
             {
               "args": {
@@ -1522,12 +2151,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/icu-live",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "icu-live"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "icu-live"
+                }
               ],
               "select": {
                 "$action": "icu_live",
@@ -1538,7 +2177,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "icu-live"
+              ]
             },
             {
               "args": {
@@ -1555,12 +2201,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/indicators",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "indicators"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "indicators"
+                }
               ],
               "select": {
                 "$action": "indicator",
@@ -1571,7 +2227,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "indicators"
+              ]
             },
             {
               "args": {
@@ -1588,12 +2251,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/insolvencies",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "insolvencies"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "insolvencies"
+                }
               ],
               "select": {
                 "$action": "insolvency",
@@ -1604,7 +2277,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "insolvencies"
+              ]
             },
             {
               "args": {
@@ -1621,12 +2301,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/land-values",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "land-values"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "land-values"
+                }
               ],
               "select": {
                 "$action": "land_value",
@@ -1637,7 +2327,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "land-values"
+              ]
             },
             {
               "args": {
@@ -1654,12 +2351,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/markets",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "markets"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "markets"
+                }
               ],
               "select": {
                 "$action": "market",
@@ -1670,7 +2377,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "markets"
+              ]
             },
             {
               "args": {
@@ -1687,12 +2401,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/office-wait-times",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "office-wait-times"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "office-wait-times"
+                }
               ],
               "select": {
                 "$action": "office_wait_time",
@@ -1703,7 +2427,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "office-wait-times"
+              ]
             },
             {
               "args": {
@@ -1720,12 +2451,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/overview",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "overview"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "overview"
+                }
               ],
               "select": {
                 "$action": "overview",
@@ -1736,7 +2477,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "overview"
+              ]
             },
             {
               "args": {
@@ -1753,12 +2501,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/parcel-lockers",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "parcel-lockers"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "parcel-lockers"
+                }
               ],
               "select": {
                 "$action": "parcel_locker",
@@ -1769,7 +2527,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "parcel-lockers"
+              ]
             },
             {
               "args": {
@@ -1786,12 +2551,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/parking",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "parking"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "parking"
+                }
               ],
               "select": {
                 "$action": "parking",
@@ -1802,7 +2577,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "parking"
+              ]
             },
             {
               "args": {
@@ -1819,12 +2601,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/playgrounds",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "playgrounds"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "playgrounds"
+                }
               ],
               "select": {
                 "$action": "playground",
@@ -1835,7 +2627,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "playgrounds"
+              ]
             },
             {
               "args": {
@@ -1852,12 +2651,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/pollen-uv",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "pollen-uv"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "pollen-uv"
+                }
               ],
               "select": {
                 "$action": "pollen_uv",
@@ -1868,7 +2677,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "pollen-uv"
+              ]
             },
             {
               "args": {
@@ -1885,12 +2701,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/population-density",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "population-density"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "population-density"
+                }
               ],
               "select": {
                 "$action": "population_density",
@@ -1901,7 +2727,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "population-density"
+              ]
             },
             {
               "args": {
@@ -1918,12 +2751,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/post-boxes",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "post-boxes"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "post-boxes"
+                }
               ],
               "select": {
                 "$action": "post_box",
@@ -1934,7 +2777,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "post-boxes"
+              ]
             },
             {
               "args": {
@@ -1951,12 +2801,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/post-offices",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "post-offices"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "post-offices"
+                }
               ],
               "select": {
                 "$action": "post_office",
@@ -1967,7 +2827,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "post-offices"
+              ]
             },
             {
               "args": {
@@ -1984,12 +2851,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/power-load",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "power-load"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "power-load"
+                }
               ],
               "select": {
                 "$action": "power_load",
@@ -2000,7 +2877,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "power-load"
+              ]
             },
             {
               "args": {
@@ -2017,12 +2901,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/power-price",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "power-price"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "power-price"
+                }
               ],
               "select": {
                 "$action": "power_price",
@@ -2033,7 +2927,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "power-price"
+              ]
             },
             {
               "args": {
@@ -2050,12 +2951,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-toilets",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "public-toilets"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "public-toilets"
+                }
               ],
               "select": {
                 "$action": "public_toilet",
@@ -2066,7 +2977,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "public-toilets"
+              ]
             },
             {
               "args": {
@@ -2083,12 +3001,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-wifi",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "public-wifi"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "public-wifi"
+                }
               ],
               "select": {
                 "$action": "public_wifi",
@@ -2099,7 +3027,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "public-wifi"
+              ]
             },
             {
               "args": {
@@ -2116,12 +3051,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/recycling-centres",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "recycling-centres"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "recycling-centres"
+                }
               ],
               "select": {
                 "$action": "recycling_centre",
@@ -2132,7 +3077,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "recycling-centres"
+              ]
             },
             {
               "args": {
@@ -2149,12 +3101,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/road-events",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "road-events"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "road-events"
+                }
               ],
               "select": {
                 "$action": "road_event",
@@ -2165,7 +3127,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "road-events"
+              ]
             },
             {
               "args": {
@@ -2182,12 +3151,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/sharing",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "sharing"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "sharing"
+                }
               ],
               "select": {
                 "$action": "sharing",
@@ -2198,7 +3177,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "sharing"
+              ]
             },
             {
               "args": {
@@ -2215,12 +3201,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/solar",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "solar"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "solar"
+                }
               ],
               "select": {
                 "$action": "solar",
@@ -2231,7 +3227,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "solar"
+              ]
             },
             {
               "args": {
@@ -2248,12 +3251,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/solar-roofs",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "solar-roofs"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "solar-roofs"
+                }
               ],
               "select": {
                 "$action": "solar_roof",
@@ -2264,7 +3277,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "solar-roofs"
+              ]
             },
             {
               "args": {
@@ -2281,12 +3301,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-arrivals",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "station-arrivals"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "station-arrivals"
+                }
               ],
               "select": {
                 "$action": "station_arrival",
@@ -2297,7 +3327,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "station-arrivals"
+              ]
             },
             {
               "args": {
@@ -2314,12 +3351,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-departures",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "station-departures"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "station-departures"
+                }
               ],
               "select": {
                 "$action": "station_departure",
@@ -2330,7 +3377,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "station-departures"
+              ]
             },
             {
               "args": {
@@ -2347,12 +3401,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-facilities",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "station-facilities"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "station-facilities"
+                }
               ],
               "select": {
                 "$action": "station_facility",
@@ -2363,7 +3427,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "station-facilities"
+              ]
             },
             {
               "args": {
@@ -2380,12 +3451,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tax-rates",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "tax-rates"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "tax-rates"
+                }
               ],
               "select": {
                 "$action": "tax_rate",
@@ -2396,7 +3477,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "tax-rates"
+              ]
             },
             {
               "args": {
@@ -2413,12 +3501,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tourism",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "tourism"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "tourism"
+                }
               ],
               "select": {
                 "$action": "tourism",
@@ -2429,7 +3527,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "tourism"
+              ]
             },
             {
               "args": {
@@ -2446,12 +3551,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tree-cadastre",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "tree-cadastre"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "tree-cadastre"
+                }
               ],
               "select": {
                 "$action": "tree_cadastre",
@@ -2462,7 +3577,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "tree-cadastre"
+              ]
             },
             {
               "args": {
@@ -2479,12 +3601,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/unemployment",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "unemployment"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "unemployment"
+                }
               ],
               "select": {
                 "$action": "unemployment",
@@ -2495,7 +3627,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "unemployment"
+              ]
             },
             {
               "args": {
@@ -2512,12 +3651,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/vehicle-registrations",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "vehicle-registrations"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "vehicle-registrations"
+                }
               ],
               "select": {
                 "$action": "vehicle_registration",
@@ -2528,7 +3677,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "vehicle-registrations"
+              ]
             },
             {
               "args": {
@@ -2545,12 +3701,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/water-level",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "water-level"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "water-level"
+                }
               ],
               "select": {
                 "$action": "water_level",
@@ -2561,7 +3727,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "water-level"
+              ]
             },
             {
               "args": {
@@ -2578,12 +3751,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/weather",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "weather"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "weather"
+                }
               ],
               "select": {
                 "$action": "weather",
@@ -2594,7 +3777,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "weather"
+              ]
             },
             {
               "args": {
@@ -2611,12 +3801,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/weather-warnings",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "weather-warnings"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "weather-warnings"
+                }
               ],
               "select": {
                 "$action": "weather_warning",
@@ -2627,7 +3827,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "weather-warnings"
+              ]
             },
             {
               "args": {
@@ -2644,12 +3851,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/webcams",
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "webcams"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "cities"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "webcams"
+                }
               ],
               "select": {
                 "$action": "webcam",
@@ -2660,7 +3877,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "webcams"
+              ]
             }
           ]
         }
@@ -2761,10 +3985,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/compare",
-              "parts": [
-                "api",
-                "v1",
-                "compare"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "compare"
+                }
               ],
               "select": {
                 "exist": [
@@ -2781,7 +4011,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "compare"
+              ]
             }
           ]
         }
@@ -2820,16 +4055,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/health",
-              "parts": [
-                "api",
-                "v1",
-                "health"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "health"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "health"
+              ]
             }
           ]
         }
@@ -2879,21 +4125,37 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{live_id}",
-                "transit",
-                "routes",
-                "{route_id}",
-                "status"
-              ],
               "rename": {
                 "param": {
                   "city": "live_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "live_id"
+                },
+                {
+                  "lit": "transit"
+                },
+                {
+                  "lit": "routes"
+                },
+                {
+                  "var": "route_id"
+                },
+                {
+                  "lit": "status"
+                }
+              ],
               "select": {
                 "exist": [
                   "live_id",
@@ -2903,7 +4165,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{live_id}",
+                "transit",
+                "routes",
+                "{route_id}",
+                "status"
+              ]
             },
             {
               "args": {
@@ -2929,19 +4201,31 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/departures",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{live_id}",
-                "transit",
-                "departures"
-              ],
               "rename": {
                 "param": {
                   "city": "live_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "live_id"
+                },
+                {
+                  "lit": "transit"
+                },
+                {
+                  "lit": "departures"
+                }
+              ],
               "select": {
                 "$action": "transit_departure",
                 "exist": [
@@ -2952,7 +4236,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{live_id}",
+                "transit",
+                "departures"
+              ]
             },
             {
               "args": {
@@ -2976,20 +4268,34 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{live_id}",
-                "transit",
-                "trips",
-                "{trip_id}"
-              ],
               "rename": {
                 "param": {
                   "city": "live_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "live_id"
+                },
+                {
+                  "lit": "transit"
+                },
+                {
+                  "lit": "trips"
+                },
+                {
+                  "var": "trip_id"
+                }
+              ],
               "select": {
                 "exist": [
                   "live_id",
@@ -2999,7 +4305,16 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{live_id}",
+                "transit",
+                "trips",
+                "{trip_id}"
+              ]
             },
             {
               "args": {
@@ -3024,12 +4339,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/departures",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "departures"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "departures"
+                }
               ],
               "select": {
                 "$action": "departure",
@@ -3041,7 +4366,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "departures"
+              ]
             },
             {
               "args": {
@@ -3058,12 +4390,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/air",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "air"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "air"
+                }
               ],
               "select": {
                 "$action": "air",
@@ -3074,7 +4416,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "air"
+              ]
             },
             {
               "args": {
@@ -3091,12 +4440,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/air-uba",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "air-uba"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "air-uba"
+                }
               ],
               "select": {
                 "$action": "air_uba",
@@ -3107,7 +4466,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "air-uba"
+              ]
             },
             {
               "args": {
@@ -3124,12 +4490,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/baustellen",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{city}",
-                "baustellen"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "city"
+                },
+                {
+                  "lit": "baustellen"
+                }
               ],
               "select": {
                 "$action": "baustellen",
@@ -3140,7 +4516,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{city}",
+                "baustellen"
+              ]
             },
             {
               "args": {
@@ -3157,12 +4540,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/ereignisse",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{city}",
-                "ereignisse"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "city"
+                },
+                {
+                  "lit": "ereignisse"
+                }
               ],
               "select": {
                 "$action": "ereignisse",
@@ -3173,7 +4566,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{city}",
+                "ereignisse"
+              ]
             },
             {
               "args": {
@@ -3190,12 +4590,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/flood",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "flood"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "flood"
+                }
               ],
               "select": {
                 "$action": "flood",
@@ -3206,7 +4616,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "flood"
+              ]
             },
             {
               "args": {
@@ -3223,12 +4640,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/traffic",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "traffic"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "traffic"
+                }
               ],
               "select": {
                 "$action": "traffic",
@@ -3239,7 +4666,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "traffic"
+              ]
             },
             {
               "args": {
@@ -3256,12 +4690,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/traffic-flow",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{city}",
-                "traffic-flow"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "city"
+                },
+                {
+                  "lit": "traffic-flow"
+                }
               ],
               "select": {
                 "$action": "traffic_flow",
@@ -3272,7 +4716,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{city}",
+                "traffic-flow"
+              ]
             },
             {
               "args": {
@@ -3289,12 +4740,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/water-level",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "water-level"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "water-level"
+                }
               ],
               "select": {
                 "$action": "water_level",
@@ -3305,7 +4766,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "water-level"
+              ]
             },
             {
               "args": {
@@ -3322,12 +4790,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/webcams",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "{slug}",
-                "webcams"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "var": "slug"
+                },
+                {
+                  "lit": "webcams"
+                }
               ],
               "select": {
                 "$action": "webcam",
@@ -3338,7 +4816,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "{slug}",
+                "webcams"
+              ]
             },
             {
               "args": {
@@ -3355,12 +4840,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/frankfurt-am-main/departures",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "frankfurt-am-main",
-                "departures"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "frankfurt-am-main"
+                },
+                {
+                  "lit": "departures"
+                }
               ],
               "select": {
                 "exist": [
@@ -3370,7 +4865,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "frankfurt-am-main",
+                "departures"
+              ]
             },
             {
               "args": {
@@ -3387,12 +4889,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hamburg/departures",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "hamburg",
-                "departures"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "hamburg"
+                },
+                {
+                  "lit": "departures"
+                }
               ],
               "select": {
                 "exist": [
@@ -3402,7 +4914,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "hamburg",
+                "departures"
+              ]
             },
             {
               "args": {
@@ -3419,12 +4938,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/nuernberg/departures",
-              "parts": [
-                "api",
-                "v1",
-                "live",
-                "nuernberg",
-                "departures"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "nuernberg"
+                },
+                {
+                  "lit": "departures"
+                }
               ],
               "select": {
                 "exist": [
@@ -3434,187 +4963,364 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "live",
+                "nuernberg",
+                "departures"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/berlin/verkehrsmeldungen",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "berlin"
+                },
+                {
+                  "lit": "verkehrsmeldungen"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "berlin",
                 "verkehrsmeldungen"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/dortmund/parking",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "dortmund"
+                },
+                {
+                  "lit": "parking"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "dortmund",
                 "parking"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/eround/charging",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "eround"
+                },
+                {
+                  "lit": "charging"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "eround",
                 "charging"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/frankfurt-am-main/parking",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "frankfurt-am-main"
+                },
+                {
+                  "lit": "parking"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "frankfurt-am-main",
                 "parking"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hamburg/verkehrslage",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "hamburg"
+                },
+                {
+                  "lit": "verkehrslage"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "hamburg",
                 "verkehrslage"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hannover/verkehrsmeldungen",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "hannover"
+                },
+                {
+                  "lit": "verkehrsmeldungen"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "hannover",
                 "verkehrsmeldungen"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/kiel/zaehlstellen",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "kiel"
+                },
+                {
+                  "lit": "zaehlstellen"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "kiel",
                 "zaehlstellen"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/koeln/umweltzone",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "koeln"
+                },
+                {
+                  "lit": "umweltzone"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "koeln",
                 "umweltzone"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/magdeburg/parking",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "magdeburg"
+                },
+                {
+                  "lit": "parking"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "magdeburg",
                 "parking"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/wuppertal/parking",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "live"
+                },
+                {
+                  "lit": "wuppertal"
+                },
+                {
+                  "lit": "parking"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "wuppertal",
                 "parking"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             }
           ]
         }
@@ -3709,10 +5415,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/sources",
-              "parts": [
-                "api",
-                "v1",
-                "sources"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "sources"
+                }
               ],
               "select": {
                 "exist": [
@@ -3727,7 +5439,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.meta`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "sources"
+              ]
             }
           ]
         },
@@ -3740,16 +5457,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/openapi.yaml",
-              "parts": [
-                "api",
-                "v1",
-                "openapi.yaml"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "openapi.yaml"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "openapi.yaml"
+              ]
             }
           ]
         }
@@ -3792,12 +5520,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/stations/{eva}/arrivals",
-              "parts": [
-                "api",
-                "v1",
-                "stations",
-                "{eva}",
-                "arrivals"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "stations"
+                },
+                {
+                  "var": "eva"
+                },
+                {
+                  "lit": "arrivals"
+                }
               ],
               "select": {
                 "$action": "arrival",
@@ -3808,7 +5546,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "stations",
+                "{eva}",
+                "arrivals"
+              ]
             },
             {
               "args": {
@@ -3825,12 +5570,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/stations/{eva}/departures",
-              "parts": [
-                "api",
-                "v1",
-                "stations",
-                "{eva}",
-                "departures"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "stations"
+                },
+                {
+                  "var": "eva"
+                },
+                {
+                  "lit": "departures"
+                }
               ],
               "select": {
                 "$action": "departure",
@@ -3841,7 +5596,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "stations",
+                "{eva}",
+                "departures"
+              ]
             }
           ]
         }
@@ -3861,6 +5623,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

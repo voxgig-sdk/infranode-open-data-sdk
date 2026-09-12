@@ -1,6 +1,14 @@
 # InfranodeOpenData SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -73,6 +81,10 @@ def make_config():
             "type": "`$OBJECT`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "city",
         "op": {
           "list": {
@@ -84,16 +96,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                ],
               },
             ],
           },
@@ -156,12 +179,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/public-tenders",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "public-tenders",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "public-tenders",
+                  },
                 ],
                 "select": {
                   "$action": "public_tender",
@@ -179,6 +212,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "public-tenders",
+                ],
               },
               {
                 "args": {
@@ -229,12 +269,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/council-papers",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "council-papers",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "council-papers",
+                  },
                 ],
                 "select": {
                   "$action": "council_paper",
@@ -251,6 +301,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "council-papers",
+                ],
               },
               {
                 "args": {
@@ -300,12 +357,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/transit",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "transit",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "transit",
+                  },
                 ],
                 "select": {
                   "$action": "transit",
@@ -322,6 +389,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "transit",
+                ],
               },
               {
                 "args": {
@@ -363,10 +437,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/tenders",
-                "parts": [
-                  "api",
-                  "v1",
-                  "tenders",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "tenders",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -381,6 +461,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "tenders",
+                ],
               },
               {
                 "args": {
@@ -411,12 +496,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/stations",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "stations",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "stations",
+                  },
                 ],
                 "select": {
                   "$action": "station",
@@ -430,6 +525,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "stations",
+                ],
               },
               {
                 "args": {
@@ -460,12 +562,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/traffic",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "traffic",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "traffic",
+                  },
                 ],
                 "select": {
                   "$action": "traffic",
@@ -479,6 +591,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "traffic",
+                ],
               },
               {
                 "args": {
@@ -504,12 +623,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/pois",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "pois",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "pois",
+                  },
                 ],
                 "select": {
                   "$action": "poi",
@@ -522,6 +651,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "pois",
+                ],
               },
               {
                 "args": {
@@ -538,17 +674,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "slug": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -558,6 +702,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -574,12 +724,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/accidents",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "accidents",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "accidents",
+                  },
                 ],
                 "select": {
                   "$action": "accident",
@@ -591,6 +751,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "accidents",
+                ],
               },
               {
                 "args": {
@@ -607,12 +774,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/air",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "air",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "air",
+                  },
                 ],
                 "select": {
                   "$action": "air",
@@ -624,6 +801,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "air",
+                ],
               },
               {
                 "args": {
@@ -640,12 +824,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/air-uba",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "air-uba",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "air-uba",
+                  },
                 ],
                 "select": {
                   "$action": "air_uba",
@@ -657,6 +851,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "air-uba",
+                ],
               },
               {
                 "args": {
@@ -673,12 +874,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/base",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "base",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "base",
+                  },
                 ],
                 "select": {
                   "$action": "base",
@@ -690,6 +901,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "base",
+                ],
               },
               {
                 "args": {
@@ -706,12 +924,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/bathing-water",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "bathing-water",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "bathing-water",
+                  },
                 ],
                 "select": {
                   "$action": "bathing_water",
@@ -723,6 +951,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "bathing-water",
+                ],
               },
               {
                 "args": {
@@ -739,12 +974,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/bike-counts",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "bike-counts",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "bike-counts",
+                  },
                 ],
                 "select": {
                   "$action": "bike_count",
@@ -756,6 +1001,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "bike-counts",
+                ],
               },
               {
                 "args": {
@@ -772,12 +1024,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/business-registrations",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "business-registrations",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "business-registrations",
+                  },
                 ],
                 "select": {
                   "$action": "business_registration",
@@ -789,6 +1051,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "business-registrations",
+                ],
               },
               {
                 "args": {
@@ -805,12 +1074,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/charging",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "charging",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "charging",
+                  },
                 ],
                 "select": {
                   "$action": "charging",
@@ -822,6 +1101,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "charging",
+                ],
               },
               {
                 "args": {
@@ -838,12 +1124,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/charging-status",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "charging-status",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "charging-status",
+                  },
                 ],
                 "select": {
                   "$action": "charging_status",
@@ -855,6 +1151,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "charging-status",
+                ],
               },
               {
                 "args": {
@@ -871,12 +1174,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/civil-protection-warnings",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "civil-protection-warnings",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "civil-protection-warnings",
+                  },
                 ],
                 "select": {
                   "$action": "civil_protection_warning",
@@ -888,6 +1201,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "civil-protection-warnings",
+                ],
               },
               {
                 "args": {
@@ -904,12 +1224,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/construction",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "construction",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "construction",
+                  },
                 ],
                 "select": {
                   "$action": "construction",
@@ -921,6 +1251,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "construction",
+                ],
               },
               {
                 "args": {
@@ -937,12 +1274,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/crime-stats",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "crime-stats",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "crime-stats",
+                  },
                 ],
                 "select": {
                   "$action": "crime_stat",
@@ -954,6 +1301,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "crime-stats",
+                ],
               },
               {
                 "args": {
@@ -970,12 +1324,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/demographics",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "demographics",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "demographics",
+                  },
                 ],
                 "select": {
                   "$action": "demographic",
@@ -987,6 +1351,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "demographics",
+                ],
               },
               {
                 "args": {
@@ -1003,12 +1374,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/district-heating",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "district-heating",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "district-heating",
+                  },
                 ],
                 "select": {
                   "$action": "district_heating",
@@ -1020,6 +1401,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "district-heating",
+                ],
               },
               {
                 "args": {
@@ -1036,12 +1424,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/drinking-water",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "drinking-water",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "drinking-water",
+                  },
                 ],
                 "select": {
                   "$action": "drinking_water",
@@ -1053,6 +1451,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "drinking-water",
+                ],
               },
               {
                 "args": {
@@ -1069,12 +1474,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/education",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "education",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "education",
+                  },
                 ],
                 "select": {
                   "$action": "education",
@@ -1086,6 +1501,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "education",
+                ],
               },
               {
                 "args": {
@@ -1102,12 +1524,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/election",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "election",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "election",
+                  },
                 ],
                 "select": {
                   "$action": "election",
@@ -1119,6 +1551,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "election",
+                ],
               },
               {
                 "args": {
@@ -1135,12 +1574,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/energy",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "energy",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "energy",
+                  },
                 ],
                 "select": {
                   "$action": "energy",
@@ -1152,6 +1601,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "energy",
+                ],
               },
               {
                 "args": {
@@ -1168,12 +1624,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/events",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "events",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "events",
+                  },
                 ],
                 "select": {
                   "$action": "event",
@@ -1185,6 +1651,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "events",
+                ],
               },
               {
                 "args": {
@@ -1201,12 +1674,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/fire-danger",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "fire-danger",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "fire-danger",
+                  },
                 ],
                 "select": {
                   "$action": "fire_danger",
@@ -1218,6 +1701,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "fire-danger",
+                ],
               },
               {
                 "args": {
@@ -1234,12 +1724,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/flood",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "flood",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "flood",
+                  },
                 ],
                 "select": {
                   "$action": "flood",
@@ -1251,6 +1751,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "flood",
+                ],
               },
               {
                 "args": {
@@ -1267,12 +1774,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/fuel-prices",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "fuel-prices",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "fuel-prices",
+                  },
                 ],
                 "select": {
                   "$action": "fuel_price",
@@ -1284,6 +1801,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "fuel-prices",
+                ],
               },
               {
                 "args": {
@@ -1300,12 +1824,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/geo",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "geo",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "geo",
+                  },
                 ],
                 "select": {
                   "$action": "geo",
@@ -1317,6 +1851,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "geo",
+                ],
               },
               {
                 "args": {
@@ -1333,12 +1874,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/government-offices",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "government-offices",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "government-offices",
+                  },
                 ],
                 "select": {
                   "$action": "government_office",
@@ -1350,6 +1901,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "government-offices",
+                ],
               },
               {
                 "args": {
@@ -1366,12 +1924,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/health",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "health",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "health",
+                  },
                 ],
                 "select": {
                   "$action": "health",
@@ -1383,6 +1951,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "health",
+                ],
               },
               {
                 "args": {
@@ -1399,12 +1974,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/heritage",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "heritage",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "heritage",
+                  },
                 ],
                 "select": {
                   "$action": "heritage",
@@ -1416,6 +2001,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "heritage",
+                ],
               },
               {
                 "args": {
@@ -1432,12 +2024,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/holidays",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "holidays",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "holidays",
+                  },
                 ],
                 "select": {
                   "$action": "holiday",
@@ -1449,6 +2051,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "holidays",
+                ],
               },
               {
                 "args": {
@@ -1465,12 +2074,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/hospitals-atlas",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "hospitals-atlas",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "hospitals-atlas",
+                  },
                 ],
                 "select": {
                   "$action": "hospitals_atla",
@@ -1482,6 +2101,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "hospitals-atlas",
+                ],
               },
               {
                 "args": {
@@ -1498,12 +2124,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/icu-live",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "icu-live",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "icu-live",
+                  },
                 ],
                 "select": {
                   "$action": "icu_live",
@@ -1515,6 +2151,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "icu-live",
+                ],
               },
               {
                 "args": {
@@ -1531,12 +2174,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/indicators",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "indicators",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "indicators",
+                  },
                 ],
                 "select": {
                   "$action": "indicator",
@@ -1548,6 +2201,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "indicators",
+                ],
               },
               {
                 "args": {
@@ -1564,12 +2224,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/insolvencies",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "insolvencies",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "insolvencies",
+                  },
                 ],
                 "select": {
                   "$action": "insolvency",
@@ -1581,6 +2251,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "insolvencies",
+                ],
               },
               {
                 "args": {
@@ -1597,12 +2274,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/land-values",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "land-values",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "land-values",
+                  },
                 ],
                 "select": {
                   "$action": "land_value",
@@ -1614,6 +2301,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "land-values",
+                ],
               },
               {
                 "args": {
@@ -1630,12 +2324,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/markets",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "markets",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "markets",
+                  },
                 ],
                 "select": {
                   "$action": "market",
@@ -1647,6 +2351,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "markets",
+                ],
               },
               {
                 "args": {
@@ -1663,12 +2374,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/office-wait-times",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "office-wait-times",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "office-wait-times",
+                  },
                 ],
                 "select": {
                   "$action": "office_wait_time",
@@ -1680,6 +2401,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "office-wait-times",
+                ],
               },
               {
                 "args": {
@@ -1696,12 +2424,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/overview",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "overview",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "overview",
+                  },
                 ],
                 "select": {
                   "$action": "overview",
@@ -1713,6 +2451,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "overview",
+                ],
               },
               {
                 "args": {
@@ -1729,12 +2474,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/parcel-lockers",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "parcel-lockers",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "parcel-lockers",
+                  },
                 ],
                 "select": {
                   "$action": "parcel_locker",
@@ -1746,6 +2501,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "parcel-lockers",
+                ],
               },
               {
                 "args": {
@@ -1762,12 +2524,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/parking",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "parking",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "parking",
+                  },
                 ],
                 "select": {
                   "$action": "parking",
@@ -1779,6 +2551,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "parking",
+                ],
               },
               {
                 "args": {
@@ -1795,12 +2574,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/playgrounds",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "playgrounds",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "playgrounds",
+                  },
                 ],
                 "select": {
                   "$action": "playground",
@@ -1812,6 +2601,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "playgrounds",
+                ],
               },
               {
                 "args": {
@@ -1828,12 +2624,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/pollen-uv",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "pollen-uv",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "pollen-uv",
+                  },
                 ],
                 "select": {
                   "$action": "pollen_uv",
@@ -1845,6 +2651,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "pollen-uv",
+                ],
               },
               {
                 "args": {
@@ -1861,12 +2674,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/population-density",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "population-density",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "population-density",
+                  },
                 ],
                 "select": {
                   "$action": "population_density",
@@ -1878,6 +2701,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "population-density",
+                ],
               },
               {
                 "args": {
@@ -1894,12 +2724,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/post-boxes",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "post-boxes",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "post-boxes",
+                  },
                 ],
                 "select": {
                   "$action": "post_box",
@@ -1911,6 +2751,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "post-boxes",
+                ],
               },
               {
                 "args": {
@@ -1927,12 +2774,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/post-offices",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "post-offices",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "post-offices",
+                  },
                 ],
                 "select": {
                   "$action": "post_office",
@@ -1944,6 +2801,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "post-offices",
+                ],
               },
               {
                 "args": {
@@ -1960,12 +2824,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/power-load",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "power-load",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "power-load",
+                  },
                 ],
                 "select": {
                   "$action": "power_load",
@@ -1977,6 +2851,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "power-load",
+                ],
               },
               {
                 "args": {
@@ -1993,12 +2874,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/power-price",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "power-price",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "power-price",
+                  },
                 ],
                 "select": {
                   "$action": "power_price",
@@ -2010,6 +2901,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "power-price",
+                ],
               },
               {
                 "args": {
@@ -2026,12 +2924,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/public-toilets",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "public-toilets",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "public-toilets",
+                  },
                 ],
                 "select": {
                   "$action": "public_toilet",
@@ -2043,6 +2951,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "public-toilets",
+                ],
               },
               {
                 "args": {
@@ -2059,12 +2974,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/public-wifi",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "public-wifi",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "public-wifi",
+                  },
                 ],
                 "select": {
                   "$action": "public_wifi",
@@ -2076,6 +3001,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "public-wifi",
+                ],
               },
               {
                 "args": {
@@ -2092,12 +3024,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/recycling-centres",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "recycling-centres",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "recycling-centres",
+                  },
                 ],
                 "select": {
                   "$action": "recycling_centre",
@@ -2109,6 +3051,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "recycling-centres",
+                ],
               },
               {
                 "args": {
@@ -2125,12 +3074,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/road-events",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "road-events",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "road-events",
+                  },
                 ],
                 "select": {
                   "$action": "road_event",
@@ -2142,6 +3101,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "road-events",
+                ],
               },
               {
                 "args": {
@@ -2158,12 +3124,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/sharing",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "sharing",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "sharing",
+                  },
                 ],
                 "select": {
                   "$action": "sharing",
@@ -2175,6 +3151,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "sharing",
+                ],
               },
               {
                 "args": {
@@ -2191,12 +3174,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/solar",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "solar",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "solar",
+                  },
                 ],
                 "select": {
                   "$action": "solar",
@@ -2208,6 +3201,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "solar",
+                ],
               },
               {
                 "args": {
@@ -2224,12 +3224,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/solar-roofs",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "solar-roofs",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "solar-roofs",
+                  },
                 ],
                 "select": {
                   "$action": "solar_roof",
@@ -2241,6 +3251,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "solar-roofs",
+                ],
               },
               {
                 "args": {
@@ -2257,12 +3274,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/station-arrivals",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "station-arrivals",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "station-arrivals",
+                  },
                 ],
                 "select": {
                   "$action": "station_arrival",
@@ -2274,6 +3301,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "station-arrivals",
+                ],
               },
               {
                 "args": {
@@ -2290,12 +3324,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/station-departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "station-departures",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "station-departures",
+                  },
                 ],
                 "select": {
                   "$action": "station_departure",
@@ -2307,6 +3351,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "station-departures",
+                ],
               },
               {
                 "args": {
@@ -2323,12 +3374,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/station-facilities",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "station-facilities",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "station-facilities",
+                  },
                 ],
                 "select": {
                   "$action": "station_facility",
@@ -2340,6 +3401,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "station-facilities",
+                ],
               },
               {
                 "args": {
@@ -2356,12 +3424,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/tax-rates",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "tax-rates",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "tax-rates",
+                  },
                 ],
                 "select": {
                   "$action": "tax_rate",
@@ -2373,6 +3451,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "tax-rates",
+                ],
               },
               {
                 "args": {
@@ -2389,12 +3474,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/tourism",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "tourism",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "tourism",
+                  },
                 ],
                 "select": {
                   "$action": "tourism",
@@ -2406,6 +3501,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "tourism",
+                ],
               },
               {
                 "args": {
@@ -2422,12 +3524,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/tree-cadastre",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "tree-cadastre",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "tree-cadastre",
+                  },
                 ],
                 "select": {
                   "$action": "tree_cadastre",
@@ -2439,6 +3551,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "tree-cadastre",
+                ],
               },
               {
                 "args": {
@@ -2455,12 +3574,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/unemployment",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "unemployment",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "unemployment",
+                  },
                 ],
                 "select": {
                   "$action": "unemployment",
@@ -2472,6 +3601,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "unemployment",
+                ],
               },
               {
                 "args": {
@@ -2488,12 +3624,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/vehicle-registrations",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "vehicle-registrations",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "vehicle-registrations",
+                  },
                 ],
                 "select": {
                   "$action": "vehicle_registration",
@@ -2505,6 +3651,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "vehicle-registrations",
+                ],
               },
               {
                 "args": {
@@ -2521,12 +3674,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/water-level",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "water-level",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "water-level",
+                  },
                 ],
                 "select": {
                   "$action": "water_level",
@@ -2538,6 +3701,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "water-level",
+                ],
               },
               {
                 "args": {
@@ -2554,12 +3724,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/weather",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "weather",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "weather",
+                  },
                 ],
                 "select": {
                   "$action": "weather",
@@ -2571,6 +3751,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "weather",
+                ],
               },
               {
                 "args": {
@@ -2587,12 +3774,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/weather-warnings",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "weather-warnings",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "weather-warnings",
+                  },
                 ],
                 "select": {
                   "$action": "weather_warning",
@@ -2604,6 +3801,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "weather-warnings",
+                ],
               },
               {
                 "args": {
@@ -2620,12 +3824,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/cities/{slug}/webcams",
-                "parts": [
-                  "api",
-                  "v1",
-                  "cities",
-                  "{slug}",
-                  "webcams",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "cities",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "webcams",
+                  },
                 ],
                 "select": {
                   "$action": "webcam",
@@ -2637,6 +3851,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "cities",
+                  "{slug}",
+                  "webcams",
+                ],
               },
             ],
           },
@@ -2737,10 +3958,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/compare",
-                "parts": [
-                  "api",
-                  "v1",
-                  "compare",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "compare",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -2758,6 +3985,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "compare",
+                ],
               },
             ],
           },
@@ -2796,16 +4028,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/health",
-                "parts": [
-                  "api",
-                  "v1",
-                  "health",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "health",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "health",
+                ],
               },
             ],
           },
@@ -2855,21 +4098,37 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{live_id}",
-                  "transit",
-                  "routes",
-                  "{route_id}",
-                  "status",
-                ],
                 "rename": {
                   "param": {
                     "city": "live_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "live_id",
+                  },
+                  {
+                    "lit": "transit",
+                  },
+                  {
+                    "lit": "routes",
+                  },
+                  {
+                    "var": "route_id",
+                  },
+                  {
+                    "lit": "status",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "live_id",
@@ -2880,6 +4139,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{live_id}",
+                  "transit",
+                  "routes",
+                  "{route_id}",
+                  "status",
+                ],
               },
               {
                 "args": {
@@ -2905,19 +4174,31 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{city}/transit/departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{live_id}",
-                  "transit",
-                  "departures",
-                ],
                 "rename": {
                   "param": {
                     "city": "live_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "live_id",
+                  },
+                  {
+                    "lit": "transit",
+                  },
+                  {
+                    "lit": "departures",
+                  },
+                ],
                 "select": {
                   "$action": "transit_departure",
                   "exist": [
@@ -2929,6 +4210,14 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{live_id}",
+                  "transit",
+                  "departures",
+                ],
               },
               {
                 "args": {
@@ -2952,20 +4241,34 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{live_id}",
-                  "transit",
-                  "trips",
-                  "{trip_id}",
-                ],
                 "rename": {
                   "param": {
                     "city": "live_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "live_id",
+                  },
+                  {
+                    "lit": "transit",
+                  },
+                  {
+                    "lit": "trips",
+                  },
+                  {
+                    "var": "trip_id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "live_id",
@@ -2976,6 +4279,15 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{live_id}",
+                  "transit",
+                  "trips",
+                  "{trip_id}",
+                ],
               },
               {
                 "args": {
@@ -3000,12 +4312,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "departures",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "departures",
+                  },
                 ],
                 "select": {
                   "$action": "departure",
@@ -3018,6 +4340,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "departures",
+                ],
               },
               {
                 "args": {
@@ -3034,12 +4363,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/air",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "air",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "air",
+                  },
                 ],
                 "select": {
                   "$action": "air",
@@ -3051,6 +4390,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "air",
+                ],
               },
               {
                 "args": {
@@ -3067,12 +4413,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/air-uba",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "air-uba",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "air-uba",
+                  },
                 ],
                 "select": {
                   "$action": "air_uba",
@@ -3084,6 +4440,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "air-uba",
+                ],
               },
               {
                 "args": {
@@ -3100,12 +4463,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{city}/baustellen",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{city}",
-                  "baustellen",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "city",
+                  },
+                  {
+                    "lit": "baustellen",
+                  },
                 ],
                 "select": {
                   "$action": "baustellen",
@@ -3117,6 +4490,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{city}",
+                  "baustellen",
+                ],
               },
               {
                 "args": {
@@ -3133,12 +4513,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{city}/ereignisse",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{city}",
-                  "ereignisse",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "city",
+                  },
+                  {
+                    "lit": "ereignisse",
+                  },
                 ],
                 "select": {
                   "$action": "ereignisse",
@@ -3150,6 +4540,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{city}",
+                  "ereignisse",
+                ],
               },
               {
                 "args": {
@@ -3166,12 +4563,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/flood",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "flood",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "flood",
+                  },
                 ],
                 "select": {
                   "$action": "flood",
@@ -3183,6 +4590,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "flood",
+                ],
               },
               {
                 "args": {
@@ -3199,12 +4613,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/traffic",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "traffic",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "traffic",
+                  },
                 ],
                 "select": {
                   "$action": "traffic",
@@ -3216,6 +4640,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "traffic",
+                ],
               },
               {
                 "args": {
@@ -3232,12 +4663,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{city}/traffic-flow",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{city}",
-                  "traffic-flow",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "city",
+                  },
+                  {
+                    "lit": "traffic-flow",
+                  },
                 ],
                 "select": {
                   "$action": "traffic_flow",
@@ -3249,6 +4690,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{city}",
+                  "traffic-flow",
+                ],
               },
               {
                 "args": {
@@ -3265,12 +4713,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/water-level",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "water-level",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "water-level",
+                  },
                 ],
                 "select": {
                   "$action": "water_level",
@@ -3282,6 +4740,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "water-level",
+                ],
               },
               {
                 "args": {
@@ -3298,12 +4763,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/{slug}/webcams",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "{slug}",
-                  "webcams",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "var": "slug",
+                  },
+                  {
+                    "lit": "webcams",
+                  },
                 ],
                 "select": {
                   "$action": "webcam",
@@ -3315,6 +4790,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "{slug}",
+                  "webcams",
+                ],
               },
               {
                 "args": {
@@ -3331,12 +4813,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/frankfurt-am-main/departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "frankfurt-am-main",
-                  "departures",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "frankfurt-am-main",
+                  },
+                  {
+                    "lit": "departures",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -3347,6 +4839,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "frankfurt-am-main",
+                  "departures",
+                ],
               },
               {
                 "args": {
@@ -3363,12 +4862,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/hamburg/departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "hamburg",
-                  "departures",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "hamburg",
+                  },
+                  {
+                    "lit": "departures",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -3379,6 +4888,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "hamburg",
+                  "departures",
+                ],
               },
               {
                 "args": {
@@ -3395,12 +4911,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/nuernberg/departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "live",
-                  "nuernberg",
-                  "departures",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "nuernberg",
+                  },
+                  {
+                    "lit": "departures",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -3411,12 +4937,41 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "live",
+                  "nuernberg",
+                  "departures",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/berlin/verkehrsmeldungen",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "berlin",
+                  },
+                  {
+                    "lit": "verkehrsmeldungen",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3424,17 +4979,34 @@ def make_config():
                   "berlin",
                   "verkehrsmeldungen",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/dortmund/parking",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "dortmund",
+                  },
+                  {
+                    "lit": "parking",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3442,17 +5014,34 @@ def make_config():
                   "dortmund",
                   "parking",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/eround/charging",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "eround",
+                  },
+                  {
+                    "lit": "charging",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3460,17 +5049,34 @@ def make_config():
                   "eround",
                   "charging",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/frankfurt-am-main/parking",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "frankfurt-am-main",
+                  },
+                  {
+                    "lit": "parking",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3478,17 +5084,34 @@ def make_config():
                   "frankfurt-am-main",
                   "parking",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/hamburg/verkehrslage",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "hamburg",
+                  },
+                  {
+                    "lit": "verkehrslage",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3496,17 +5119,34 @@ def make_config():
                   "hamburg",
                   "verkehrslage",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/hannover/verkehrsmeldungen",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "hannover",
+                  },
+                  {
+                    "lit": "verkehrsmeldungen",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3514,17 +5154,34 @@ def make_config():
                   "hannover",
                   "verkehrsmeldungen",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/kiel/zaehlstellen",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "kiel",
+                  },
+                  {
+                    "lit": "zaehlstellen",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3532,17 +5189,34 @@ def make_config():
                   "kiel",
                   "zaehlstellen",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/koeln/umweltzone",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "koeln",
+                  },
+                  {
+                    "lit": "umweltzone",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3550,17 +5224,34 @@ def make_config():
                   "koeln",
                   "umweltzone",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/magdeburg/parking",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "magdeburg",
+                  },
+                  {
+                    "lit": "parking",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3568,17 +5259,34 @@ def make_config():
                   "magdeburg",
                   "parking",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/live/wuppertal/parking",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "live",
+                  },
+                  {
+                    "lit": "wuppertal",
+                  },
+                  {
+                    "lit": "parking",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -3586,11 +5294,6 @@ def make_config():
                   "wuppertal",
                   "parking",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
             ],
           },
@@ -3685,10 +5388,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/sources",
-                "parts": [
-                  "api",
-                  "v1",
-                  "sources",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "sources",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -3704,6 +5413,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.meta`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "sources",
+                ],
               },
             ],
           },
@@ -3716,16 +5430,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/openapi.yaml",
-                "parts": [
-                  "api",
-                  "v1",
-                  "openapi.yaml",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "openapi.yaml",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "openapi.yaml",
+                ],
               },
             ],
           },
@@ -3768,12 +5493,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/stations/{eva}/arrivals",
-                "parts": [
-                  "api",
-                  "v1",
-                  "stations",
-                  "{eva}",
-                  "arrivals",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "stations",
+                  },
+                  {
+                    "var": "eva",
+                  },
+                  {
+                    "lit": "arrivals",
+                  },
                 ],
                 "select": {
                   "$action": "arrival",
@@ -3785,6 +5520,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "stations",
+                  "{eva}",
+                  "arrivals",
+                ],
               },
               {
                 "args": {
@@ -3801,12 +5543,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/stations/{eva}/departures",
-                "parts": [
-                  "api",
-                  "v1",
-                  "stations",
-                  "{eva}",
-                  "departures",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "stations",
+                  },
+                  {
+                    "var": "eva",
+                  },
+                  {
+                    "lit": "departures",
+                  },
                 ],
                 "select": {
                   "$action": "departure",
@@ -3818,6 +5570,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "stations",
+                  "{eva}",
+                  "departures",
+                ],
               },
             ],
           },

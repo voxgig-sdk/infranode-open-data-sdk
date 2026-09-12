@@ -97,10 +97,16 @@ main: kit: entity: compare: {
           }
           method: "GET"
           orig: "/api/v1/compare"
-          parts: [
-            "api"
-            "v1"
-            "compare"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "compare"
+            }
           ]
           select: {
             exist: [

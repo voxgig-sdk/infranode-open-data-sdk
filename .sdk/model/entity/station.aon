@@ -36,12 +36,22 @@ main: kit: entity: station: {
           }
           method: "GET"
           orig: "/api/v1/stations/{eva}/arrivals"
-          parts: [
-            "api"
-            "v1"
-            "stations"
-            "{eva}"
-            "arrivals"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "stations"
+            }
+            {
+              var: "eva"
+            }
+            {
+              lit: "arrivals"
+            }
           ]
           select: {
             "$action": "arrival"
@@ -68,12 +78,22 @@ main: kit: entity: station: {
           }
           method: "GET"
           orig: "/api/v1/stations/{eva}/departures"
-          parts: [
-            "api"
-            "v1"
-            "stations"
-            "{eva}"
-            "departures"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "stations"
+            }
+            {
+              var: "eva"
+            }
+            {
+              lit: "departures"
+            }
           ]
           select: {
             "$action": "departure"

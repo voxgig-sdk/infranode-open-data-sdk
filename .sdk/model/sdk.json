@@ -68,10 +68,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -154,12 +160,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/public-tenders",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "public-tenders"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "public-tenders"
+                    }
                   ],
                   "select": {
                     "$action": "public_tender",
@@ -239,12 +255,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/council-papers",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "council-papers"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "council-papers"
+                    }
                   ],
                   "select": {
                     "$action": "council_paper",
@@ -322,12 +348,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/transit",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "transit"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "transit"
+                    }
                   ],
                   "select": {
                     "$action": "transit",
@@ -396,10 +432,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/tenders",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "tenders"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "tenders"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -450,12 +492,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/stations",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "stations"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "stations"
+                    }
                   ],
                   "select": {
                     "$action": "station",
@@ -505,12 +557,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/traffic",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "traffic"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "traffic"
+                    }
                   ],
                   "select": {
                     "$action": "traffic",
@@ -552,12 +614,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/pois",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "pois"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "pois"
+                    }
                   ],
                   "select": {
                     "$action": "poi",
@@ -588,17 +660,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "slug": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -626,12 +706,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/accidents",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "accidents"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "accidents"
+                    }
                   ],
                   "select": {
                     "$action": "accident",
@@ -661,12 +751,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/air",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "air"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "air"
+                    }
                   ],
                   "select": {
                     "$action": "air",
@@ -696,12 +796,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/air-uba",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "air-uba"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "air-uba"
+                    }
                   ],
                   "select": {
                     "$action": "air_uba",
@@ -731,12 +841,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/base",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "base"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "base"
+                    }
                   ],
                   "select": {
                     "$action": "base",
@@ -766,12 +886,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/bathing-water",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "bathing-water"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "bathing-water"
+                    }
                   ],
                   "select": {
                     "$action": "bathing_water",
@@ -801,12 +931,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/bike-counts",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "bike-counts"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "bike-counts"
+                    }
                   ],
                   "select": {
                     "$action": "bike_count",
@@ -836,12 +976,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/business-registrations",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "business-registrations"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "business-registrations"
+                    }
                   ],
                   "select": {
                     "$action": "business_registration",
@@ -871,12 +1021,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/charging",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "charging"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "charging"
+                    }
                   ],
                   "select": {
                     "$action": "charging",
@@ -906,12 +1066,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/charging-status",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "charging-status"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "charging-status"
+                    }
                   ],
                   "select": {
                     "$action": "charging_status",
@@ -941,12 +1111,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/civil-protection-warnings",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "civil-protection-warnings"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "civil-protection-warnings"
+                    }
                   ],
                   "select": {
                     "$action": "civil_protection_warning",
@@ -976,12 +1156,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/construction",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "construction"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "construction"
+                    }
                   ],
                   "select": {
                     "$action": "construction",
@@ -1011,12 +1201,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/crime-stats",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "crime-stats"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "crime-stats"
+                    }
                   ],
                   "select": {
                     "$action": "crime_stat",
@@ -1046,12 +1246,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/demographics",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "demographics"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "demographics"
+                    }
                   ],
                   "select": {
                     "$action": "demographic",
@@ -1081,12 +1291,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/district-heating",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "district-heating"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "district-heating"
+                    }
                   ],
                   "select": {
                     "$action": "district_heating",
@@ -1116,12 +1336,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/drinking-water",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "drinking-water"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "drinking-water"
+                    }
                   ],
                   "select": {
                     "$action": "drinking_water",
@@ -1151,12 +1381,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/education",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "education"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "education"
+                    }
                   ],
                   "select": {
                     "$action": "education",
@@ -1186,12 +1426,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/election",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "election"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "election"
+                    }
                   ],
                   "select": {
                     "$action": "election",
@@ -1221,12 +1471,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/energy",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "energy"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "energy"
+                    }
                   ],
                   "select": {
                     "$action": "energy",
@@ -1256,12 +1516,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/events",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "events"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "events"
+                    }
                   ],
                   "select": {
                     "$action": "event",
@@ -1291,12 +1561,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/fire-danger",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "fire-danger"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "fire-danger"
+                    }
                   ],
                   "select": {
                     "$action": "fire_danger",
@@ -1326,12 +1606,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/flood",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "flood"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "flood"
+                    }
                   ],
                   "select": {
                     "$action": "flood",
@@ -1361,12 +1651,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/fuel-prices",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "fuel-prices"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "fuel-prices"
+                    }
                   ],
                   "select": {
                     "$action": "fuel_price",
@@ -1396,12 +1696,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/geo",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "geo"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "geo"
+                    }
                   ],
                   "select": {
                     "$action": "geo",
@@ -1431,12 +1741,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/government-offices",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "government-offices"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "government-offices"
+                    }
                   ],
                   "select": {
                     "$action": "government_office",
@@ -1466,12 +1786,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/health",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "health"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "health"
+                    }
                   ],
                   "select": {
                     "$action": "health",
@@ -1501,12 +1831,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/heritage",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "heritage"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "heritage"
+                    }
                   ],
                   "select": {
                     "$action": "heritage",
@@ -1536,12 +1876,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/holidays",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "holidays"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "holidays"
+                    }
                   ],
                   "select": {
                     "$action": "holiday",
@@ -1571,12 +1921,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/hospitals-atlas",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "hospitals-atlas"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "hospitals-atlas"
+                    }
                   ],
                   "select": {
                     "$action": "hospitals_atla",
@@ -1606,12 +1966,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/icu-live",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "icu-live"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "icu-live"
+                    }
                   ],
                   "select": {
                     "$action": "icu_live",
@@ -1641,12 +2011,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/indicators",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "indicators"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "indicators"
+                    }
                   ],
                   "select": {
                     "$action": "indicator",
@@ -1676,12 +2056,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/insolvencies",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "insolvencies"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "insolvencies"
+                    }
                   ],
                   "select": {
                     "$action": "insolvency",
@@ -1711,12 +2101,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/land-values",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "land-values"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "land-values"
+                    }
                   ],
                   "select": {
                     "$action": "land_value",
@@ -1746,12 +2146,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/markets",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "markets"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "markets"
+                    }
                   ],
                   "select": {
                     "$action": "market",
@@ -1781,12 +2191,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/office-wait-times",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "office-wait-times"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "office-wait-times"
+                    }
                   ],
                   "select": {
                     "$action": "office_wait_time",
@@ -1816,12 +2236,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/overview",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "overview"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "overview"
+                    }
                   ],
                   "select": {
                     "$action": "overview",
@@ -1851,12 +2281,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/parcel-lockers",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "parcel-lockers"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "parcel-lockers"
+                    }
                   ],
                   "select": {
                     "$action": "parcel_locker",
@@ -1886,12 +2326,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/parking",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "parking"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "parking"
+                    }
                   ],
                   "select": {
                     "$action": "parking",
@@ -1921,12 +2371,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/playgrounds",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "playgrounds"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "playgrounds"
+                    }
                   ],
                   "select": {
                     "$action": "playground",
@@ -1956,12 +2416,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/pollen-uv",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "pollen-uv"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "pollen-uv"
+                    }
                   ],
                   "select": {
                     "$action": "pollen_uv",
@@ -1991,12 +2461,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/population-density",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "population-density"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "population-density"
+                    }
                   ],
                   "select": {
                     "$action": "population_density",
@@ -2026,12 +2506,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/post-boxes",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "post-boxes"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "post-boxes"
+                    }
                   ],
                   "select": {
                     "$action": "post_box",
@@ -2061,12 +2551,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/post-offices",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "post-offices"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "post-offices"
+                    }
                   ],
                   "select": {
                     "$action": "post_office",
@@ -2096,12 +2596,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/power-load",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "power-load"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "power-load"
+                    }
                   ],
                   "select": {
                     "$action": "power_load",
@@ -2131,12 +2641,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/power-price",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "power-price"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "power-price"
+                    }
                   ],
                   "select": {
                     "$action": "power_price",
@@ -2166,12 +2686,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/public-toilets",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "public-toilets"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "public-toilets"
+                    }
                   ],
                   "select": {
                     "$action": "public_toilet",
@@ -2201,12 +2731,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/public-wifi",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "public-wifi"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "public-wifi"
+                    }
                   ],
                   "select": {
                     "$action": "public_wifi",
@@ -2236,12 +2776,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/recycling-centres",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "recycling-centres"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "recycling-centres"
+                    }
                   ],
                   "select": {
                     "$action": "recycling_centre",
@@ -2271,12 +2821,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/road-events",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "road-events"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "road-events"
+                    }
                   ],
                   "select": {
                     "$action": "road_event",
@@ -2306,12 +2866,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/sharing",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "sharing"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "sharing"
+                    }
                   ],
                   "select": {
                     "$action": "sharing",
@@ -2341,12 +2911,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/solar",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "solar"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "solar"
+                    }
                   ],
                   "select": {
                     "$action": "solar",
@@ -2376,12 +2956,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/solar-roofs",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "solar-roofs"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "solar-roofs"
+                    }
                   ],
                   "select": {
                     "$action": "solar_roof",
@@ -2411,12 +3001,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/station-arrivals",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "station-arrivals"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "station-arrivals"
+                    }
                   ],
                   "select": {
                     "$action": "station_arrival",
@@ -2446,12 +3046,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/station-departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "station-departures"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "station-departures"
+                    }
                   ],
                   "select": {
                     "$action": "station_departure",
@@ -2481,12 +3091,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/station-facilities",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "station-facilities"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "station-facilities"
+                    }
                   ],
                   "select": {
                     "$action": "station_facility",
@@ -2516,12 +3136,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/tax-rates",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "tax-rates"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "tax-rates"
+                    }
                   ],
                   "select": {
                     "$action": "tax_rate",
@@ -2551,12 +3181,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/tourism",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "tourism"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "tourism"
+                    }
                   ],
                   "select": {
                     "$action": "tourism",
@@ -2586,12 +3226,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/tree-cadastre",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "tree-cadastre"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "tree-cadastre"
+                    }
                   ],
                   "select": {
                     "$action": "tree_cadastre",
@@ -2621,12 +3271,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/unemployment",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "unemployment"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "unemployment"
+                    }
                   ],
                   "select": {
                     "$action": "unemployment",
@@ -2656,12 +3316,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/vehicle-registrations",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "vehicle-registrations"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "vehicle-registrations"
+                    }
                   ],
                   "select": {
                     "$action": "vehicle_registration",
@@ -2691,12 +3361,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/water-level",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "water-level"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "water-level"
+                    }
                   ],
                   "select": {
                     "$action": "water_level",
@@ -2726,12 +3406,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/weather",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "weather"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "weather"
+                    }
                   ],
                   "select": {
                     "$action": "weather",
@@ -2761,12 +3451,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/weather-warnings",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "weather-warnings"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "weather-warnings"
+                    }
                   ],
                   "select": {
                     "$action": "weather_warning",
@@ -2796,12 +3496,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/cities/{slug}/webcams",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "cities",
-                    "{slug}",
-                    "webcams"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cities"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "webcams"
+                    }
                   ],
                   "select": {
                     "$action": "webcam",
@@ -2936,10 +3646,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/compare",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "compare"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "compare"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -3003,10 +3719,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/health",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "health"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "health"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3071,21 +3793,37 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{live_id}",
-                    "transit",
-                    "routes",
-                    "{route_id}",
-                    "status"
-                  ],
                   "rename": {
                     "param": {
                       "city": "live_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "live_id"
+                    },
+                    {
+                      "lit": "transit"
+                    },
+                    {
+                      "lit": "routes"
+                    },
+                    {
+                      "var": "route_id"
+                    },
+                    {
+                      "lit": "status"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "live_id",
@@ -3124,19 +3862,31 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{city}/transit/departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{live_id}",
-                    "transit",
-                    "departures"
-                  ],
                   "rename": {
                     "param": {
                       "city": "live_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "live_id"
+                    },
+                    {
+                      "lit": "transit"
+                    },
+                    {
+                      "lit": "departures"
+                    }
+                  ],
                   "select": {
                     "$action": "transit_departure",
                     "exist": [
@@ -3174,20 +3924,34 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{live_id}",
-                    "transit",
-                    "trips",
-                    "{trip_id}"
-                  ],
                   "rename": {
                     "param": {
                       "city": "live_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "live_id"
+                    },
+                    {
+                      "lit": "transit"
+                    },
+                    {
+                      "lit": "trips"
+                    },
+                    {
+                      "var": "trip_id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "live_id",
@@ -3226,12 +3990,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "$action": "departure",
@@ -3262,12 +4036,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/air",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "air"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "air"
+                    }
                   ],
                   "select": {
                     "$action": "air",
@@ -3297,12 +4081,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/air-uba",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "air-uba"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "air-uba"
+                    }
                   ],
                   "select": {
                     "$action": "air_uba",
@@ -3332,12 +4126,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{city}/baustellen",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{city}",
-                    "baustellen"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "city"
+                    },
+                    {
+                      "lit": "baustellen"
+                    }
                   ],
                   "select": {
                     "$action": "baustellen",
@@ -3367,12 +4171,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{city}/ereignisse",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{city}",
-                    "ereignisse"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "city"
+                    },
+                    {
+                      "lit": "ereignisse"
+                    }
                   ],
                   "select": {
                     "$action": "ereignisse",
@@ -3402,12 +4216,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/flood",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "flood"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "flood"
+                    }
                   ],
                   "select": {
                     "$action": "flood",
@@ -3437,12 +4261,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/traffic",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "traffic"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "traffic"
+                    }
                   ],
                   "select": {
                     "$action": "traffic",
@@ -3472,12 +4306,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{city}/traffic-flow",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{city}",
-                    "traffic-flow"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "city"
+                    },
+                    {
+                      "lit": "traffic-flow"
+                    }
                   ],
                   "select": {
                     "$action": "traffic_flow",
@@ -3507,12 +4351,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/water-level",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "water-level"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "water-level"
+                    }
                   ],
                   "select": {
                     "$action": "water_level",
@@ -3542,12 +4396,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/{slug}/webcams",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "{slug}",
-                    "webcams"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "var": "slug"
+                    },
+                    {
+                      "lit": "webcams"
+                    }
                   ],
                   "select": {
                     "$action": "webcam",
@@ -3578,12 +4442,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/frankfurt-am-main/departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "frankfurt-am-main",
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "frankfurt-am-main"
+                    },
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -3613,12 +4487,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/hamburg/departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "hamburg",
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "hamburg"
+                    },
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -3648,12 +4532,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/nuernberg/departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "nuernberg",
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "nuernberg"
+                    },
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -3671,12 +4565,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/berlin/verkehrsmeldungen",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "berlin",
-                    "verkehrsmeldungen"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "berlin"
+                    },
+                    {
+                      "lit": "verkehrsmeldungen"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3690,12 +4594,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/dortmund/parking",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "dortmund",
-                    "parking"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "dortmund"
+                    },
+                    {
+                      "lit": "parking"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3709,12 +4623,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/eround/charging",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "eround",
-                    "charging"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "eround"
+                    },
+                    {
+                      "lit": "charging"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3728,12 +4652,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/frankfurt-am-main/parking",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "frankfurt-am-main",
-                    "parking"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "frankfurt-am-main"
+                    },
+                    {
+                      "lit": "parking"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3747,12 +4681,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/hamburg/verkehrslage",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "hamburg",
-                    "verkehrslage"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "hamburg"
+                    },
+                    {
+                      "lit": "verkehrslage"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3766,12 +4710,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/hannover/verkehrsmeldungen",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "hannover",
-                    "verkehrsmeldungen"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "hannover"
+                    },
+                    {
+                      "lit": "verkehrsmeldungen"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3785,12 +4739,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/kiel/zaehlstellen",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "kiel",
-                    "zaehlstellen"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "kiel"
+                    },
+                    {
+                      "lit": "zaehlstellen"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3804,12 +4768,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/koeln/umweltzone",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "koeln",
-                    "umweltzone"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "koeln"
+                    },
+                    {
+                      "lit": "umweltzone"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3823,12 +4797,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/magdeburg/parking",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "magdeburg",
-                    "parking"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "magdeburg"
+                    },
+                    {
+                      "lit": "parking"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3842,12 +4826,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/live/wuppertal/parking",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "live",
-                    "wuppertal",
-                    "parking"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "live"
+                    },
+                    {
+                      "lit": "wuppertal"
+                    },
+                    {
+                      "lit": "parking"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -3968,10 +4962,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/sources",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "sources"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "sources"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -4000,10 +5000,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/openapi.yaml",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "openapi.yaml"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "openapi.yaml"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -4060,12 +5066,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/stations/{eva}/arrivals",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "stations",
-                    "{eva}",
-                    "arrivals"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "stations"
+                    },
+                    {
+                      "var": "eva"
+                    },
+                    {
+                      "lit": "arrivals"
+                    }
                   ],
                   "select": {
                     "$action": "arrival",
@@ -4095,12 +5111,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/stations/{eva}/departures",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "stations",
-                    "{eva}",
-                    "departures"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "stations"
+                    },
+                    {
+                      "var": "eva"
+                    },
+                    {
+                      "lit": "departures"
+                    }
                   ],
                   "select": {
                     "$action": "departure",
@@ -4189,8 +5215,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -4499,6 +5528,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4524,6 +5556,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -4575,6 +5611,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -4599,6 +5636,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -4650,6 +5688,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -4674,6 +5713,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -4714,6 +5754,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4739,6 +5782,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -4773,6 +5819,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4798,6 +5847,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -4838,6 +5890,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4863,6 +5918,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -4908,6 +5966,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4933,6 +5994,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -4950,11 +6014,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -4983,6 +6042,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -5007,6 +6069,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

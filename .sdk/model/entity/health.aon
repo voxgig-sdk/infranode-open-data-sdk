@@ -31,10 +31,16 @@ main: kit: entity: health: {
         {
           method: "GET"
           orig: "/api/v1/health"
-          parts: [
-            "api"
-            "v1"
-            "health"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "health"
+            }
           ]
           transform: {
             req: "`reqdata`"
