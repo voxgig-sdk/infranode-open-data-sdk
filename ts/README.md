@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data'
+import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data-sdk'
 
 const client = new InfranodeOpenDataSDK()
 ```
@@ -626,7 +626,7 @@ infranode-open-data/
 Import the SDK from the package root:
 
 ```ts
-import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data'
+import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data-sdk'
 ```
 
 ### Entity state

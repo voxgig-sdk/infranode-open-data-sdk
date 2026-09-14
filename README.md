@@ -105,7 +105,7 @@ local results, err = client:City():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/infranode-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/infranode-open-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/infranode-open-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/infranode-open-data-sdk/releases) |
 | Python | `voxgig-sdk-infranode-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/infranode-open-data-sdk/releases) |
 | PHP | `voxgig-sdk/infranode-open-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/infranode-open-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/infranode-open-data-sdk/go` | `go get github.com/voxgig-sdk/infranode-open-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:City():list()
 ### TypeScript
 
 ```ts
-import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data'
+import { InfranodeOpenDataSDK } from '@voxgig-sdk/infranode-open-data-sdk'
 
 const client = new InfranodeOpenDataSDK()
 
