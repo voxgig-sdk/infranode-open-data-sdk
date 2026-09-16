@@ -29,5 +29,47 @@
         "version": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /api/v1/health": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHealth",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "redis": {
+                      "description": "true wenn Redis erreichbar (Ping erfolgreich)",
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "example": "ok",
+                      "type": "string"
+                    },
+                    "version": {
+                      "example": "1.0.0",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "version",
+                    "redis"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "App läuft"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

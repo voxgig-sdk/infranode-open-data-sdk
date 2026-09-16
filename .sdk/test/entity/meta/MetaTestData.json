@@ -29,5 +29,237 @@
         "source": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /api/v1/sources": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSources",
+        "parameters": [
+          {
+            "description": "Conditional GET. Stimmt der Wert mit dem aktuellen ETag überein, antwortet der Server mit 304 Not Modified ohne Body.",
+            "in": "header",
+            "name": "If-None-Match",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Seitengröße. Wird auf MAX_LIMIT (200) gedeckelt: zu große Werte liefern eine 200er-Seite mit 200 Einträgen statt eines Fehlers.",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 50,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Ein zu großer Offset liefert eine leere Seite (200), nie 500.",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Nur die gelisteten Felder sind erlaubt; ein unbekanntes Feld wird mit 400 (invalid_request) abgewiesen, bevor es ausgewertet wird.",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "enum": [
+                "source",
+                "enabled",
+                "license"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "asc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "breaker_state": {
+                            "enum": [
+                              "CLOSED",
+                              "OPEN",
+                              "HALF_OPEN"
+                            ],
+                            "type": "string"
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "source": {
+                            "example": "wikidata",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "source",
+                          "enabled",
+                          "breaker_state"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "properties": {
+                        "cache_status": {
+                          "description": "Cache-Herkunft (hit/miss/stale), sofern die Route cacht.",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "correlation_id": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "covered_cities": {
+                          "description": "Nur bei source_status=\"not_covered\": die Stadt-Slugs, die dieser teilabgedeckte Endpunkt tatsächlich bedient (z. B. flood, webcams, traffic, road-events).",
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "description": "Bei paginierbaren Datenart-Listen (charging, energy, events, transit, OSM-Feature-Endpunkte): der EHRLICH ausgewiesene Ausschnitt (keine stille Kappung). KANAL-ABHÄNGIGER Default für gleiche URL: direktes REST liefert die volle Liste (limit=null, returned==total, truncated=false); GPT-Actions (erkannt am OpenAI-Header) bekommen ein serverseitig gebundenes Default-Limit; MCP-Aufrufe sind gebunden, weil der MCP-Client selbst ein Default-Limit setzt. Kanalunabhängige Overrides: limit=all (oder ?all=1) erzwingt die volle Liste, limit + offset blättern gezielt. meta.pagination ist bei ALLEN Kanälen gesetzt.",
+                          "properties": {
+                            "limit": {
+                              "description": "Angewandtes Seiten-Limit; null bei Vollausgabe (REST-Default oder limit=all).",
+                              "nullable": true,
+                              "type": "integer"
+                            },
+                            "offset": {
+                              "description": "Start-Offset der Seite.",
+                              "type": "integer"
+                            },
+                            "returned": {
+                              "description": "Zahl der auf dieser Seite ausgelieferten Einträge.",
+                              "type": "integer"
+                            },
+                            "total": {
+                              "description": "Gesamtzahl der Einträge (voller Bestand).",
+                              "type": "integer"
+                            },
+                            "truncated": {
+                              "description": "true, wenn hinter dieser Seite noch Einträge liegen (offset + returned < total); bei Vollausgabe false.",
+                              "type": "boolean"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "source_status": {
+                          "description": "Ehrlicher Quellen-Status der Antwort. \"ok\" (Daten vorhanden), \"no_data\" (Quelle erreichbar/abgedeckt, aber gerade keine Daten), \"disabled\" (Quelle per Toggle aus), \"not_ingested\" (kein Snapshot), \"not_covered\" (Stadt ist für diesen teilabgedeckten Endpunkt strukturell nicht abgedeckt; data=null, siehe covered_cities). Klar unterscheidbar vom 404 (Stadt unbekannt).",
+                          "enum": [
+                            "ok",
+                            "no_data",
+                            "disabled",
+                            "not_ingested",
+                            "not_covered"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "meta"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Liste der Quellen-Status",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control je Ressource (\"public, max-age=<ttl>, stale-while-revalidate=<ttl>, stale-if-error=<ttl>\"). TTL aus der serverseitigen CACHE_TTL-Map (z.B. wikidata 86400 s, dwd 1800 s, uba 600 s, default 300 s). stale-while-revalidate/stale-if-error erlauben einem Shared Cache (Cloudflare), bei Ablauf bzw. Origin-Fehler kurz die letzte gute Antwort weiterzuliefern. Echtzeit-Endpunkte (/api/v1/live/*) liefern stattdessen \"no-store\".",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "description": "Stabiler Entity-Tag des Response-Bodys (sha256-basiert). Nur auf erfolgreichen GET-Reads (200) gesetzt, nie auf Fehler-Envelopes/503.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified. If-None-Match stimmte mit dem aktuellen ETag überein; es wird kein Body geliefert (ETag + Cache-Control bleiben erhalten).",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control je Ressource (\"public, max-age=<ttl>, stale-while-revalidate=<ttl>, stale-if-error=<ttl>\"). TTL aus der serverseitigen CACHE_TTL-Map (z.B. wikidata 86400 s, dwd 1800 s, uba 600 s, default 300 s). stale-while-revalidate/stale-if-error erlauben einem Shared Cache (Cloudflare), bei Ablauf bzw. Origin-Fehler kurz die letzte gute Antwort weiterzuliefern. Echtzeit-Endpunkte (/api/v1/live/*) liefern stattdessen \"no-store\".",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "description": "Stabiler Entity-Tag des Response-Bodys (sha256-basiert). Nur auf erfolgreichen GET-Reads (200) gesetzt, nie auf Fehler-Envelopes/503.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v1/openapi.yaml": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOpenapiYaml",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Die Spec als YAML"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

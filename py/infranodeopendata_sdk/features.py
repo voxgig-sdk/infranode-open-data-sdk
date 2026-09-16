@@ -1,12 +1,18 @@
 # InfranodeOpenData SDK feature factory
 
 from infranodeopendata_sdk.feature.base_feature import InfranodeOpenDataBaseFeature
+from infranodeopendata_sdk.feature.ratelimit_feature import InfranodeOpenDataRatelimitFeature
+from infranodeopendata_sdk.feature.retry_feature import InfranodeOpenDataRetryFeature
 from infranodeopendata_sdk.feature.test_feature import InfranodeOpenDataTestFeature
+from infranodeopendata_sdk.feature.timeout_feature import InfranodeOpenDataTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: InfranodeOpenDataBaseFeature(),
+    "ratelimit": lambda: InfranodeOpenDataRatelimitFeature(),
+    "retry": lambda: InfranodeOpenDataRetryFeature(),
     "test": lambda: InfranodeOpenDataTestFeature(),
+    "timeout": lambda: InfranodeOpenDataTimeoutFeature(),
 }
 
 
