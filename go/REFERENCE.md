@@ -120,7 +120,7 @@ fmt.Println(city.GetName()) // "city"
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
 | `id` | `string` | No |  |
-| `meta` | `map[string]any` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `map[string]any` | Yes |  |
 
 ### Operations
 
@@ -401,13 +401,6 @@ Return the entity name.
 station := client.Station(nil)
 fmt.Println(station.GetName()) // "station"
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `data` | `any` | Yes |  |
-| `meta` | `map[string]any` | Yes |  |
 
 ### Operations
 

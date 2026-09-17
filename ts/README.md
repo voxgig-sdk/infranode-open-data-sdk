@@ -318,7 +318,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `data` |  |
 | `id` |  |
-| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` |  |
 
 Operations: list, load.
 
@@ -375,8 +375,6 @@ API path: `/api/v1/sources`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `meta` |  |
 
 Operations: load.
 
@@ -404,7 +402,7 @@ Create an instance: `const city = client.City()`
 | --- | --- | --- |
 | `data` | `any` |  |
 | `id` | `string` |  |
-| `meta` | `Record<string, any>` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -534,13 +532,6 @@ Create an instance: `const station = client.Station()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `data` | `any` |  |
-| `meta` | `Record<string, any>` |  |
 
 #### Example: Load
 

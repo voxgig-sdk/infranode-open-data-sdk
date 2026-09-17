@@ -4,19 +4,6 @@ main: kit: entity: station: {
 
   alias: field: {}
 
-  fields: [
-    {
-      name: "data"
-      req: true
-      type: "`$ANY`"
-    }
-    {
-      name: "meta"
-      req: true
-      type: "`$OBJECT`"
-    }
-  ]
-
   name: "station"
   op: {
     load: {

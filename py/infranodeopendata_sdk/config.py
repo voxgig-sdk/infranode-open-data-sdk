@@ -131,7 +131,6 @@ def make_config():
           {
             "name": "meta",
             "req": True,
-            "short": "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
             "type": "`$OBJECT`",
           },
         ],
@@ -5514,18 +5513,7 @@ def make_config():
         },
       },
       "station": {
-        "fields": [
-          {
-            "name": "data",
-            "req": True,
-            "type": "`$ANY`",
-          },
-          {
-            "name": "meta",
-            "req": True,
-            "type": "`$OBJECT`",
-          },
-        ],
+        "fields": [],
         "name": "station",
         "op": {
           "load": {

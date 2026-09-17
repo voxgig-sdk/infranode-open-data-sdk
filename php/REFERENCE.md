@@ -114,7 +114,7 @@ $city = $client->City();
 | --- | --- | --- | --- |
 | `data` | `mixed` | Yes |  |
 | `id` | `string` | No |  |
-| `meta` | `array` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `array` | Yes |  |
 
 ### Operations
 
@@ -392,13 +392,6 @@ Return the entity name.
 ```php
 $station = $client->Station();
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `data` | `mixed` | Yes |  |
-| `meta` | `array` | Yes |  |
 
 ### Operations
 

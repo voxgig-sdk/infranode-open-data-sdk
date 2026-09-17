@@ -262,7 +262,7 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `data` |  |
 | `id` |  |
-| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` |  |
 
 Operations: List, Load.
 
@@ -319,8 +319,6 @@ API path: `/api/v1/sources`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `meta` |  |
 
 Operations: Load.
 
@@ -348,7 +346,7 @@ Create an instance: `city = client.City`
 | --- | --- | --- |
 | `data` | `Object` |  |
 | `id` | `String` |  |
-| `meta` | `Hash` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `Hash` |  |
 
 #### Example: Load
 
@@ -485,13 +483,6 @@ Create an instance: `station = client.Station`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `data` | `Object` |  |
-| `meta` | `Hash` |  |
 
 #### Example: Load
 
@@ -643,6 +634,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── InfranodeOpenData_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

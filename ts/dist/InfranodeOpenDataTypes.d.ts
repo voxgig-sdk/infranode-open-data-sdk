@@ -65,8 +65,6 @@ export interface MetaListMatch {
     sort?: string;
 }
 export interface Station {
-    data: any;
-    meta: Record<string, any>;
 }
 export interface StationLoadMatch {
     eva: string;

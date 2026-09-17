@@ -178,7 +178,7 @@ const city = client.City()
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
 | `id` | `string` | No |  |
-| `meta` | `Record<string, any>` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `Record<string, any>` | Yes |  |
 
 ### Actions
 
@@ -564,13 +564,6 @@ Return a copy of the entity options.
 ```ts
 const station = client.Station()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `data` | `any` | Yes |  |
-| `meta` | `Record<string, any>` | Yes |  |
 
 ### Actions
 

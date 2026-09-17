@@ -127,24 +127,24 @@ class Config {
 
     entity: {
       
-      city: {
-      },
-
-      compare: {
-      },
-
-      health: {
-      },
-
-      live: {
-      },
-
-      meta: {
-      },
-
-      station: {
-      },
-
+        city: {
+        },
+  
+        compare: {
+        },
+  
+        health: {
+        },
+  
+        live: {
+        },
+  
+        meta: {
+        },
+  
+        station: {
+        },
+  
     }
   }
 
@@ -164,7 +164,6 @@ class Config {
         {
           "name": "meta",
           "req": true,
-          "short": "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
           "type": "`$OBJECT`"
         }
       ],
@@ -5547,18 +5546,7 @@ class Config {
       }
     },
     "station": {
-      "fields": [
-        {
-          "name": "data",
-          "req": true,
-          "type": "`$ANY`"
-        },
-        {
-          "name": "meta",
-          "req": true,
-          "type": "`$OBJECT`"
-        }
-      ],
+      "fields": [],
       "name": "station",
       "op": {
         "load": {

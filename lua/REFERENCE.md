@@ -112,7 +112,7 @@ local city = client:City(nil)
 | --- | --- | --- | --- |
 | `data` | `any` | Yes |  |
 | `id` | `string` | No |  |
-| `meta` | `table` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `table` | Yes |  |
 
 ### Operations
 
@@ -390,13 +390,6 @@ Return the entity name.
 ```lua
 local station = client:Station(nil)
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `data` | `any` | Yes |  |
-| `meta` | `table` | Yes |  |
 
 ### Operations
 

@@ -115,7 +115,7 @@ city = client.City
 | --- | --- | --- | --- |
 | `data` | `Object` | Yes |  |
 | `id` | `String` | No |  |
-| `meta` | `Hash` | Yes | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `Hash` | Yes |  |
 
 ### Operations
 
@@ -393,13 +393,6 @@ Return the entity name.
 ```ruby
 station = client.Station
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `data` | `Object` | Yes |  |
-| `meta` | `Hash` | Yes |  |
 
 ### Operations
 

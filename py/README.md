@@ -264,7 +264,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `data` |  |
 | `id` |  |
-| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` |  |
 
 Operations: List, Load.
 
@@ -321,8 +321,6 @@ API path: `/api/v1/sources`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `meta` |  |
 
 Operations: Load.
 
@@ -350,7 +348,7 @@ Create an instance: `city = client.City()`
 | --- | --- | --- |
 | `data` | `Any` |  |
 | `id` | `str` |  |
-| `meta` | `dict` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `dict` |  |
 
 #### Example: Load
 
@@ -480,13 +478,6 @@ Create an instance: `station = client.Station()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `data` | `Any` |  |
-| `meta` | `dict` |  |
 
 #### Example: Load
 
@@ -637,6 +628,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── infranodeopendata_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

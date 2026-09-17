@@ -69,8 +69,6 @@
 ---@field sort? string
 
 ---@class Station
----@field data any
----@field meta table
 
 ---@class StationLoadMatch
 ---@field eva string

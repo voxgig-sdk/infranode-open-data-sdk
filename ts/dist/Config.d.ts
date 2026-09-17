@@ -83,17 +83,10 @@ declare class Config {
                 name: string;
                 req: boolean;
                 type: string;
-                short?: undefined;
             } | {
                 name: string;
                 type: string;
                 req?: undefined;
-                short?: undefined;
-            } | {
-                name: string;
-                req: boolean;
-                short: string;
-                type: string;
             })[];
             id: {
                 field: string;
@@ -717,11 +710,7 @@ declare class Config {
             };
         };
         station: {
-            fields: {
-                name: string;
-                req: boolean;
-                type: string;
-            }[];
+            fields: never[];
             name: string;
             op: {
                 load: {

@@ -113,8 +113,6 @@ class MetaListMatch
 /** Station entity data model. */
 class Station
 {
-    public mixed $data;
-    public array $meta;
 }
 
 /** Request payload for Station#load. */

@@ -100,8 +100,7 @@ class MetaListMatch(TypedDict, total=False):
 
 
 class Station(TypedDict):
-    data: Any
-    meta: dict
+    pass
 
 
 class StationLoadMatch(TypedDict):

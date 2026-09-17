@@ -1,8 +1,8 @@
 # Flows
 
-@"BasicCityFlow.aon"
-@"BasicCompareFlow.aon"
-@"BasicHealthFlow.aon"
-@"BasicLiveFlow.aon"
-@"BasicMetaFlow.aon"
-@"BasicStationFlow.aon"
+@"./BasicCityFlow.aon"
+@"./BasicCompareFlow.aon"
+@"./BasicHealthFlow.aon"
+@"./BasicLiveFlow.aon"
+@"./BasicMetaFlow.aon"
+@"./BasicStationFlow.aon"

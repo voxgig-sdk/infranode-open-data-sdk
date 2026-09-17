@@ -221,17 +221,8 @@ MetaListMatch = Struct.new(
 )
 
 # Station entity data model.
-#
-# @!attribute [rw] data
-#   @return [Object]
-#
-# @!attribute [rw] meta
-#   @return [Hash]
-Station = Struct.new(
-  :data,
-  :meta,
-  keyword_init: true
-)
+class Station
+end
 
 # Request payload for Station#load.
 #

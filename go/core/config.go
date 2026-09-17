@@ -106,7 +106,6 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "meta",
 						"req": true,
-						"short": "meta trägt zusätzlich source_status (\"ok\"|\"disabled\") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR).",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -5489,18 +5488,7 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"station": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "data",
-						"req": true,
-						"type": "`$ANY`",
-					},
-					map[string]any{
-						"name": "meta",
-						"req": true,
-						"type": "`$OBJECT`",
-					},
-				},
+				"fields": []any{},
 				"name": "station",
 				"op": map[string]any{
 					"load": map[string]any{

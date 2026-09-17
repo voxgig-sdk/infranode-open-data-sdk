@@ -276,7 +276,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"data"` |  |
 | `"id"` |  |
-| `"meta"` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `"meta"` |  |
 
 Operations: List, Load.
 
@@ -333,8 +333,6 @@ API path: `/api/v1/sources`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
-| `"meta"` |  |
 
 Operations: Load.
 
@@ -362,7 +360,7 @@ Create an instance: `city := client.City(nil)`
 | --- | --- | --- |
 | `data` | `any` |  |
 | `id` | `string` |  |
-| `meta` | `map[string]any` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `map[string]any` |  |
 
 #### Example: Load
 
@@ -520,13 +518,6 @@ Create an instance: `station := client.Station(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `data` | `any` |  |
-| `meta` | `map[string]any` |  |
 
 #### Example: Load
 

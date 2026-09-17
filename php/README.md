@@ -273,7 +273,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `data` |  |
 | `id` |  |
-| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` |  |
 
 Operations: List, Load.
 
@@ -330,8 +330,6 @@ API path: `/api/v1/sources`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `meta` |  |
 
 Operations: Load.
 
@@ -359,7 +357,7 @@ Create an instance: `$city = $client->City();`
 | --- | --- | --- |
 | `data` | `mixed` |  |
 | `id` | `string` |  |
-| `meta` | `array` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `array` |  |
 
 #### Example: Load
 
@@ -496,13 +494,6 @@ Create an instance: `$station = $client->Station();`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `data` | `mixed` |  |
-| `meta` | `array` |  |
 
 #### Example: Load
 
@@ -654,6 +645,7 @@ Use `Helpers::to_map()` to safely validate that a value is an array.
 php/
 ├── infranodeopendata_sdk.php          -- Main SDK class
 ├── config.php                     -- Configuration
+├── schema.php                     -- Generated option + entity specs
 ├── features.php                   -- Feature factory
 ├── core/                          -- Core types and context
 ├── entity/                        -- Entity implementations

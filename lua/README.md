@@ -250,7 +250,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `data` |  |
 | `id` |  |
-| `meta` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` |  |
 
 Operations: List, Load.
 
@@ -307,8 +307,6 @@ API path: `/api/v1/sources`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `meta` |  |
 
 Operations: Load.
 
@@ -336,7 +334,7 @@ Create an instance: `local city = client:City(nil)`
 | --- | --- | --- |
 | `data` | `any` |  |
 | `id` | `string` |  |
-| `meta` | `table` | meta trägt zusätzlich source_status ("ok"|"disabled") und auf dem ok-Pfad cache_status (HIT/MISS/STALE/STALE-ON-ERROR). |
+| `meta` | `table` |  |
 
 #### Example: Load
 
@@ -466,13 +464,6 @@ Create an instance: `local station = client:Station(nil)`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `data` | `any` |  |
-| `meta` | `table` |  |
 
 #### Example: Load
 
@@ -623,6 +614,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── infranode-open-data_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations

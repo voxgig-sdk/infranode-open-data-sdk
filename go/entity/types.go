@@ -100,8 +100,6 @@ type MetaListMatch struct {
 
 // Station is the typed data model for the station entity.
 type Station struct {
-	Data any `json:"data"`
-	Meta map[string]any `json:"meta"`
 }
 
 // StationLoadMatch is the typed request payload for Station.LoadTyped.

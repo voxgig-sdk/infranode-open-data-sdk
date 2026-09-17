@@ -92,8 +92,6 @@ export interface MetaListMatch {
 }
 
 export interface Station {
-  data: any
-  meta: Record<string, any>
 }
 
 export interface StationLoadMatch {
