@@ -47,18 +47,14 @@ for (const city of citys) {
 }
 ```
 
-### 3. Load a live
+### 3. Load a city
 
-Live is nested under live, so provide the `live_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const live = await client.Live().load({
-    live_id: 'example_live_id',
-    trip_id: 'example_trip_id',
-  })
-  console.log(live)
+  const city = await client.City().load({ id: 'example_id' })
+  console.log(city)
 } catch (err) {
   console.error('load failed:', err)
 }

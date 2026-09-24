@@ -70,7 +70,7 @@ function live_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["live01", "live02", "live03", "route01", "route02", "route03", "trip01", "trip02", "trip03"] as $k) {
+    foreach (["live01", "live02", "live03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

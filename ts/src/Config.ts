@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -154,17 +147,20 @@ class Config {
       "fields": [
         {
           "name": "data",
-          "req": true,
-          "type": "`$ANY`"
+          "title": "Data",
+          "type": "`$ANY`",
+          "req": true
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "meta",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Meta",
+          "type": "`$OBJECT`",
+          "req": true
         }
       ],
       "id": {
@@ -178,7 +174,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities",
@@ -193,16 +188,18 @@ class Config {
                   "lit": "cities"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -211,57 +208,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": 50,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "match",
-                    "orig": "match",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "since",
-                    "orig": "since",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "status",
-                    "orig": "status",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-tenders",
@@ -282,6 +228,69 @@ class Config {
                   "lit": "public-tenders"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "public-tenders"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 50
+                  },
+                  {
+                    "name": "match",
+                    "orig": "match",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "since",
+                    "orig": "since",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "status",
+                    "orig": "status",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "public_tender",
                 "exist": [
@@ -293,65 +302,9 @@ class Config {
                   "slug",
                   "status"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "public-tenders"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": 50,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "paper_type",
-                    "orig": "paper_type",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "since",
-                    "orig": "since",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/council-papers",
@@ -372,6 +325,63 @@ class Config {
                   "lit": "council-papers"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "council-papers"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 50
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "paper_type",
+                    "orig": "paper_type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "since",
+                    "orig": "since",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "council_paper",
                 "exist": [
@@ -382,64 +392,9 @@ class Config {
                   "since",
                   "slug"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "council-papers"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "near",
-                    "orig": "near",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 1000,
-                    "kind": "query",
-                    "name": "radius_m",
-                    "orig": "radius_m",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/transit",
@@ -460,6 +415,62 @@ class Config {
                   "lit": "transit"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "transit"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "near",
+                    "orig": "near",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "radius_m",
+                    "orig": "radius_m",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1000
+                  }
+                ]
+              },
               "select": {
                 "$action": "transit",
                 "exist": [
@@ -470,56 +481,9 @@ class Config {
                   "radius_m",
                   "slug"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "transit"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 50,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "since",
-                    "orig": "since",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "status",
-                    "orig": "status",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/tenders",
@@ -534,6 +498,52 @@ class Config {
                   "lit": "tenders"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "tenders"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 50
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "since",
+                    "orig": "since",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "status",
+                    "orig": "status",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "limit",
@@ -542,43 +552,9 @@ class Config {
                   "since",
                   "status"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "tenders"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/stations",
@@ -599,6 +575,43 @@ class Config {
                   "lit": "stations"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "stations"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "station",
                 "exist": [
@@ -606,45 +619,9 @@ class Config {
                   "q",
                   "slug"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "stations"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "full",
-                    "orig": "full",
-                    "type": "`$BOOLEAN`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "include",
-                    "orig": "include",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/traffic",
@@ -665,6 +642,43 @@ class Config {
                   "lit": "traffic"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "cities",
+                "{slug}",
+                "traffic"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "full",
+                    "orig": "full",
+                    "type": "`$BOOLEAN`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "include",
+                    "orig": "include",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "$action": "traffic",
                 "exist": [
@@ -672,40 +686,9 @@ class Config {
                   "include",
                   "slug"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "cities",
-                "{slug}",
-                "traffic"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/pois",
@@ -726,45 +709,50 @@ class Config {
                   "lit": "pois"
                 }
               ],
-              "select": {
-                "$action": "poi",
-                "exist": [
-                  "slug",
-                  "type"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "pois"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
-                    "name": "id",
+                    "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "poi",
+                "exist": [
+                  "slug",
+                  "type"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}",
-              "rename": {
-                "param": {
-                  "slug": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "api"
@@ -779,34 +767,39 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{id}"
-              ]
-            },
-            {
+              ],
+              "rename": {
+                "param": {
+                  "slug": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
-                    "name": "slug",
+                    "name": "id",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/accidents",
@@ -827,36 +820,37 @@ class Config {
                   "lit": "accidents"
                 }
               ],
-              "select": {
-                "$action": "accident",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "accidents"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "accident",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/air",
@@ -877,36 +871,37 @@ class Config {
                   "lit": "air"
                 }
               ],
-              "select": {
-                "$action": "air",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "air"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "air",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/air-uba",
@@ -927,36 +922,37 @@ class Config {
                   "lit": "air-uba"
                 }
               ],
-              "select": {
-                "$action": "air_uba",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "air-uba"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "air_uba",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/base",
@@ -977,36 +973,37 @@ class Config {
                   "lit": "base"
                 }
               ],
-              "select": {
-                "$action": "base",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "base"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "base",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/bathing-water",
@@ -1027,36 +1024,37 @@ class Config {
                   "lit": "bathing-water"
                 }
               ],
-              "select": {
-                "$action": "bathing_water",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "bathing-water"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "bathing_water",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/bike-counts",
@@ -1077,36 +1075,37 @@ class Config {
                   "lit": "bike-counts"
                 }
               ],
-              "select": {
-                "$action": "bike_count",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "bike-counts"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "bike_count",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/business-registrations",
@@ -1127,36 +1126,37 @@ class Config {
                   "lit": "business-registrations"
                 }
               ],
-              "select": {
-                "$action": "business_registration",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "business-registrations"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "business_registration",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/charging",
@@ -1177,36 +1177,37 @@ class Config {
                   "lit": "charging"
                 }
               ],
-              "select": {
-                "$action": "charging",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "charging"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "charging",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/charging-status",
@@ -1227,36 +1228,37 @@ class Config {
                   "lit": "charging-status"
                 }
               ],
-              "select": {
-                "$action": "charging_status",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "charging-status"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "charging_status",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/civil-protection-warnings",
@@ -1277,36 +1279,37 @@ class Config {
                   "lit": "civil-protection-warnings"
                 }
               ],
-              "select": {
-                "$action": "civil_protection_warning",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "civil-protection-warnings"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "civil_protection_warning",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/construction",
@@ -1327,36 +1330,37 @@ class Config {
                   "lit": "construction"
                 }
               ],
-              "select": {
-                "$action": "construction",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "construction"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "construction",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/crime-stats",
@@ -1377,36 +1381,37 @@ class Config {
                   "lit": "crime-stats"
                 }
               ],
-              "select": {
-                "$action": "crime_stat",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "crime-stats"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "crime_stat",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/demographics",
@@ -1427,36 +1432,37 @@ class Config {
                   "lit": "demographics"
                 }
               ],
-              "select": {
-                "$action": "demographic",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "demographics"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "demographic",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/district-heating",
@@ -1477,36 +1483,37 @@ class Config {
                   "lit": "district-heating"
                 }
               ],
-              "select": {
-                "$action": "district_heating",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "district-heating"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "district_heating",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/drinking-water",
@@ -1527,36 +1534,37 @@ class Config {
                   "lit": "drinking-water"
                 }
               ],
-              "select": {
-                "$action": "drinking_water",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "drinking-water"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "drinking_water",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/education",
@@ -1577,36 +1585,37 @@ class Config {
                   "lit": "education"
                 }
               ],
-              "select": {
-                "$action": "education",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "education"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "education",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/election",
@@ -1627,36 +1636,37 @@ class Config {
                   "lit": "election"
                 }
               ],
-              "select": {
-                "$action": "election",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "election"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "election",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/energy",
@@ -1677,36 +1687,37 @@ class Config {
                   "lit": "energy"
                 }
               ],
-              "select": {
-                "$action": "energy",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "energy"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "energy",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/events",
@@ -1727,36 +1738,37 @@ class Config {
                   "lit": "events"
                 }
               ],
-              "select": {
-                "$action": "event",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "events"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "event",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/fire-danger",
@@ -1777,36 +1789,37 @@ class Config {
                   "lit": "fire-danger"
                 }
               ],
-              "select": {
-                "$action": "fire_danger",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "fire-danger"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "fire_danger",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/flood",
@@ -1827,36 +1840,37 @@ class Config {
                   "lit": "flood"
                 }
               ],
-              "select": {
-                "$action": "flood",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "flood"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "flood",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/fuel-prices",
@@ -1877,36 +1891,37 @@ class Config {
                   "lit": "fuel-prices"
                 }
               ],
-              "select": {
-                "$action": "fuel_price",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "fuel-prices"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "fuel_price",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/geo",
@@ -1927,36 +1942,37 @@ class Config {
                   "lit": "geo"
                 }
               ],
-              "select": {
-                "$action": "geo",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "geo"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "geo",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/government-offices",
@@ -1977,36 +1993,37 @@ class Config {
                   "lit": "government-offices"
                 }
               ],
-              "select": {
-                "$action": "government_office",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "government-offices"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "government_office",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/health",
@@ -2027,36 +2044,37 @@ class Config {
                   "lit": "health"
                 }
               ],
-              "select": {
-                "$action": "health",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "health"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "health",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/heritage",
@@ -2077,36 +2095,37 @@ class Config {
                   "lit": "heritage"
                 }
               ],
-              "select": {
-                "$action": "heritage",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "heritage"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "heritage",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/holidays",
@@ -2127,36 +2146,37 @@ class Config {
                   "lit": "holidays"
                 }
               ],
-              "select": {
-                "$action": "holiday",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "holidays"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "holiday",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/hospitals-atlas",
@@ -2177,36 +2197,37 @@ class Config {
                   "lit": "hospitals-atlas"
                 }
               ],
-              "select": {
-                "$action": "hospitals_atla",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "hospitals-atlas"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "hospitals_atla",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/icu-live",
@@ -2227,36 +2248,37 @@ class Config {
                   "lit": "icu-live"
                 }
               ],
-              "select": {
-                "$action": "icu_live",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "icu-live"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "icu_live",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/indicators",
@@ -2277,36 +2299,37 @@ class Config {
                   "lit": "indicators"
                 }
               ],
-              "select": {
-                "$action": "indicator",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "indicators"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "indicator",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/insolvencies",
@@ -2327,36 +2350,37 @@ class Config {
                   "lit": "insolvencies"
                 }
               ],
-              "select": {
-                "$action": "insolvency",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "insolvencies"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "insolvency",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/land-values",
@@ -2377,36 +2401,37 @@ class Config {
                   "lit": "land-values"
                 }
               ],
-              "select": {
-                "$action": "land_value",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "land-values"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "land_value",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/markets",
@@ -2427,36 +2452,37 @@ class Config {
                   "lit": "markets"
                 }
               ],
-              "select": {
-                "$action": "market",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "markets"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "market",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/office-wait-times",
@@ -2477,36 +2503,37 @@ class Config {
                   "lit": "office-wait-times"
                 }
               ],
-              "select": {
-                "$action": "office_wait_time",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "office-wait-times"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "office_wait_time",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/overview",
@@ -2527,36 +2554,37 @@ class Config {
                   "lit": "overview"
                 }
               ],
-              "select": {
-                "$action": "overview",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "overview"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "overview",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/parcel-lockers",
@@ -2577,36 +2605,37 @@ class Config {
                   "lit": "parcel-lockers"
                 }
               ],
-              "select": {
-                "$action": "parcel_locker",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "parcel-lockers"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "parcel_locker",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/parking",
@@ -2627,36 +2656,37 @@ class Config {
                   "lit": "parking"
                 }
               ],
-              "select": {
-                "$action": "parking",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "parking"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "parking",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/playgrounds",
@@ -2677,36 +2707,37 @@ class Config {
                   "lit": "playgrounds"
                 }
               ],
-              "select": {
-                "$action": "playground",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "playgrounds"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "playground",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/pollen-uv",
@@ -2727,36 +2758,37 @@ class Config {
                   "lit": "pollen-uv"
                 }
               ],
-              "select": {
-                "$action": "pollen_uv",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "pollen-uv"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "pollen_uv",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/population-density",
@@ -2777,36 +2809,37 @@ class Config {
                   "lit": "population-density"
                 }
               ],
-              "select": {
-                "$action": "population_density",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "population-density"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "population_density",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/post-boxes",
@@ -2827,36 +2860,37 @@ class Config {
                   "lit": "post-boxes"
                 }
               ],
-              "select": {
-                "$action": "post_box",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "post-boxes"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "post_box",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/post-offices",
@@ -2877,36 +2911,37 @@ class Config {
                   "lit": "post-offices"
                 }
               ],
-              "select": {
-                "$action": "post_office",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "post-offices"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "post_office",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/power-load",
@@ -2927,36 +2962,37 @@ class Config {
                   "lit": "power-load"
                 }
               ],
-              "select": {
-                "$action": "power_load",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "power-load"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "power_load",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/power-price",
@@ -2977,36 +3013,37 @@ class Config {
                   "lit": "power-price"
                 }
               ],
-              "select": {
-                "$action": "power_price",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "power-price"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "power_price",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-toilets",
@@ -3027,36 +3064,37 @@ class Config {
                   "lit": "public-toilets"
                 }
               ],
-              "select": {
-                "$action": "public_toilet",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "public-toilets"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "public_toilet",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/public-wifi",
@@ -3077,36 +3115,37 @@ class Config {
                   "lit": "public-wifi"
                 }
               ],
-              "select": {
-                "$action": "public_wifi",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "public-wifi"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "public_wifi",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/recycling-centres",
@@ -3127,36 +3166,37 @@ class Config {
                   "lit": "recycling-centres"
                 }
               ],
-              "select": {
-                "$action": "recycling_centre",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "recycling-centres"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "recycling_centre",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/road-events",
@@ -3177,36 +3217,37 @@ class Config {
                   "lit": "road-events"
                 }
               ],
-              "select": {
-                "$action": "road_event",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "road-events"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "road_event",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/sharing",
@@ -3227,36 +3268,37 @@ class Config {
                   "lit": "sharing"
                 }
               ],
-              "select": {
-                "$action": "sharing",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "sharing"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "sharing",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/solar",
@@ -3277,36 +3319,37 @@ class Config {
                   "lit": "solar"
                 }
               ],
-              "select": {
-                "$action": "solar",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "solar"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "solar",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/solar-roofs",
@@ -3327,36 +3370,37 @@ class Config {
                   "lit": "solar-roofs"
                 }
               ],
-              "select": {
-                "$action": "solar_roof",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "solar-roofs"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "solar_roof",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-arrivals",
@@ -3377,36 +3421,37 @@ class Config {
                   "lit": "station-arrivals"
                 }
               ],
-              "select": {
-                "$action": "station_arrival",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "station-arrivals"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "station_arrival",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-departures",
@@ -3427,36 +3472,37 @@ class Config {
                   "lit": "station-departures"
                 }
               ],
-              "select": {
-                "$action": "station_departure",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "station-departures"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "station_departure",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/station-facilities",
@@ -3477,36 +3523,37 @@ class Config {
                   "lit": "station-facilities"
                 }
               ],
-              "select": {
-                "$action": "station_facility",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "station-facilities"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "station_facility",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tax-rates",
@@ -3527,36 +3574,37 @@ class Config {
                   "lit": "tax-rates"
                 }
               ],
-              "select": {
-                "$action": "tax_rate",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "tax-rates"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "tax_rate",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tourism",
@@ -3577,36 +3625,37 @@ class Config {
                   "lit": "tourism"
                 }
               ],
-              "select": {
-                "$action": "tourism",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "tourism"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "tourism",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/tree-cadastre",
@@ -3627,36 +3676,37 @@ class Config {
                   "lit": "tree-cadastre"
                 }
               ],
-              "select": {
-                "$action": "tree_cadastre",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "tree-cadastre"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "tree_cadastre",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/unemployment",
@@ -3677,36 +3727,37 @@ class Config {
                   "lit": "unemployment"
                 }
               ],
-              "select": {
-                "$action": "unemployment",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "unemployment"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "unemployment",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/vehicle-registrations",
@@ -3727,36 +3778,37 @@ class Config {
                   "lit": "vehicle-registrations"
                 }
               ],
-              "select": {
-                "$action": "vehicle_registration",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "vehicle-registrations"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "vehicle_registration",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/water-level",
@@ -3777,36 +3829,37 @@ class Config {
                   "lit": "water-level"
                 }
               ],
-              "select": {
-                "$action": "water_level",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "water-level"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "water_level",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/weather",
@@ -3827,36 +3880,37 @@ class Config {
                   "lit": "weather"
                 }
               ],
-              "select": {
-                "$action": "weather",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "weather"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "weather",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/weather-warnings",
@@ -3877,36 +3931,37 @@ class Config {
                   "lit": "weather-warnings"
                 }
               ],
-              "select": {
-                "$action": "weather_warning",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "weather-warnings"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "weather_warning",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/cities/{slug}/webcams",
@@ -3927,50 +3982,61 @@ class Config {
                   "lit": "webcams"
                 }
               ],
-              "select": {
-                "$action": "webcam",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "cities",
                 "{slug}",
                 "webcams"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "$action": "webcam",
+                "exist": [
+                  "slug"
+                ]
+              }
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "city"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "compare": {
       "fields": [
         {
           "name": "city",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "City",
+          "type": "`$STRING`",
+          "req": true
         },
         {
           "name": "data",
+          "title": "Data",
           "type": "`$OBJECT`"
         },
         {
           "name": "source_status",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Source Status",
+          "type": "`$STRING`",
+          "req": true
         }
       ],
       "name": "compare",
@@ -3980,67 +4046,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "header": [
-                  {
-                    "kind": "header",
-                    "name": "if_none_match",
-                    "orig": "if_none_match",
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": "berlin,koeln,hamburg",
-                    "kind": "query",
-                    "name": "city",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 50,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": "asc",
-                    "kind": "query",
-                    "name": "order",
-                    "orig": "order",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "resource",
-                    "orig": "resource",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "sort",
-                    "orig": "sort",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/compare",
@@ -4055,6 +4060,77 @@ class Config {
                   "lit": "compare"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "compare"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "header": [
+                  {
+                    "name": "if_none_match",
+                    "orig": "if_none_match",
+                    "type": "`$STRING`",
+                    "kind": "header"
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "city",
+                    "orig": "city",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "berlin,koeln,hamburg"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 50
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "order",
+                    "orig": "order",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "asc"
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  },
+                  {
+                    "name": "resource",
+                    "orig": "resource",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "sort",
+                    "orig": "sort",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "city",
@@ -4066,16 +4142,7 @@ class Config {
                   "resource",
                   "sort"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "compare"
-              ]
+              }
             }
           ]
         }
@@ -4088,19 +4155,22 @@ class Config {
       "fields": [
         {
           "name": "redis",
+          "title": "Redis",
+          "type": "`$BOOLEAN`",
           "req": true,
-          "short": "true wenn Redis erreichbar (Ping erfolgreich)",
-          "type": "`$BOOLEAN`"
+          "short": "true wenn Redis erreichbar (Ping erfolgreich)"
         },
         {
           "name": "status",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Status",
+          "type": "`$STRING`",
+          "req": true
         },
         {
           "name": "version",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Version",
+          "type": "`$STRING`",
+          "req": true
         }
       ],
       "name": "health",
@@ -4110,7 +4180,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/health",
@@ -4125,16 +4194,18 @@ class Config {
                   "lit": "health"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "health"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -4147,13 +4218,15 @@ class Config {
       "fields": [
         {
           "name": "data",
-          "req": true,
-          "type": "`$ANY`"
+          "title": "Data",
+          "type": "`$ANY`",
+          "req": true
         },
         {
           "name": "meta",
-          "req": true,
-          "type": "`$OBJECT`"
+          "title": "Meta",
+          "type": "`$OBJECT`",
+          "req": true
         }
       ],
       "name": "live",
@@ -4163,32 +4236,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "live_id",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "route_id",
-                    "orig": "route_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
-              "rename": {
-                "param": {
-                  "city": "live_id"
-                }
-              },
               "segments": [
                 {
                   "lit": "api"
@@ -4215,16 +4265,6 @@ class Config {
                   "lit": "status"
                 }
               ],
-              "select": {
-                "exist": [
-                  "live_id",
-                  "route_id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
@@ -4234,37 +4274,45 @@ class Config {
                 "routes",
                 "{route_id}",
                 "status"
-              ]
-            },
-            {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "live_id",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "stop_id",
-                    "orig": "stop_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
-              "kind": "http",
-              "method": "GET",
-              "orig": "/api/v1/live/{city}/transit/departures",
+              ],
               "rename": {
                 "param": {
                   "city": "live_id"
                 }
               },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "live_id",
+                    "orig": "city",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  },
+                  {
+                    "name": "route_id",
+                    "orig": "route_id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "live_id",
+                  "route_id"
+                ]
+              }
+            },
+            {
+              "kind": "http",
+              "method": "GET",
+              "orig": "/api/v1/live/{city}/transit/departures",
               "segments": [
                 {
                   "lit": "api"
@@ -4285,17 +4333,6 @@ class Config {
                   "lit": "departures"
                 }
               ],
-              "select": {
-                "$action": "transit_departure",
-                "exist": [
-                  "live_id",
-                  "stop_id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
@@ -4303,35 +4340,48 @@ class Config {
                 "{live_id}",
                 "transit",
                 "departures"
-              ]
-            },
-            {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "live_id",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "param",
-                    "name": "trip_id",
-                    "orig": "trip_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
-              "kind": "http",
-              "method": "GET",
-              "orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
+              ],
               "rename": {
                 "param": {
                   "city": "live_id"
                 }
               },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "live_id",
+                    "orig": "city",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "stop_id",
+                    "orig": "stop_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "$action": "transit_departure",
+                "exist": [
+                  "live_id",
+                  "stop_id"
+                ]
+              }
+            },
+            {
+              "kind": "http",
+              "method": "GET",
+              "orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
               "segments": [
                 {
                   "lit": "api"
@@ -4355,16 +4405,6 @@ class Config {
                   "var": "trip_id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "live_id",
-                  "trip_id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
@@ -4373,28 +4413,42 @@ class Config {
                 "transit",
                 "trips",
                 "{trip_id}"
-              ]
-            },
-            {
+              ],
+              "rename": {
+                "param": {
+                  "city": "live_id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
+                    "name": "live_id",
+                    "orig": "city",
+                    "type": "`$STRING`",
                     "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
+                    "reqd": true
+                  },
                   {
-                    "kind": "query",
-                    "name": "station",
-                    "orig": "station",
-                    "type": "`$STRING`"
+                    "name": "trip_id",
+                    "orig": "trip_id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "live_id",
+                  "trip_id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/departures",
@@ -4415,37 +4469,46 @@ class Config {
                   "lit": "departures"
                 }
               ],
-              "select": {
-                "$action": "departure",
-                "exist": [
-                  "slug",
-                  "station"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "departures"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "station",
+                    "orig": "station",
+                    "type": "`$STRING`",
+                    "kind": "query"
                   }
                 ]
               },
+              "select": {
+                "$action": "departure",
+                "exist": [
+                  "slug",
+                  "station"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/air",
@@ -4466,36 +4529,37 @@ class Config {
                   "lit": "air"
                 }
               ],
-              "select": {
-                "$action": "air",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "air"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "air",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/air-uba",
@@ -4516,36 +4580,37 @@ class Config {
                   "lit": "air-uba"
                 }
               ],
-              "select": {
-                "$action": "air_uba",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "air-uba"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
                     "kind": "param",
-                    "name": "city",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "air_uba",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/baustellen",
@@ -4566,36 +4631,37 @@ class Config {
                   "lit": "baustellen"
                 }
               ],
-              "select": {
-                "$action": "baustellen",
-                "exist": [
-                  "city"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{city}",
                 "baustellen"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "city",
                     "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "baustellen",
+                "exist": [
+                  "city"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/ereignisse",
@@ -4616,36 +4682,37 @@ class Config {
                   "lit": "ereignisse"
                 }
               ],
-              "select": {
-                "$action": "ereignisse",
-                "exist": [
-                  "city"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{city}",
                 "ereignisse"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
+                    "name": "city",
+                    "orig": "city",
+                    "type": "`$STRING`",
                     "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "ereignisse",
+                "exist": [
+                  "city"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/flood",
@@ -4666,36 +4733,37 @@ class Config {
                   "lit": "flood"
                 }
               ],
-              "select": {
-                "$action": "flood",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "flood"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "flood",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/traffic",
@@ -4716,36 +4784,37 @@ class Config {
                   "lit": "traffic"
                 }
               ],
-              "select": {
-                "$action": "traffic",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "traffic"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
                     "kind": "param",
-                    "name": "city",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "traffic",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{city}/traffic-flow",
@@ -4766,36 +4835,37 @@ class Config {
                   "lit": "traffic-flow"
                 }
               ],
-              "select": {
-                "$action": "traffic_flow",
-                "exist": [
-                  "city"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{city}",
                 "traffic-flow"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
+                    "name": "city",
+                    "orig": "city",
+                    "type": "`$STRING`",
                     "kind": "param",
-                    "name": "slug",
-                    "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "traffic_flow",
+                "exist": [
+                  "city"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/water-level",
@@ -4816,36 +4886,37 @@ class Config {
                   "lit": "water-level"
                 }
               ],
-              "select": {
-                "$action": "water_level",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "water-level"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "slug",
                     "orig": "slug",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "water_level",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/{slug}/webcams",
@@ -4866,36 +4937,37 @@ class Config {
                   "lit": "webcams"
                 }
               ],
-              "select": {
-                "$action": "webcam",
-                "exist": [
-                  "slug"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "{slug}",
                 "webcams"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
-                "query": [
+                "params": [
                   {
-                    "example": "Frankfurt (Main) Hauptbahnhof",
-                    "kind": "query",
-                    "name": "station",
-                    "orig": "station",
-                    "type": "`$STRING`"
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "webcam",
+                "exist": [
+                  "slug"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/frankfurt-am-main/departures",
@@ -4916,35 +4988,36 @@ class Config {
                   "lit": "departures"
                 }
               ],
-              "select": {
-                "exist": [
-                  "station"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "frankfurt-am-main",
                 "departures"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "query": [
                   {
-                    "example": "Hamburg Hauptbahnhof",
-                    "kind": "query",
                     "name": "station",
                     "orig": "station",
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Frankfurt (Main) Hauptbahnhof"
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "station"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hamburg/departures",
@@ -4965,35 +5038,36 @@ class Config {
                   "lit": "departures"
                 }
               ],
-              "select": {
-                "exist": [
-                  "station"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "hamburg",
                 "departures"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "query": [
                   {
-                    "example": "510",
+                    "name": "station",
+                    "orig": "station",
+                    "type": "`$STRING`",
                     "kind": "query",
-                    "name": "stop_id",
-                    "orig": "stop_id",
-                    "type": "`$STRING`"
+                    "example": "Hamburg Hauptbahnhof"
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "station"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/nuernberg/departures",
@@ -5014,25 +5088,36 @@ class Config {
                   "lit": "departures"
                 }
               ],
-              "select": {
-                "exist": [
-                  "stop_id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "nuernberg",
                 "departures"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "stop_id",
+                    "orig": "stop_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "510"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "stop_id"
+                ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/berlin/verkehrsmeldungen",
@@ -5053,21 +5138,22 @@ class Config {
                   "lit": "verkehrsmeldungen"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "berlin",
                 "verkehrsmeldungen"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/dortmund/parking",
@@ -5088,21 +5174,22 @@ class Config {
                   "lit": "parking"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "dortmund",
                 "parking"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/eround/charging",
@@ -5123,21 +5210,22 @@ class Config {
                   "lit": "charging"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "eround",
                 "charging"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/frankfurt-am-main/parking",
@@ -5158,21 +5246,22 @@ class Config {
                   "lit": "parking"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "frankfurt-am-main",
                 "parking"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hamburg/verkehrslage",
@@ -5193,21 +5282,22 @@ class Config {
                   "lit": "verkehrslage"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "hamburg",
                 "verkehrslage"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/hannover/verkehrsmeldungen",
@@ -5228,21 +5318,22 @@ class Config {
                   "lit": "verkehrsmeldungen"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "hannover",
                 "verkehrsmeldungen"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/kiel/zaehlstellen",
@@ -5263,21 +5354,22 @@ class Config {
                   "lit": "zaehlstellen"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "kiel",
                 "zaehlstellen"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/koeln/umweltzone",
@@ -5298,21 +5390,22 @@ class Config {
                   "lit": "umweltzone"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "koeln",
                 "umweltzone"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/magdeburg/parking",
@@ -5333,21 +5426,22 @@ class Config {
                   "lit": "parking"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "magdeburg",
                 "parking"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/live/wuppertal/parking",
@@ -5368,54 +5462,47 @@ class Config {
                   "lit": "parking"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "live",
                 "wuppertal",
                 "parking"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "live"
-          ],
-          [
-            "live",
-            "route"
-          ],
-          [
-            "live",
-            "trip"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "meta": {
       "fields": [
         {
           "name": "breaker_state",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Breaker State",
+          "type": "`$STRING`",
+          "req": true
         },
         {
           "name": "enabled",
-          "req": true,
-          "type": "`$BOOLEAN`"
+          "title": "Enabled",
+          "type": "`$BOOLEAN`",
+          "req": true
         },
         {
           "name": "source",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Source",
+          "type": "`$STRING`",
+          "req": true
         }
       ],
       "name": "meta",
@@ -5425,52 +5512,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "header": [
-                  {
-                    "kind": "header",
-                    "name": "if_none_match",
-                    "orig": "if_none_match",
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": 50,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": "asc",
-                    "kind": "query",
-                    "name": "order",
-                    "orig": "order",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "sort",
-                    "orig": "sort",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/sources",
@@ -5485,6 +5526,62 @@ class Config {
                   "lit": "sources"
                 }
               ],
+              "parts": [
+                "api",
+                "v1",
+                "sources"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.meta`"
+              },
+              "args": {
+                "header": [
+                  {
+                    "name": "if_none_match",
+                    "orig": "if_none_match",
+                    "type": "`$STRING`",
+                    "kind": "header"
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 50
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "order",
+                    "orig": "order",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "asc"
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  },
+                  {
+                    "name": "sort",
+                    "orig": "sort",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "if_none_match",
@@ -5494,16 +5591,7 @@ class Config {
                   "page",
                   "sort"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.meta`"
-              },
-              "parts": [
-                "api",
-                "v1",
-                "sources"
-              ]
+              }
             }
           ]
         },
@@ -5512,7 +5600,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/openapi.yaml",
@@ -5527,16 +5614,18 @@ class Config {
                   "lit": "openapi.yaml"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "openapi.yaml"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -5554,17 +5643,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "eva",
-                    "orig": "eva",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/stations/{eva}/arrivals",
@@ -5585,36 +5663,37 @@ class Config {
                   "lit": "arrivals"
                 }
               ],
-              "select": {
-                "$action": "arrival",
-                "exist": [
-                  "eva"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "stations",
                 "{eva}",
                 "arrivals"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "eva",
                     "orig": "eva",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "$action": "arrival",
+                "exist": [
+                  "eva"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/stations/{eva}/departures",
@@ -5635,33 +5714,41 @@ class Config {
                   "lit": "departures"
                 }
               ],
-              "select": {
-                "$action": "departure",
-                "exist": [
-                  "eva"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "v1",
                 "stations",
                 "{eva}",
                 "departures"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "eva",
+                    "orig": "eva",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "$action": "departure",
+                "exist": [
+                  "eva"
+                ]
+              }
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "station"
-          ]
-        ]
+        "ancestors": []
       }
     }
   }

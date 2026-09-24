@@ -96,17 +96,20 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "data",
-						"req": true,
+						"title": "Data",
 						"type": "`$ANY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "meta",
-						"req": true,
+						"title": "Meta",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 				},
 				"id": map[string]any{
@@ -120,7 +123,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities",
@@ -135,16 +137,18 @@ func MakeConfig() map[string]any {
 										"lit": "cities",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"cities",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -153,57 +157,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "match",
-											"orig": "match",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "since",
-											"orig": "since",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "status",
-											"orig": "status",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/public-tenders",
@@ -224,6 +177,69 @@ func MakeConfig() map[string]any {
 										"lit": "public-tenders",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"cities",
+									"{slug}",
+									"public-tenders",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "match",
+											"orig": "match",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "since",
+											"orig": "since",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "status",
+											"orig": "status",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "public_tender",
 									"exist": []any{
@@ -236,64 +252,8 @@ func MakeConfig() map[string]any {
 										"status",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"cities",
-									"{slug}",
-									"public-tenders",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "paper_type",
-											"orig": "paper_type",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "since",
-											"orig": "since",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/council-papers",
@@ -314,6 +274,63 @@ func MakeConfig() map[string]any {
 										"lit": "council-papers",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"cities",
+									"{slug}",
+									"council-papers",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "paper_type",
+											"orig": "paper_type",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "since",
+											"orig": "since",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "council_paper",
 									"exist": []any{
@@ -325,63 +342,8 @@ func MakeConfig() map[string]any {
 										"slug",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"cities",
-									"{slug}",
-									"council-papers",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "near",
-											"orig": "near",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1000,
-											"kind": "query",
-											"name": "radius_m",
-											"orig": "radius_m",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/transit",
@@ -402,6 +364,62 @@ func MakeConfig() map[string]any {
 										"lit": "transit",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"cities",
+									"{slug}",
+									"transit",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "near",
+											"orig": "near",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "radius_m",
+											"orig": "radius_m",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1000,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "transit",
 									"exist": []any{
@@ -413,55 +431,8 @@ func MakeConfig() map[string]any {
 										"slug",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"cities",
-									"{slug}",
-									"transit",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "since",
-											"orig": "since",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "status",
-											"orig": "status",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/tenders",
@@ -476,6 +447,52 @@ func MakeConfig() map[string]any {
 										"lit": "tenders",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"tenders",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "since",
+											"orig": "since",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "status",
+											"orig": "status",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
@@ -485,42 +502,8 @@ func MakeConfig() map[string]any {
 										"status",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"tenders",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/stations",
@@ -541,6 +524,43 @@ func MakeConfig() map[string]any {
 										"lit": "stations",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"cities",
+									"{slug}",
+									"stations",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "station",
 									"exist": []any{
@@ -549,44 +569,8 @@ func MakeConfig() map[string]any {
 										"slug",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"cities",
-									"{slug}",
-									"stations",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "full",
-											"orig": "full",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "include",
-											"orig": "include",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/traffic",
@@ -607,6 +591,43 @@ func MakeConfig() map[string]any {
 										"lit": "traffic",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"cities",
+									"{slug}",
+									"traffic",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "full",
+											"orig": "full",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "include",
+											"orig": "include",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "traffic",
 									"exist": []any{
@@ -615,39 +636,8 @@ func MakeConfig() map[string]any {
 										"slug",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"cities",
-									"{slug}",
-									"traffic",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "type",
-											"orig": "type",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/pois",
@@ -668,17 +658,6 @@ func MakeConfig() map[string]any {
 										"lit": "pois",
 									},
 								},
-								"select": map[string]any{
-									"$action": "poi",
-									"exist": []any{
-										"slug",
-										"type",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -686,27 +665,43 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"pois",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
-											"name": "id",
+											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "poi",
+									"exist": []any{
+										"slug",
+										"type",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"slug": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -721,34 +716,39 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"cities",
 									"{id}",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{
+									"param": map[string]any{
+										"slug": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
-											"name": "slug",
+											"name": "id",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/accidents",
@@ -769,16 +769,6 @@ func MakeConfig() map[string]any {
 										"lit": "accidents",
 									},
 								},
-								"select": map[string]any{
-									"$action": "accident",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -786,19 +776,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"accidents",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "accident",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/air",
@@ -819,16 +820,6 @@ func MakeConfig() map[string]any {
 										"lit": "air",
 									},
 								},
-								"select": map[string]any{
-									"$action": "air",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -836,19 +827,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"air",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "air",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/air-uba",
@@ -869,16 +871,6 @@ func MakeConfig() map[string]any {
 										"lit": "air-uba",
 									},
 								},
-								"select": map[string]any{
-									"$action": "air_uba",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -886,19 +878,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"air-uba",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "air_uba",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/base",
@@ -919,16 +922,6 @@ func MakeConfig() map[string]any {
 										"lit": "base",
 									},
 								},
-								"select": map[string]any{
-									"$action": "base",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -936,19 +929,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"base",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "base",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/bathing-water",
@@ -969,16 +973,6 @@ func MakeConfig() map[string]any {
 										"lit": "bathing-water",
 									},
 								},
-								"select": map[string]any{
-									"$action": "bathing_water",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -986,19 +980,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"bathing-water",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "bathing_water",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/bike-counts",
@@ -1019,16 +1024,6 @@ func MakeConfig() map[string]any {
 										"lit": "bike-counts",
 									},
 								},
-								"select": map[string]any{
-									"$action": "bike_count",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1036,19 +1031,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"bike-counts",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "bike_count",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/business-registrations",
@@ -1069,16 +1075,6 @@ func MakeConfig() map[string]any {
 										"lit": "business-registrations",
 									},
 								},
-								"select": map[string]any{
-									"$action": "business_registration",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1086,19 +1082,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"business-registrations",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "business_registration",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/charging",
@@ -1119,16 +1126,6 @@ func MakeConfig() map[string]any {
 										"lit": "charging",
 									},
 								},
-								"select": map[string]any{
-									"$action": "charging",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1136,19 +1133,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"charging",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "charging",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/charging-status",
@@ -1169,16 +1177,6 @@ func MakeConfig() map[string]any {
 										"lit": "charging-status",
 									},
 								},
-								"select": map[string]any{
-									"$action": "charging_status",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1186,19 +1184,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"charging-status",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "charging_status",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/civil-protection-warnings",
@@ -1219,16 +1228,6 @@ func MakeConfig() map[string]any {
 										"lit": "civil-protection-warnings",
 									},
 								},
-								"select": map[string]any{
-									"$action": "civil_protection_warning",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1236,19 +1235,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"civil-protection-warnings",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "civil_protection_warning",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/construction",
@@ -1269,16 +1279,6 @@ func MakeConfig() map[string]any {
 										"lit": "construction",
 									},
 								},
-								"select": map[string]any{
-									"$action": "construction",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1286,19 +1286,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"construction",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "construction",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/crime-stats",
@@ -1319,16 +1330,6 @@ func MakeConfig() map[string]any {
 										"lit": "crime-stats",
 									},
 								},
-								"select": map[string]any{
-									"$action": "crime_stat",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1336,19 +1337,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"crime-stats",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "crime_stat",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/demographics",
@@ -1369,16 +1381,6 @@ func MakeConfig() map[string]any {
 										"lit": "demographics",
 									},
 								},
-								"select": map[string]any{
-									"$action": "demographic",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1386,19 +1388,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"demographics",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "demographic",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/district-heating",
@@ -1419,16 +1432,6 @@ func MakeConfig() map[string]any {
 										"lit": "district-heating",
 									},
 								},
-								"select": map[string]any{
-									"$action": "district_heating",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1436,19 +1439,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"district-heating",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "district_heating",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/drinking-water",
@@ -1469,16 +1483,6 @@ func MakeConfig() map[string]any {
 										"lit": "drinking-water",
 									},
 								},
-								"select": map[string]any{
-									"$action": "drinking_water",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1486,19 +1490,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"drinking-water",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "drinking_water",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/education",
@@ -1519,16 +1534,6 @@ func MakeConfig() map[string]any {
 										"lit": "education",
 									},
 								},
-								"select": map[string]any{
-									"$action": "education",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1536,19 +1541,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"education",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "education",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/election",
@@ -1569,16 +1585,6 @@ func MakeConfig() map[string]any {
 										"lit": "election",
 									},
 								},
-								"select": map[string]any{
-									"$action": "election",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1586,19 +1592,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"election",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "election",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/energy",
@@ -1619,16 +1636,6 @@ func MakeConfig() map[string]any {
 										"lit": "energy",
 									},
 								},
-								"select": map[string]any{
-									"$action": "energy",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1636,19 +1643,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"energy",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "energy",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/events",
@@ -1669,16 +1687,6 @@ func MakeConfig() map[string]any {
 										"lit": "events",
 									},
 								},
-								"select": map[string]any{
-									"$action": "event",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1686,19 +1694,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"events",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "event",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/fire-danger",
@@ -1719,16 +1738,6 @@ func MakeConfig() map[string]any {
 										"lit": "fire-danger",
 									},
 								},
-								"select": map[string]any{
-									"$action": "fire_danger",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1736,19 +1745,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"fire-danger",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "fire_danger",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/flood",
@@ -1769,16 +1789,6 @@ func MakeConfig() map[string]any {
 										"lit": "flood",
 									},
 								},
-								"select": map[string]any{
-									"$action": "flood",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1786,19 +1796,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"flood",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "flood",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/fuel-prices",
@@ -1819,16 +1840,6 @@ func MakeConfig() map[string]any {
 										"lit": "fuel-prices",
 									},
 								},
-								"select": map[string]any{
-									"$action": "fuel_price",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1836,19 +1847,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"fuel-prices",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "fuel_price",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/geo",
@@ -1869,16 +1891,6 @@ func MakeConfig() map[string]any {
 										"lit": "geo",
 									},
 								},
-								"select": map[string]any{
-									"$action": "geo",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1886,19 +1898,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"geo",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "geo",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/government-offices",
@@ -1919,16 +1942,6 @@ func MakeConfig() map[string]any {
 										"lit": "government-offices",
 									},
 								},
-								"select": map[string]any{
-									"$action": "government_office",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1936,19 +1949,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"government-offices",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "government_office",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/health",
@@ -1969,16 +1993,6 @@ func MakeConfig() map[string]any {
 										"lit": "health",
 									},
 								},
-								"select": map[string]any{
-									"$action": "health",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1986,19 +2000,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"health",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "health",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/heritage",
@@ -2019,16 +2044,6 @@ func MakeConfig() map[string]any {
 										"lit": "heritage",
 									},
 								},
-								"select": map[string]any{
-									"$action": "heritage",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2036,19 +2051,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"heritage",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "heritage",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/holidays",
@@ -2069,16 +2095,6 @@ func MakeConfig() map[string]any {
 										"lit": "holidays",
 									},
 								},
-								"select": map[string]any{
-									"$action": "holiday",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2086,19 +2102,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"holidays",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "holiday",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/hospitals-atlas",
@@ -2119,16 +2146,6 @@ func MakeConfig() map[string]any {
 										"lit": "hospitals-atlas",
 									},
 								},
-								"select": map[string]any{
-									"$action": "hospitals_atla",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2136,19 +2153,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"hospitals-atlas",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "hospitals_atla",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/icu-live",
@@ -2169,16 +2197,6 @@ func MakeConfig() map[string]any {
 										"lit": "icu-live",
 									},
 								},
-								"select": map[string]any{
-									"$action": "icu_live",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2186,19 +2204,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"icu-live",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "icu_live",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/indicators",
@@ -2219,16 +2248,6 @@ func MakeConfig() map[string]any {
 										"lit": "indicators",
 									},
 								},
-								"select": map[string]any{
-									"$action": "indicator",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2236,19 +2255,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"indicators",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "indicator",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/insolvencies",
@@ -2269,16 +2299,6 @@ func MakeConfig() map[string]any {
 										"lit": "insolvencies",
 									},
 								},
-								"select": map[string]any{
-									"$action": "insolvency",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2286,19 +2306,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"insolvencies",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "insolvency",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/land-values",
@@ -2319,16 +2350,6 @@ func MakeConfig() map[string]any {
 										"lit": "land-values",
 									},
 								},
-								"select": map[string]any{
-									"$action": "land_value",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2336,19 +2357,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"land-values",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "land_value",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/markets",
@@ -2369,16 +2401,6 @@ func MakeConfig() map[string]any {
 										"lit": "markets",
 									},
 								},
-								"select": map[string]any{
-									"$action": "market",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2386,19 +2408,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"markets",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "market",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/office-wait-times",
@@ -2419,16 +2452,6 @@ func MakeConfig() map[string]any {
 										"lit": "office-wait-times",
 									},
 								},
-								"select": map[string]any{
-									"$action": "office_wait_time",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2436,19 +2459,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"office-wait-times",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "office_wait_time",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/overview",
@@ -2469,16 +2503,6 @@ func MakeConfig() map[string]any {
 										"lit": "overview",
 									},
 								},
-								"select": map[string]any{
-									"$action": "overview",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2486,19 +2510,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"overview",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "overview",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/parcel-lockers",
@@ -2519,16 +2554,6 @@ func MakeConfig() map[string]any {
 										"lit": "parcel-lockers",
 									},
 								},
-								"select": map[string]any{
-									"$action": "parcel_locker",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2536,19 +2561,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"parcel-lockers",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "parcel_locker",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/parking",
@@ -2569,16 +2605,6 @@ func MakeConfig() map[string]any {
 										"lit": "parking",
 									},
 								},
-								"select": map[string]any{
-									"$action": "parking",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2586,19 +2612,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"parking",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "parking",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/playgrounds",
@@ -2619,16 +2656,6 @@ func MakeConfig() map[string]any {
 										"lit": "playgrounds",
 									},
 								},
-								"select": map[string]any{
-									"$action": "playground",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2636,19 +2663,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"playgrounds",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "playground",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/pollen-uv",
@@ -2669,16 +2707,6 @@ func MakeConfig() map[string]any {
 										"lit": "pollen-uv",
 									},
 								},
-								"select": map[string]any{
-									"$action": "pollen_uv",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2686,19 +2714,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"pollen-uv",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "pollen_uv",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/population-density",
@@ -2719,16 +2758,6 @@ func MakeConfig() map[string]any {
 										"lit": "population-density",
 									},
 								},
-								"select": map[string]any{
-									"$action": "population_density",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2736,19 +2765,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"population-density",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "population_density",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/post-boxes",
@@ -2769,16 +2809,6 @@ func MakeConfig() map[string]any {
 										"lit": "post-boxes",
 									},
 								},
-								"select": map[string]any{
-									"$action": "post_box",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2786,19 +2816,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"post-boxes",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "post_box",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/post-offices",
@@ -2819,16 +2860,6 @@ func MakeConfig() map[string]any {
 										"lit": "post-offices",
 									},
 								},
-								"select": map[string]any{
-									"$action": "post_office",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2836,19 +2867,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"post-offices",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "post_office",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/power-load",
@@ -2869,16 +2911,6 @@ func MakeConfig() map[string]any {
 										"lit": "power-load",
 									},
 								},
-								"select": map[string]any{
-									"$action": "power_load",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2886,19 +2918,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"power-load",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "power_load",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/power-price",
@@ -2919,16 +2962,6 @@ func MakeConfig() map[string]any {
 										"lit": "power-price",
 									},
 								},
-								"select": map[string]any{
-									"$action": "power_price",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2936,19 +2969,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"power-price",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "power_price",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/public-toilets",
@@ -2969,16 +3013,6 @@ func MakeConfig() map[string]any {
 										"lit": "public-toilets",
 									},
 								},
-								"select": map[string]any{
-									"$action": "public_toilet",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -2986,19 +3020,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"public-toilets",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "public_toilet",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/public-wifi",
@@ -3019,16 +3064,6 @@ func MakeConfig() map[string]any {
 										"lit": "public-wifi",
 									},
 								},
-								"select": map[string]any{
-									"$action": "public_wifi",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3036,19 +3071,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"public-wifi",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "public_wifi",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/recycling-centres",
@@ -3069,16 +3115,6 @@ func MakeConfig() map[string]any {
 										"lit": "recycling-centres",
 									},
 								},
-								"select": map[string]any{
-									"$action": "recycling_centre",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3086,19 +3122,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"recycling-centres",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "recycling_centre",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/road-events",
@@ -3119,16 +3166,6 @@ func MakeConfig() map[string]any {
 										"lit": "road-events",
 									},
 								},
-								"select": map[string]any{
-									"$action": "road_event",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3136,19 +3173,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"road-events",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "road_event",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/sharing",
@@ -3169,16 +3217,6 @@ func MakeConfig() map[string]any {
 										"lit": "sharing",
 									},
 								},
-								"select": map[string]any{
-									"$action": "sharing",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3186,19 +3224,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"sharing",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "sharing",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/solar",
@@ -3219,16 +3268,6 @@ func MakeConfig() map[string]any {
 										"lit": "solar",
 									},
 								},
-								"select": map[string]any{
-									"$action": "solar",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3236,19 +3275,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"solar",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "solar",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/solar-roofs",
@@ -3269,16 +3319,6 @@ func MakeConfig() map[string]any {
 										"lit": "solar-roofs",
 									},
 								},
-								"select": map[string]any{
-									"$action": "solar_roof",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3286,19 +3326,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"solar-roofs",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "solar_roof",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/station-arrivals",
@@ -3319,16 +3370,6 @@ func MakeConfig() map[string]any {
 										"lit": "station-arrivals",
 									},
 								},
-								"select": map[string]any{
-									"$action": "station_arrival",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3336,19 +3377,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"station-arrivals",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "station_arrival",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/station-departures",
@@ -3369,16 +3421,6 @@ func MakeConfig() map[string]any {
 										"lit": "station-departures",
 									},
 								},
-								"select": map[string]any{
-									"$action": "station_departure",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3386,19 +3428,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"station-departures",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "station_departure",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/station-facilities",
@@ -3419,16 +3472,6 @@ func MakeConfig() map[string]any {
 										"lit": "station-facilities",
 									},
 								},
-								"select": map[string]any{
-									"$action": "station_facility",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3436,19 +3479,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"station-facilities",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "station_facility",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/tax-rates",
@@ -3469,16 +3523,6 @@ func MakeConfig() map[string]any {
 										"lit": "tax-rates",
 									},
 								},
-								"select": map[string]any{
-									"$action": "tax_rate",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3486,19 +3530,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"tax-rates",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "tax_rate",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/tourism",
@@ -3519,16 +3574,6 @@ func MakeConfig() map[string]any {
 										"lit": "tourism",
 									},
 								},
-								"select": map[string]any{
-									"$action": "tourism",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3536,19 +3581,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"tourism",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "tourism",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/tree-cadastre",
@@ -3569,16 +3625,6 @@ func MakeConfig() map[string]any {
 										"lit": "tree-cadastre",
 									},
 								},
-								"select": map[string]any{
-									"$action": "tree_cadastre",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3586,19 +3632,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"tree-cadastre",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "tree_cadastre",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/unemployment",
@@ -3619,16 +3676,6 @@ func MakeConfig() map[string]any {
 										"lit": "unemployment",
 									},
 								},
-								"select": map[string]any{
-									"$action": "unemployment",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3636,19 +3683,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"unemployment",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "unemployment",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/vehicle-registrations",
@@ -3669,16 +3727,6 @@ func MakeConfig() map[string]any {
 										"lit": "vehicle-registrations",
 									},
 								},
-								"select": map[string]any{
-									"$action": "vehicle_registration",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3686,19 +3734,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"vehicle-registrations",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "vehicle_registration",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/water-level",
@@ -3719,16 +3778,6 @@ func MakeConfig() map[string]any {
 										"lit": "water-level",
 									},
 								},
-								"select": map[string]any{
-									"$action": "water_level",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3736,19 +3785,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"water-level",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "water_level",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/weather",
@@ -3769,16 +3829,6 @@ func MakeConfig() map[string]any {
 										"lit": "weather",
 									},
 								},
-								"select": map[string]any{
-									"$action": "weather",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3786,19 +3836,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"weather",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "weather",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/weather-warnings",
@@ -3819,16 +3880,6 @@ func MakeConfig() map[string]any {
 										"lit": "weather-warnings",
 									},
 								},
-								"select": map[string]any{
-									"$action": "weather_warning",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3836,19 +3887,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"weather-warnings",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "weather_warning",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/cities/{slug}/webcams",
@@ -3869,16 +3931,6 @@ func MakeConfig() map[string]any {
 										"lit": "webcams",
 									},
 								},
-								"select": map[string]any{
-									"$action": "webcam",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -3886,33 +3938,54 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"webcams",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "webcam",
+									"exist": []any{
+										"slug",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"city",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"compare": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "city",
-						"req": true,
+						"title": "City",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "data",
+						"title": "Data",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "source_status",
-						"req": true,
+						"title": "Source Status",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "compare",
@@ -3922,67 +3995,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"header": []any{
-										map[string]any{
-											"kind": "header",
-											"name": "if_none_match",
-											"orig": "if_none_match",
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "berlin,koeln,hamburg",
-											"kind": "query",
-											"name": "city",
-											"orig": "city",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "asc",
-											"kind": "query",
-											"name": "order",
-											"orig": "order",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "resource",
-											"orig": "resource",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/compare",
@@ -3997,6 +4009,77 @@ func MakeConfig() map[string]any {
 										"lit": "compare",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"compare",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"header": []any{
+										map[string]any{
+											"name": "if_none_match",
+											"orig": "if_none_match",
+											"type": "`$STRING`",
+											"kind": "header",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "city",
+											"orig": "city",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "berlin,koeln,hamburg",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "order",
+											"orig": "order",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "asc",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "resource",
+											"orig": "resource",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"city",
@@ -4008,15 +4091,6 @@ func MakeConfig() map[string]any {
 										"resource",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"compare",
 								},
 							},
 						},
@@ -4030,19 +4104,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "redis",
+						"title": "Redis",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "true wenn Redis erreichbar (Ping erfolgreich)",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "status",
-						"req": true,
+						"title": "Status",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "version",
-						"req": true,
+						"title": "Version",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "health",
@@ -4052,7 +4129,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/health",
@@ -4067,16 +4143,18 @@ func MakeConfig() map[string]any {
 										"lit": "health",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"health",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -4089,13 +4167,15 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "data",
-						"req": true,
+						"title": "Data",
 						"type": "`$ANY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "meta",
-						"req": true,
+						"title": "Meta",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 				},
 				"name": "live",
@@ -4105,32 +4185,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "live_id",
-											"orig": "city",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "route_id",
-											"orig": "route_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/transit/routes/{route_id}/status",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"city": "live_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -4157,16 +4214,6 @@ func MakeConfig() map[string]any {
 										"lit": "status",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"live_id",
-										"route_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4177,36 +4224,44 @@ func MakeConfig() map[string]any {
 									"{route_id}",
 									"status",
 								},
-							},
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "live_id",
-											"orig": "city",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "stop_id",
-											"orig": "stop_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/v1/live/{city}/transit/departures",
 								"rename": map[string]any{
 									"param": map[string]any{
 										"city": "live_id",
 									},
 								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "live_id",
+											"orig": "city",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "route_id",
+											"orig": "route_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"live_id",
+										"route_id",
+									},
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/v1/live/{city}/transit/departures",
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -4227,17 +4282,6 @@ func MakeConfig() map[string]any {
 										"lit": "departures",
 									},
 								},
-								"select": map[string]any{
-									"$action": "transit_departure",
-									"exist": []any{
-										"live_id",
-										"stop_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4246,34 +4290,47 @@ func MakeConfig() map[string]any {
 									"transit",
 									"departures",
 								},
-							},
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "live_id",
-											"orig": "city",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "trip_id",
-											"orig": "trip_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
 								"rename": map[string]any{
 									"param": map[string]any{
 										"city": "live_id",
 									},
 								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "live_id",
+											"orig": "city",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "stop_id",
+											"orig": "stop_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "transit_departure",
+									"exist": []any{
+										"live_id",
+										"stop_id",
+									},
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/v1/live/{city}/transit/trips/{trip_id}",
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -4297,16 +4354,6 @@ func MakeConfig() map[string]any {
 										"var": "trip_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"live_id",
-										"trip_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4316,27 +4363,41 @@ func MakeConfig() map[string]any {
 									"trips",
 									"{trip_id}",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{
+									"param": map[string]any{
+										"city": "live_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
+											"name": "live_id",
+											"orig": "city",
+											"type": "`$STRING`",
 											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
 											"reqd": true,
-											"type": "`$STRING`",
 										},
-									},
-									"query": []any{
 										map[string]any{
-											"kind": "query",
-											"name": "station",
-											"orig": "station",
+											"name": "trip_id",
+											"orig": "trip_id",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"live_id",
+										"trip_id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/departures",
@@ -4357,17 +4418,6 @@ func MakeConfig() map[string]any {
 										"lit": "departures",
 									},
 								},
-								"select": map[string]any{
-									"$action": "departure",
-									"exist": []any{
-										"slug",
-										"station",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4375,19 +4425,39 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"departures",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "station",
+											"orig": "station",
+											"type": "`$STRING`",
+											"kind": "query",
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "departure",
+									"exist": []any{
+										"slug",
+										"station",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/air",
@@ -4408,16 +4478,6 @@ func MakeConfig() map[string]any {
 										"lit": "air",
 									},
 								},
-								"select": map[string]any{
-									"$action": "air",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4425,19 +4485,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"air",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "air",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/air-uba",
@@ -4458,16 +4529,6 @@ func MakeConfig() map[string]any {
 										"lit": "air-uba",
 									},
 								},
-								"select": map[string]any{
-									"$action": "air_uba",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4475,19 +4536,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"air-uba",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
-											"name": "city",
-											"orig": "city",
-											"reqd": true,
+											"name": "slug",
+											"orig": "slug",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "air_uba",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/baustellen",
@@ -4508,16 +4580,6 @@ func MakeConfig() map[string]any {
 										"lit": "baustellen",
 									},
 								},
-								"select": map[string]any{
-									"$action": "baustellen",
-									"exist": []any{
-										"city",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4525,19 +4587,30 @@ func MakeConfig() map[string]any {
 									"{city}",
 									"baustellen",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "city",
 											"orig": "city",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "baustellen",
+									"exist": []any{
+										"city",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/ereignisse",
@@ -4558,16 +4631,6 @@ func MakeConfig() map[string]any {
 										"lit": "ereignisse",
 									},
 								},
-								"select": map[string]any{
-									"$action": "ereignisse",
-									"exist": []any{
-										"city",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4575,19 +4638,30 @@ func MakeConfig() map[string]any {
 									"{city}",
 									"ereignisse",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
+											"name": "city",
+											"orig": "city",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "ereignisse",
+									"exist": []any{
+										"city",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/flood",
@@ -4608,16 +4682,6 @@ func MakeConfig() map[string]any {
 										"lit": "flood",
 									},
 								},
-								"select": map[string]any{
-									"$action": "flood",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4625,19 +4689,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"flood",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "flood",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/traffic",
@@ -4658,16 +4733,6 @@ func MakeConfig() map[string]any {
 										"lit": "traffic",
 									},
 								},
-								"select": map[string]any{
-									"$action": "traffic",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4675,19 +4740,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"traffic",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
-											"name": "city",
-											"orig": "city",
-											"reqd": true,
+											"name": "slug",
+											"orig": "slug",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "traffic",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{city}/traffic-flow",
@@ -4708,16 +4784,6 @@ func MakeConfig() map[string]any {
 										"lit": "traffic-flow",
 									},
 								},
-								"select": map[string]any{
-									"$action": "traffic_flow",
-									"exist": []any{
-										"city",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4725,19 +4791,30 @@ func MakeConfig() map[string]any {
 									"{city}",
 									"traffic-flow",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
+											"name": "city",
+											"orig": "city",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "traffic_flow",
+									"exist": []any{
+										"city",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/water-level",
@@ -4758,16 +4835,6 @@ func MakeConfig() map[string]any {
 										"lit": "water-level",
 									},
 								},
-								"select": map[string]any{
-									"$action": "water_level",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4775,19 +4842,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"water-level",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "water_level",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/{slug}/webcams",
@@ -4808,16 +4886,6 @@ func MakeConfig() map[string]any {
 										"lit": "webcams",
 									},
 								},
-								"select": map[string]any{
-									"$action": "webcam",
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4825,19 +4893,30 @@ func MakeConfig() map[string]any {
 									"{slug}",
 									"webcams",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
-									"query": []any{
+									"params": []any{
 										map[string]any{
-											"example": "Frankfurt (Main) Hauptbahnhof",
-											"kind": "query",
-											"name": "station",
-											"orig": "station",
+											"name": "slug",
+											"orig": "slug",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "webcam",
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/frankfurt-am-main/departures",
@@ -4858,15 +4937,6 @@ func MakeConfig() map[string]any {
 										"lit": "departures",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"station",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4874,19 +4944,29 @@ func MakeConfig() map[string]any {
 									"frankfurt-am-main",
 									"departures",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"example": "Hamburg Hauptbahnhof",
-											"kind": "query",
 											"name": "station",
 											"orig": "station",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Frankfurt (Main) Hauptbahnhof",
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"station",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/hamburg/departures",
@@ -4907,15 +4987,6 @@ func MakeConfig() map[string]any {
 										"lit": "departures",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"station",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4923,19 +4994,29 @@ func MakeConfig() map[string]any {
 									"hamburg",
 									"departures",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"example": "510",
-											"kind": "query",
-											"name": "stop_id",
-											"orig": "stop_id",
+											"name": "station",
+											"orig": "station",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Hamburg Hauptbahnhof",
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"station",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/nuernberg/departures",
@@ -4956,15 +5037,6 @@ func MakeConfig() map[string]any {
 										"lit": "departures",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"stop_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -4972,9 +5044,29 @@ func MakeConfig() map[string]any {
 									"nuernberg",
 									"departures",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "stop_id",
+											"orig": "stop_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "510",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"stop_id",
+									},
+								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/berlin/verkehrsmeldungen",
@@ -4995,11 +5087,6 @@ func MakeConfig() map[string]any {
 										"lit": "verkehrsmeldungen",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5007,9 +5094,15 @@ func MakeConfig() map[string]any {
 									"berlin",
 									"verkehrsmeldungen",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/dortmund/parking",
@@ -5030,11 +5123,6 @@ func MakeConfig() map[string]any {
 										"lit": "parking",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5042,9 +5130,15 @@ func MakeConfig() map[string]any {
 									"dortmund",
 									"parking",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/eround/charging",
@@ -5065,11 +5159,6 @@ func MakeConfig() map[string]any {
 										"lit": "charging",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5077,9 +5166,15 @@ func MakeConfig() map[string]any {
 									"eround",
 									"charging",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/frankfurt-am-main/parking",
@@ -5100,11 +5195,6 @@ func MakeConfig() map[string]any {
 										"lit": "parking",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5112,9 +5202,15 @@ func MakeConfig() map[string]any {
 									"frankfurt-am-main",
 									"parking",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/hamburg/verkehrslage",
@@ -5135,11 +5231,6 @@ func MakeConfig() map[string]any {
 										"lit": "verkehrslage",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5147,9 +5238,15 @@ func MakeConfig() map[string]any {
 									"hamburg",
 									"verkehrslage",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/hannover/verkehrsmeldungen",
@@ -5170,11 +5267,6 @@ func MakeConfig() map[string]any {
 										"lit": "verkehrsmeldungen",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5182,9 +5274,15 @@ func MakeConfig() map[string]any {
 									"hannover",
 									"verkehrsmeldungen",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/kiel/zaehlstellen",
@@ -5205,11 +5303,6 @@ func MakeConfig() map[string]any {
 										"lit": "zaehlstellen",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5217,9 +5310,15 @@ func MakeConfig() map[string]any {
 									"kiel",
 									"zaehlstellen",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/koeln/umweltzone",
@@ -5240,11 +5339,6 @@ func MakeConfig() map[string]any {
 										"lit": "umweltzone",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5252,9 +5346,15 @@ func MakeConfig() map[string]any {
 									"koeln",
 									"umweltzone",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/magdeburg/parking",
@@ -5275,11 +5375,6 @@ func MakeConfig() map[string]any {
 										"lit": "parking",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5287,9 +5382,15 @@ func MakeConfig() map[string]any {
 									"magdeburg",
 									"parking",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/live/wuppertal/parking",
@@ -5310,11 +5411,6 @@ func MakeConfig() map[string]any {
 										"lit": "parking",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5322,42 +5418,40 @@ func MakeConfig() map[string]any {
 									"wuppertal",
 									"parking",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"live",
-						},
-						[]any{
-							"live",
-							"route",
-						},
-						[]any{
-							"live",
-							"trip",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"meta": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "breaker_state",
-						"req": true,
+						"title": "Breaker State",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "enabled",
-						"req": true,
+						"title": "Enabled",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "source",
-						"req": true,
+						"title": "Source",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "meta",
@@ -5367,52 +5461,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"header": []any{
-										map[string]any{
-											"kind": "header",
-											"name": "if_none_match",
-											"orig": "if_none_match",
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "asc",
-											"kind": "query",
-											"name": "order",
-											"orig": "order",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/sources",
@@ -5427,6 +5475,62 @@ func MakeConfig() map[string]any {
 										"lit": "sources",
 									},
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"sources",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.meta`",
+								},
+								"args": map[string]any{
+									"header": []any{
+										map[string]any{
+											"name": "if_none_match",
+											"orig": "if_none_match",
+											"type": "`$STRING`",
+											"kind": "header",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "order",
+											"orig": "order",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "asc",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"if_none_match",
@@ -5437,15 +5541,6 @@ func MakeConfig() map[string]any {
 										"sort",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.meta`",
-								},
-								"parts": []any{
-									"api",
-									"v1",
-									"sources",
-								},
 							},
 						},
 					},
@@ -5454,7 +5549,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/openapi.yaml",
@@ -5469,16 +5563,18 @@ func MakeConfig() map[string]any {
 										"lit": "openapi.yaml",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"openapi.yaml",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -5496,17 +5592,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "eva",
-											"orig": "eva",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/stations/{eva}/arrivals",
@@ -5527,16 +5612,6 @@ func MakeConfig() map[string]any {
 										"lit": "arrivals",
 									},
 								},
-								"select": map[string]any{
-									"$action": "arrival",
-									"exist": []any{
-										"eva",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5544,19 +5619,30 @@ func MakeConfig() map[string]any {
 									"{eva}",
 									"arrivals",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "eva",
 											"orig": "eva",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"$action": "arrival",
+									"exist": []any{
+										"eva",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/stations/{eva}/departures",
@@ -5577,16 +5663,6 @@ func MakeConfig() map[string]any {
 										"lit": "departures",
 									},
 								},
-								"select": map[string]any{
-									"$action": "departure",
-									"exist": []any{
-										"eva",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -5594,16 +5670,34 @@ func MakeConfig() map[string]any {
 									"{eva}",
 									"departures",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "eva",
+											"orig": "eva",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "departure",
+									"exist": []any{
+										"eva",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"station",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 		},

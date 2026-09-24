@@ -1,0 +1,115 @@
+# Entity: station
+
+main: kit: entity: station: {
+
+  alias: field: {}
+
+  name: "station"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/stations/{eva}/arrivals"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "eva"
+                or: "eva"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/stations/{eva}/arrivals"
+          q: {
+            "$action": "arrival"
+            exist: [
+              "eva"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "stations"
+            }
+            {
+              var: "eva"
+            }
+            {
+              lit: "arrivals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/stations/{eva}/departures"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "eva"
+                or: "eva"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/stations/{eva}/departures"
+          q: {
+            "$action": "departure"
+            exist: [
+              "eva"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "stations"
+            }
+            {
+              var: "eva"
+            }
+            {
+              lit: "departures"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -98,7 +98,7 @@ func liveBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"live01", "live02", "live03", "route01", "route02", "route03", "trip01", "trip02", "trip03"},
+		[]any{"live01", "live02", "live03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

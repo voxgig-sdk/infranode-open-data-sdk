@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -128,13 +128,6 @@ const citys = await client.City().list()
 for (const city of citys) {
   console.log(city)
 }
-
-// Load a specific live (returns a Live)
-const live = await client.Live().load({
-  live_id: 'example_live_id',
-  trip_id: 'example_trip_id',
-})
-console.log(live)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -234,15 +227,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(citys)
-
-// Load a specific live
-live, err := client.Live(nil).Load(
-    map[string]any{"live_id": "example_live_id", "trip_id": "example_trip_id"}, nil,
-)
-if err != nil {
-    panic(err)
-}
-fmt.Println(live)
 ```
 
 ### Ruby

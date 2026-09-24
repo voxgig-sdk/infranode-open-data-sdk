@@ -50,15 +50,14 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a live
+### 3. Load a city
 
-Live is nested under live, so provide the `live_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    live = client.Live().load({"live_id": "example_live_id", "trip_id": "example_trip_id"})
-    print(live)
+    city = client.City().load({"id": "example_id"})
+    print(city)
 except Exception as err:
     print(f"load failed: {err}")
 ```

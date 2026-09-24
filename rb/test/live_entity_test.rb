@@ -62,7 +62,7 @@ def live_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["live01", "live02", "live03", "route01", "route02", "route03", "trip01", "trip02", "trip03"],
+    ["live01", "live02", "live03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

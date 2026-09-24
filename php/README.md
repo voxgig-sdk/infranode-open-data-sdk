@@ -46,15 +46,13 @@ try {
 }
 ```
 
-### 3. Load a live
-
-Live is nested under live, so provide the `live_id`.
+### 3. Load a city
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the Live record (throws on error).
-    $live = $client->Live()->load(["live_id" => "example_live_id", "trip_id" => "example_trip_id"]);
-    print_r($live->data_get());
+    // load() returns the ENTITY — call data_get() for the City record (throws on error).
+    $city = $client->City()->load(["id" => "example_id"]);
+    print_r($city->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }

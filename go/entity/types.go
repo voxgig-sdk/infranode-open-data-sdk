@@ -1,7 +1,7 @@
 // Typed models for the InfranodeOpenData SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,9 +14,6 @@ import (
 
 // City is the typed data model for the city entity.
 type City struct {
-	Data any `json:"data"`
-	Id *string `json:"id,omitempty"`
-	Meta map[string]any `json:"meta"`
 }
 
 // CityLoadMatch is the typed request payload for City.LoadTyped.
@@ -33,9 +30,6 @@ type CityListMatch struct {
 
 // Compare is the typed data model for the compare entity.
 type Compare struct {
-	City string `json:"city"`
-	Data *map[string]any `json:"data,omitempty"`
-	SourceStatus string `json:"source_status"`
 }
 
 // CompareListMatch is the typed request payload for Compare.ListTyped.
@@ -51,9 +45,6 @@ type CompareListMatch struct {
 
 // Health is the typed data model for the health entity.
 type Health struct {
-	Redis bool `json:"redis"`
-	Status string `json:"status"`
-	Version string `json:"version"`
 }
 
 // HealthLoadMatch is the typed request payload for Health.LoadTyped.
@@ -65,8 +56,6 @@ type HealthLoadMatch struct {
 
 // Live is the typed data model for the live entity.
 type Live struct {
-	Data any `json:"data"`
-	Meta map[string]any `json:"meta"`
 }
 
 // LiveLoadMatch is the typed request payload for Live.LoadTyped.
@@ -77,9 +66,6 @@ type LiveLoadMatch struct {
 
 // Meta is the typed data model for the meta entity.
 type Meta struct {
-	BreakerState string `json:"breaker_state"`
-	Enabled bool `json:"enabled"`
-	Source string `json:"source"`
 }
 
 // MetaLoadMatch is the typed request payload for Meta.LoadTyped.

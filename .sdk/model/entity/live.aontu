@@ -1,0 +1,1152 @@
+# Entity: live
+
+main: kit: entity: live: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      t: "`$ANY`"
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "live"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/live/{city}/transit/routes/{route_id}/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "live_id"
+                or: "city"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "route_id"
+                or: "route_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{city}/transit/routes/{route_id}/status"
+          q: {
+            exist: [
+              "live_id"
+              "route_id"
+            ]
+          }
+          r: {
+            param: {
+              city: "live_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "live_id"
+            }
+            {
+              lit: "transit"
+            }
+            {
+              lit: "routes"
+            }
+            {
+              var: "route_id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{city}/transit/departures"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "live_id"
+                or: "city"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "stop_id"
+                or: "stop_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{city}/transit/departures"
+          q: {
+            "$action": "transit_departure"
+            exist: [
+              "live_id"
+              "stop_id"
+            ]
+          }
+          r: {
+            param: {
+              city: "live_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "live_id"
+            }
+            {
+              lit: "transit"
+            }
+            {
+              lit: "departures"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{city}/transit/trips/{trip_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "live_id"
+                or: "city"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "trip_id"
+                or: "trip_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{city}/transit/trips/{trip_id}"
+          q: {
+            exist: [
+              "live_id"
+              "trip_id"
+            ]
+          }
+          r: {
+            param: {
+              city: "live_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "live_id"
+            }
+            {
+              lit: "transit"
+            }
+            {
+              lit: "trips"
+            }
+            {
+              var: "trip_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/departures"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "station"
+                or: "station"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/departures"
+          q: {
+            "$action": "departure"
+            exist: [
+              "slug"
+              "station"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "departures"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/air"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/air"
+          q: {
+            "$action": "air"
+            exist: [
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "air"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/air-uba"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/air-uba"
+          q: {
+            "$action": "air_uba"
+            exist: [
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "air-uba"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{city}/baustellen"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "city"
+                or: "city"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{city}/baustellen"
+          q: {
+            "$action": "baustellen"
+            exist: [
+              "city"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "city"
+            }
+            {
+              lit: "baustellen"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{city}/ereignisse"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "city"
+                or: "city"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{city}/ereignisse"
+          q: {
+            "$action": "ereignisse"
+            exist: [
+              "city"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "city"
+            }
+            {
+              lit: "ereignisse"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/flood"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/flood"
+          q: {
+            "$action": "flood"
+            exist: [
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "flood"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/traffic"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/traffic"
+          q: {
+            "$action": "traffic"
+            exist: [
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "traffic"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{city}/traffic-flow"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "city"
+                or: "city"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{city}/traffic-flow"
+          q: {
+            "$action": "traffic_flow"
+            exist: [
+              "city"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "city"
+            }
+            {
+              lit: "traffic-flow"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/water-level"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/water-level"
+          q: {
+            "$action": "water_level"
+            exist: [
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "water-level"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/{slug}/webcams"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "slug"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/{slug}/webcams"
+          q: {
+            "$action": "webcam"
+            exist: [
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              var: "slug"
+            }
+            {
+              lit: "webcams"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/frankfurt-am-main/departures"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Frankfurt (Main) Hauptbahnhof"
+                k: "query"
+                n: "station"
+                or: "station"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/frankfurt-am-main/departures"
+          q: {
+            exist: [
+              "station"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "frankfurt-am-main"
+            }
+            {
+              lit: "departures"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/hamburg/departures"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Hamburg Hauptbahnhof"
+                k: "query"
+                n: "station"
+                or: "station"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/hamburg/departures"
+          q: {
+            exist: [
+              "station"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "hamburg"
+            }
+            {
+              lit: "departures"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/nuernberg/departures"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "510"
+                k: "query"
+                n: "stop_id"
+                or: "stop_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/live/nuernberg/departures"
+          q: {
+            exist: [
+              "stop_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "nuernberg"
+            }
+            {
+              lit: "departures"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/berlin/verkehrsmeldungen"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/berlin/verkehrsmeldungen"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "berlin"
+            }
+            {
+              lit: "verkehrsmeldungen"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/dortmund/parking"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/dortmund/parking"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "dortmund"
+            }
+            {
+              lit: "parking"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/eround/charging"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/eround/charging"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "eround"
+            }
+            {
+              lit: "charging"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/frankfurt-am-main/parking"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/frankfurt-am-main/parking"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "frankfurt-am-main"
+            }
+            {
+              lit: "parking"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/hamburg/verkehrslage"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/hamburg/verkehrslage"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "hamburg"
+            }
+            {
+              lit: "verkehrslage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/hannover/verkehrsmeldungen"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/hannover/verkehrsmeldungen"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "hannover"
+            }
+            {
+              lit: "verkehrsmeldungen"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/kiel/zaehlstellen"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/kiel/zaehlstellen"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "kiel"
+            }
+            {
+              lit: "zaehlstellen"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/koeln/umweltzone"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/koeln/umweltzone"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "koeln"
+            }
+            {
+              lit: "umweltzone"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/magdeburg/parking"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/magdeburg/parking"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "magdeburg"
+            }
+            {
+              lit: "parking"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/live/wuppertal/parking"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/live/wuppertal/parking"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "live"
+            }
+            {
+              lit: "wuppertal"
+            }
+            {
+              lit: "parking"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

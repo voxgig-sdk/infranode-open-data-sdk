@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompareEntity = void 0;
 const InfranodeOpenDataEntityBase_1 = require("../InfranodeOpenDataEntityBase");
-// TODO: needs Entity superclass
 class CompareEntity extends InfranodeOpenDataEntityBase_1.InfranodeOpenDataEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

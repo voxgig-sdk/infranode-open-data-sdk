@@ -19,7 +19,6 @@ import type {
   CompareListMatch,
 } from '../InfranodeOpenDataTypes'
 
-// TODO: needs Entity superclass
 class CompareEntity extends InfranodeOpenDataEntityBase<Compare> {
 
   constructor(client: InfranodeOpenDataSDK, entopts: any) {

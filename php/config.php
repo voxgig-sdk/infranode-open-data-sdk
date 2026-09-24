@@ -118,17 +118,20 @@ class InfranodeOpenDataConfig
           'fields' => [
             [
               'name' => 'data',
-              'req' => true,
+              'title' => 'Data',
               'type' => '`$ANY`',
+              'req' => true,
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'meta',
-              'req' => true,
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
           ],
           'id' => [
@@ -142,7 +145,6 @@ class InfranodeOpenDataConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities',
@@ -157,16 +159,18 @@ class InfranodeOpenDataConfig
                       'lit' => 'cities',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
                     'cities',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -175,57 +179,6 @@ class InfranodeOpenDataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 50,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'match',
-                        'orig' => 'match',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'since',
-                        'orig' => 'since',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'status',
-                        'orig' => 'status',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/public-tenders',
@@ -246,6 +199,69 @@ class InfranodeOpenDataConfig
                       'lit' => 'public-tenders',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'cities',
+                    '{slug}',
+                    'public-tenders',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 50,
+                      ],
+                      [
+                        'name' => 'match',
+                        'orig' => 'match',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'since',
+                        'orig' => 'since',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'status',
+                        'orig' => 'status',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     '$action' => 'public_tender',
                     'exist' => [
@@ -258,64 +274,8 @@ class InfranodeOpenDataConfig
                       'status',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'cities',
-                    '{slug}',
-                    'public-tenders',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 50,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'paper_type',
-                        'orig' => 'paper_type',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'since',
-                        'orig' => 'since',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/council-papers',
@@ -336,6 +296,63 @@ class InfranodeOpenDataConfig
                       'lit' => 'council-papers',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'cities',
+                    '{slug}',
+                    'council-papers',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 50,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'paper_type',
+                        'orig' => 'paper_type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'since',
+                        'orig' => 'since',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     '$action' => 'council_paper',
                     'exist' => [
@@ -347,63 +364,8 @@ class InfranodeOpenDataConfig
                       'slug',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'cities',
-                    '{slug}',
-                    'council-papers',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'near',
-                        'orig' => 'near',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1000,
-                        'kind' => 'query',
-                        'name' => 'radius_m',
-                        'orig' => 'radius_m',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/transit',
@@ -424,6 +386,62 @@ class InfranodeOpenDataConfig
                       'lit' => 'transit',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'cities',
+                    '{slug}',
+                    'transit',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'near',
+                        'orig' => 'near',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'radius_m',
+                        'orig' => 'radius_m',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1000,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     '$action' => 'transit',
                     'exist' => [
@@ -435,55 +453,8 @@ class InfranodeOpenDataConfig
                       'slug',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'cities',
-                    '{slug}',
-                    'transit',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 50,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'since',
-                        'orig' => 'since',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'status',
-                        'orig' => 'status',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/tenders',
@@ -498,6 +469,52 @@ class InfranodeOpenDataConfig
                       'lit' => 'tenders',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'tenders',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 50,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'since',
+                        'orig' => 'since',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'status',
+                        'orig' => 'status',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'limit',
@@ -507,42 +524,8 @@ class InfranodeOpenDataConfig
                       'status',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'tenders',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/stations',
@@ -563,6 +546,43 @@ class InfranodeOpenDataConfig
                       'lit' => 'stations',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'cities',
+                    '{slug}',
+                    'stations',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     '$action' => 'station',
                     'exist' => [
@@ -571,44 +591,8 @@ class InfranodeOpenDataConfig
                       'slug',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'cities',
-                    '{slug}',
-                    'stations',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'full',
-                        'orig' => 'full',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'include',
-                        'orig' => 'include',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/traffic',
@@ -629,6 +613,43 @@ class InfranodeOpenDataConfig
                       'lit' => 'traffic',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'cities',
+                    '{slug}',
+                    'traffic',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'full',
+                        'orig' => 'full',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'include',
+                        'orig' => 'include',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     '$action' => 'traffic',
                     'exist' => [
@@ -637,39 +658,8 @@ class InfranodeOpenDataConfig
                       'slug',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'cities',
-                    '{slug}',
-                    'traffic',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'type',
-                        'orig' => 'type',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/pois',
@@ -690,17 +680,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'pois',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'poi',
-                    'exist' => [
-                      'slug',
-                      'type',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -708,27 +687,43 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'pois',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
-                        'name' => 'id',
+                        'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'type',
+                        'orig' => 'type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'poi',
+                    'exist' => [
+                      'slug',
+                      'type',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}',
-                  'rename' => [
-                    'param' => [
-                      'slug' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -743,34 +738,39 @@ class InfranodeOpenDataConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
                     'cities',
                     '{id}',
                   ],
-                ],
-                [
+                  'rename' => [
+                    'param' => [
+                      'slug' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
-                        'name' => 'slug',
+                        'name' => 'id',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/accidents',
@@ -791,16 +791,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'accidents',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'accident',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -808,19 +798,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'accidents',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'accident',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/air',
@@ -841,16 +842,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'air',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'air',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -858,19 +849,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'air',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'air',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/air-uba',
@@ -891,16 +893,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'air-uba',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'air_uba',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -908,19 +900,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'air-uba',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'air_uba',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/base',
@@ -941,16 +944,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'base',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'base',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -958,19 +951,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'base',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'base',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/bathing-water',
@@ -991,16 +995,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'bathing-water',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'bathing_water',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1008,19 +1002,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'bathing-water',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'bathing_water',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/bike-counts',
@@ -1041,16 +1046,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'bike-counts',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'bike_count',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1058,19 +1053,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'bike-counts',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'bike_count',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/business-registrations',
@@ -1091,16 +1097,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'business-registrations',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'business_registration',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1108,19 +1104,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'business-registrations',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'business_registration',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/charging',
@@ -1141,16 +1148,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'charging',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'charging',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1158,19 +1155,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'charging',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'charging',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/charging-status',
@@ -1191,16 +1199,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'charging-status',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'charging_status',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1208,19 +1206,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'charging-status',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'charging_status',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/civil-protection-warnings',
@@ -1241,16 +1250,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'civil-protection-warnings',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'civil_protection_warning',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1258,19 +1257,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'civil-protection-warnings',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'civil_protection_warning',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/construction',
@@ -1291,16 +1301,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'construction',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'construction',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1308,19 +1308,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'construction',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'construction',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/crime-stats',
@@ -1341,16 +1352,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'crime-stats',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'crime_stat',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1358,19 +1359,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'crime-stats',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'crime_stat',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/demographics',
@@ -1391,16 +1403,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'demographics',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'demographic',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1408,19 +1410,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'demographics',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'demographic',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/district-heating',
@@ -1441,16 +1454,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'district-heating',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'district_heating',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1458,19 +1461,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'district-heating',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'district_heating',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/drinking-water',
@@ -1491,16 +1505,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'drinking-water',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'drinking_water',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1508,19 +1512,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'drinking-water',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'drinking_water',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/education',
@@ -1541,16 +1556,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'education',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'education',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1558,19 +1563,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'education',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'education',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/election',
@@ -1591,16 +1607,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'election',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'election',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1608,19 +1614,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'election',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'election',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/energy',
@@ -1641,16 +1658,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'energy',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'energy',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1658,19 +1665,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'energy',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'energy',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/events',
@@ -1691,16 +1709,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'events',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'event',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1708,19 +1716,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'events',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'event',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/fire-danger',
@@ -1741,16 +1760,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'fire-danger',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'fire_danger',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1758,19 +1767,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'fire-danger',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'fire_danger',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/flood',
@@ -1791,16 +1811,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'flood',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'flood',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1808,19 +1818,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'flood',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'flood',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/fuel-prices',
@@ -1841,16 +1862,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'fuel-prices',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'fuel_price',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1858,19 +1869,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'fuel-prices',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'fuel_price',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/geo',
@@ -1891,16 +1913,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'geo',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'geo',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1908,19 +1920,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'geo',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'geo',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/government-offices',
@@ -1941,16 +1964,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'government-offices',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'government_office',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -1958,19 +1971,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'government-offices',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'government_office',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/health',
@@ -1991,16 +2015,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'health',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'health',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2008,19 +2022,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'health',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'health',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/heritage',
@@ -2041,16 +2066,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'heritage',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'heritage',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2058,19 +2073,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'heritage',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'heritage',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/holidays',
@@ -2091,16 +2117,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'holidays',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'holiday',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2108,19 +2124,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'holidays',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'holiday',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/hospitals-atlas',
@@ -2141,16 +2168,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'hospitals-atlas',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'hospitals_atla',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2158,19 +2175,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'hospitals-atlas',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'hospitals_atla',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/icu-live',
@@ -2191,16 +2219,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'icu-live',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'icu_live',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2208,19 +2226,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'icu-live',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'icu_live',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/indicators',
@@ -2241,16 +2270,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'indicators',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'indicator',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2258,19 +2277,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'indicators',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'indicator',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/insolvencies',
@@ -2291,16 +2321,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'insolvencies',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'insolvency',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2308,19 +2328,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'insolvencies',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'insolvency',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/land-values',
@@ -2341,16 +2372,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'land-values',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'land_value',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2358,19 +2379,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'land-values',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'land_value',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/markets',
@@ -2391,16 +2423,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'markets',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'market',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2408,19 +2430,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'markets',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'market',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/office-wait-times',
@@ -2441,16 +2474,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'office-wait-times',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'office_wait_time',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2458,19 +2481,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'office-wait-times',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'office_wait_time',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/overview',
@@ -2491,16 +2525,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'overview',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'overview',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2508,19 +2532,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'overview',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'overview',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/parcel-lockers',
@@ -2541,16 +2576,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'parcel-lockers',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'parcel_locker',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2558,19 +2583,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'parcel-lockers',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'parcel_locker',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/parking',
@@ -2591,16 +2627,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'parking',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'parking',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2608,19 +2634,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'parking',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'parking',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/playgrounds',
@@ -2641,16 +2678,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'playgrounds',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'playground',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2658,19 +2685,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'playgrounds',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'playground',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/pollen-uv',
@@ -2691,16 +2729,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'pollen-uv',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'pollen_uv',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2708,19 +2736,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'pollen-uv',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'pollen_uv',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/population-density',
@@ -2741,16 +2780,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'population-density',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'population_density',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2758,19 +2787,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'population-density',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'population_density',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/post-boxes',
@@ -2791,16 +2831,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'post-boxes',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'post_box',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2808,19 +2838,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'post-boxes',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'post_box',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/post-offices',
@@ -2841,16 +2882,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'post-offices',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'post_office',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2858,19 +2889,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'post-offices',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'post_office',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/power-load',
@@ -2891,16 +2933,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'power-load',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'power_load',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2908,19 +2940,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'power-load',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'power_load',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/power-price',
@@ -2941,16 +2984,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'power-price',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'power_price',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -2958,19 +2991,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'power-price',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'power_price',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/public-toilets',
@@ -2991,16 +3035,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'public-toilets',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'public_toilet',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3008,19 +3042,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'public-toilets',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'public_toilet',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/public-wifi',
@@ -3041,16 +3086,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'public-wifi',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'public_wifi',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3058,19 +3093,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'public-wifi',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'public_wifi',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/recycling-centres',
@@ -3091,16 +3137,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'recycling-centres',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'recycling_centre',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3108,19 +3144,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'recycling-centres',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'recycling_centre',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/road-events',
@@ -3141,16 +3188,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'road-events',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'road_event',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3158,19 +3195,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'road-events',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'road_event',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/sharing',
@@ -3191,16 +3239,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'sharing',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'sharing',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3208,19 +3246,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'sharing',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'sharing',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/solar',
@@ -3241,16 +3290,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'solar',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'solar',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3258,19 +3297,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'solar',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'solar',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/solar-roofs',
@@ -3291,16 +3341,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'solar-roofs',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'solar_roof',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3308,19 +3348,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'solar-roofs',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'solar_roof',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/station-arrivals',
@@ -3341,16 +3392,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'station-arrivals',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'station_arrival',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3358,19 +3399,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'station-arrivals',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'station_arrival',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/station-departures',
@@ -3391,16 +3443,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'station-departures',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'station_departure',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3408,19 +3450,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'station-departures',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'station_departure',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/station-facilities',
@@ -3441,16 +3494,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'station-facilities',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'station_facility',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3458,19 +3501,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'station-facilities',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'station_facility',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/tax-rates',
@@ -3491,16 +3545,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'tax-rates',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'tax_rate',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3508,19 +3552,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'tax-rates',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'tax_rate',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/tourism',
@@ -3541,16 +3596,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'tourism',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'tourism',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3558,19 +3603,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'tourism',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'tourism',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/tree-cadastre',
@@ -3591,16 +3647,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'tree-cadastre',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'tree_cadastre',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3608,19 +3654,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'tree-cadastre',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'tree_cadastre',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/unemployment',
@@ -3641,16 +3698,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'unemployment',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'unemployment',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3658,19 +3705,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'unemployment',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'unemployment',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/vehicle-registrations',
@@ -3691,16 +3749,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'vehicle-registrations',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'vehicle_registration',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3708,19 +3756,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'vehicle-registrations',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'vehicle_registration',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/water-level',
@@ -3741,16 +3800,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'water-level',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'water_level',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3758,19 +3807,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'water-level',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'water_level',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/weather',
@@ -3791,16 +3851,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'weather',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'weather',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3808,19 +3858,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'weather',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'weather',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/weather-warnings',
@@ -3841,16 +3902,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'weather-warnings',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'weather_warning',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3858,19 +3909,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'weather-warnings',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'weather_warning',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/cities/{slug}/webcams',
@@ -3891,16 +3953,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'webcams',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'webcam',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -3908,33 +3960,54 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'webcams',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'webcam',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'city',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'compare' => [
           'fields' => [
             [
               'name' => 'city',
-              'req' => true,
+              'title' => 'City',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'data',
+              'title' => 'Data',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'source_status',
-              'req' => true,
+              'title' => 'Source Status',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'compare',
@@ -3944,67 +4017,6 @@ class InfranodeOpenDataConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'header' => [
-                      [
-                        'kind' => 'header',
-                        'name' => 'if_none_match',
-                        'orig' => 'if_none_match',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 'berlin,koeln,hamburg',
-                        'kind' => 'query',
-                        'name' => 'city',
-                        'orig' => 'city',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 50,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'asc',
-                        'kind' => 'query',
-                        'name' => 'order',
-                        'orig' => 'order',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'resource',
-                        'orig' => 'resource',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/compare',
@@ -4019,6 +4031,77 @@ class InfranodeOpenDataConfig
                       'lit' => 'compare',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'compare',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'header' => [
+                      [
+                        'name' => 'if_none_match',
+                        'orig' => 'if_none_match',
+                        'type' => '`$STRING`',
+                        'kind' => 'header',
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'city',
+                        'orig' => 'city',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                        'example' => 'berlin,koeln,hamburg',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 50,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'order',
+                        'orig' => 'order',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'asc',
+                      ],
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'resource',
+                        'orig' => 'resource',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'city',
@@ -4030,15 +4113,6 @@ class InfranodeOpenDataConfig
                       'resource',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'compare',
                   ],
                 ],
               ],
@@ -4052,19 +4126,22 @@ class InfranodeOpenDataConfig
           'fields' => [
             [
               'name' => 'redis',
+              'title' => 'Redis',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'true wenn Redis erreichbar (Ping erfolgreich)',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'status',
-              'req' => true,
+              'title' => 'Status',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'version',
-              'req' => true,
+              'title' => 'Version',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'health',
@@ -4074,7 +4151,6 @@ class InfranodeOpenDataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/health',
@@ -4089,16 +4165,18 @@ class InfranodeOpenDataConfig
                       'lit' => 'health',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
                     'health',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -4111,13 +4189,15 @@ class InfranodeOpenDataConfig
           'fields' => [
             [
               'name' => 'data',
-              'req' => true,
+              'title' => 'Data',
               'type' => '`$ANY`',
+              'req' => true,
             ],
             [
               'name' => 'meta',
-              'req' => true,
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
           ],
           'name' => 'live',
@@ -4127,32 +4207,9 @@ class InfranodeOpenDataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'live_id',
-                        'orig' => 'city',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'route_id',
-                        'orig' => 'route_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/transit/routes/{route_id}/status',
-                  'rename' => [
-                    'param' => [
-                      'city' => 'live_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -4179,16 +4236,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'status',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'live_id',
-                      'route_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4199,36 +4246,44 @@ class InfranodeOpenDataConfig
                     '{route_id}',
                     'status',
                   ],
-                ],
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'live_id',
-                        'orig' => 'city',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'stop_id',
-                        'orig' => 'stop_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/api/v1/live/{city}/transit/departures',
                   'rename' => [
                     'param' => [
                       'city' => 'live_id',
                     ],
                   ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'live_id',
+                        'orig' => 'city',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'route_id',
+                        'orig' => 'route_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'live_id',
+                      'route_id',
+                    ],
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/api/v1/live/{city}/transit/departures',
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -4249,17 +4304,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'departures',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'transit_departure',
-                    'exist' => [
-                      'live_id',
-                      'stop_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4268,34 +4312,47 @@ class InfranodeOpenDataConfig
                     'transit',
                     'departures',
                   ],
-                ],
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'live_id',
-                        'orig' => 'city',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'trip_id',
-                        'orig' => 'trip_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/api/v1/live/{city}/transit/trips/{trip_id}',
                   'rename' => [
                     'param' => [
                       'city' => 'live_id',
                     ],
                   ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'live_id',
+                        'orig' => 'city',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'stop_id',
+                        'orig' => 'stop_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'transit_departure',
+                    'exist' => [
+                      'live_id',
+                      'stop_id',
+                    ],
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/api/v1/live/{city}/transit/trips/{trip_id}',
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -4319,16 +4376,6 @@ class InfranodeOpenDataConfig
                       'var' => 'trip_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'live_id',
-                      'trip_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4338,27 +4385,41 @@ class InfranodeOpenDataConfig
                     'trips',
                     '{trip_id}',
                   ],
-                ],
-                [
+                  'rename' => [
+                    'param' => [
+                      'city' => 'live_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
+                        'name' => 'live_id',
+                        'orig' => 'city',
+                        'type' => '`$STRING`',
                         'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
                         'reqd' => true,
-                        'type' => '`$STRING`',
                       ],
-                    ],
-                    'query' => [
                       [
-                        'kind' => 'query',
-                        'name' => 'station',
-                        'orig' => 'station',
+                        'name' => 'trip_id',
+                        'orig' => 'trip_id',
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'live_id',
+                      'trip_id',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/departures',
@@ -4379,17 +4440,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'departures',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'departure',
-                    'exist' => [
-                      'slug',
-                      'station',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4397,19 +4447,39 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'departures',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'station',
+                        'orig' => 'station',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'departure',
+                    'exist' => [
+                      'slug',
+                      'station',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/air',
@@ -4430,16 +4500,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'air',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'air',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4447,19 +4507,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'air',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'air',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/air-uba',
@@ -4480,16 +4551,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'air-uba',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'air_uba',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4497,19 +4558,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'air-uba',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
-                        'name' => 'city',
-                        'orig' => 'city',
-                        'reqd' => true,
+                        'name' => 'slug',
+                        'orig' => 'slug',
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'air_uba',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/baustellen',
@@ -4530,16 +4602,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'baustellen',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'baustellen',
-                    'exist' => [
-                      'city',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4547,19 +4609,30 @@ class InfranodeOpenDataConfig
                     '{city}',
                     'baustellen',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'city',
                         'orig' => 'city',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'baustellen',
+                    'exist' => [
+                      'city',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/ereignisse',
@@ -4580,16 +4653,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'ereignisse',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'ereignisse',
-                    'exist' => [
-                      'city',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4597,19 +4660,30 @@ class InfranodeOpenDataConfig
                     '{city}',
                     'ereignisse',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
+                        'name' => 'city',
+                        'orig' => 'city',
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'ereignisse',
+                    'exist' => [
+                      'city',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/flood',
@@ -4630,16 +4704,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'flood',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'flood',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4647,19 +4711,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'flood',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'flood',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/traffic',
@@ -4680,16 +4755,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'traffic',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'traffic',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4697,19 +4762,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'traffic',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
-                        'name' => 'city',
-                        'orig' => 'city',
-                        'reqd' => true,
+                        'name' => 'slug',
+                        'orig' => 'slug',
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'traffic',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{city}/traffic-flow',
@@ -4730,16 +4806,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'traffic-flow',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'traffic_flow',
-                    'exist' => [
-                      'city',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4747,19 +4813,30 @@ class InfranodeOpenDataConfig
                     '{city}',
                     'traffic-flow',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'reqd' => true,
+                        'name' => 'city',
+                        'orig' => 'city',
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'traffic_flow',
+                    'exist' => [
+                      'city',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/water-level',
@@ -4780,16 +4857,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'water-level',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'water_level',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4797,19 +4864,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'water-level',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'slug',
                         'orig' => 'slug',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'water_level',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/{slug}/webcams',
@@ -4830,16 +4908,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'webcams',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'webcam',
-                    'exist' => [
-                      'slug',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4847,19 +4915,30 @@ class InfranodeOpenDataConfig
                     '{slug}',
                     'webcams',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
-                    'query' => [
+                    'params' => [
                       [
-                        'example' => 'Frankfurt (Main) Hauptbahnhof',
-                        'kind' => 'query',
-                        'name' => 'station',
-                        'orig' => 'station',
+                        'name' => 'slug',
+                        'orig' => 'slug',
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'webcam',
+                    'exist' => [
+                      'slug',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/frankfurt-am-main/departures',
@@ -4880,15 +4959,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'departures',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'station',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4896,19 +4966,29 @@ class InfranodeOpenDataConfig
                     'frankfurt-am-main',
                     'departures',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'query' => [
                       [
-                        'example' => 'Hamburg Hauptbahnhof',
-                        'kind' => 'query',
                         'name' => 'station',
                         'orig' => 'station',
                         'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'Frankfurt (Main) Hauptbahnhof',
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'station',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/hamburg/departures',
@@ -4929,15 +5009,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'departures',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'station',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4945,19 +5016,29 @@ class InfranodeOpenDataConfig
                     'hamburg',
                     'departures',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'query' => [
                       [
-                        'example' => '510',
-                        'kind' => 'query',
-                        'name' => 'stop_id',
-                        'orig' => 'stop_id',
+                        'name' => 'station',
+                        'orig' => 'station',
                         'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'Hamburg Hauptbahnhof',
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'station',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/nuernberg/departures',
@@ -4978,15 +5059,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'departures',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'stop_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -4994,9 +5066,29 @@ class InfranodeOpenDataConfig
                     'nuernberg',
                     'departures',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'stop_id',
+                        'orig' => 'stop_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '510',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'stop_id',
+                    ],
+                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/berlin/verkehrsmeldungen',
@@ -5017,11 +5109,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'verkehrsmeldungen',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5029,9 +5116,15 @@ class InfranodeOpenDataConfig
                     'berlin',
                     'verkehrsmeldungen',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/dortmund/parking',
@@ -5052,11 +5145,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'parking',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5064,9 +5152,15 @@ class InfranodeOpenDataConfig
                     'dortmund',
                     'parking',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/eround/charging',
@@ -5087,11 +5181,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'charging',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5099,9 +5188,15 @@ class InfranodeOpenDataConfig
                     'eround',
                     'charging',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/frankfurt-am-main/parking',
@@ -5122,11 +5217,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'parking',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5134,9 +5224,15 @@ class InfranodeOpenDataConfig
                     'frankfurt-am-main',
                     'parking',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/hamburg/verkehrslage',
@@ -5157,11 +5253,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'verkehrslage',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5169,9 +5260,15 @@ class InfranodeOpenDataConfig
                     'hamburg',
                     'verkehrslage',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/hannover/verkehrsmeldungen',
@@ -5192,11 +5289,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'verkehrsmeldungen',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5204,9 +5296,15 @@ class InfranodeOpenDataConfig
                     'hannover',
                     'verkehrsmeldungen',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/kiel/zaehlstellen',
@@ -5227,11 +5325,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'zaehlstellen',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5239,9 +5332,15 @@ class InfranodeOpenDataConfig
                     'kiel',
                     'zaehlstellen',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/koeln/umweltzone',
@@ -5262,11 +5361,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'umweltzone',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5274,9 +5368,15 @@ class InfranodeOpenDataConfig
                     'koeln',
                     'umweltzone',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/magdeburg/parking',
@@ -5297,11 +5397,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'parking',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5309,9 +5404,15 @@ class InfranodeOpenDataConfig
                     'magdeburg',
                     'parking',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/live/wuppertal/parking',
@@ -5332,11 +5433,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'parking',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5344,42 +5440,40 @@ class InfranodeOpenDataConfig
                     'wuppertal',
                     'parking',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'live',
-              ],
-              [
-                'live',
-                'route',
-              ],
-              [
-                'live',
-                'trip',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'meta' => [
           'fields' => [
             [
               'name' => 'breaker_state',
-              'req' => true,
+              'title' => 'Breaker State',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'enabled',
-              'req' => true,
+              'title' => 'Enabled',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
               'name' => 'source',
-              'req' => true,
+              'title' => 'Source',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'meta',
@@ -5389,52 +5483,6 @@ class InfranodeOpenDataConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'header' => [
-                      [
-                        'kind' => 'header',
-                        'name' => 'if_none_match',
-                        'orig' => 'if_none_match',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 50,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'asc',
-                        'kind' => 'query',
-                        'name' => 'order',
-                        'orig' => 'order',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/sources',
@@ -5449,6 +5497,62 @@ class InfranodeOpenDataConfig
                       'lit' => 'sources',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'v1',
+                    'sources',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.meta`',
+                  ],
+                  'args' => [
+                    'header' => [
+                      [
+                        'name' => 'if_none_match',
+                        'orig' => 'if_none_match',
+                        'type' => '`$STRING`',
+                        'kind' => 'header',
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 50,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                      [
+                        'name' => 'order',
+                        'orig' => 'order',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'asc',
+                      ],
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'if_none_match',
@@ -5459,15 +5563,6 @@ class InfranodeOpenDataConfig
                       'sort',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.meta`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'v1',
-                    'sources',
-                  ],
                 ],
               ],
             ],
@@ -5476,7 +5571,6 @@ class InfranodeOpenDataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/openapi.yaml',
@@ -5491,16 +5585,18 @@ class InfranodeOpenDataConfig
                       'lit' => 'openapi.yaml',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
                     'openapi.yaml',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -5518,17 +5614,6 @@ class InfranodeOpenDataConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'eva',
-                        'orig' => 'eva',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/stations/{eva}/arrivals',
@@ -5549,16 +5634,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'arrivals',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'arrival',
-                    'exist' => [
-                      'eva',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5566,19 +5641,30 @@ class InfranodeOpenDataConfig
                     '{eva}',
                     'arrivals',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'eva',
                         'orig' => 'eva',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'arrival',
+                    'exist' => [
+                      'eva',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/stations/{eva}/departures',
@@ -5599,16 +5685,6 @@ class InfranodeOpenDataConfig
                       'lit' => 'departures',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'departure',
-                    'exist' => [
-                      'eva',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'v1',
@@ -5616,16 +5692,34 @@ class InfranodeOpenDataConfig
                     '{eva}',
                     'departures',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'eva',
+                        'orig' => 'eva',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'departure',
+                    'exist' => [
+                      'eva',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'station',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
       ],

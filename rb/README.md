@@ -44,15 +44,13 @@ rescue => err
 end
 ```
 
-### 3. Load a live
-
-Live is nested under live, so provide the `live_id`.
+### 3. Load a city
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the Live record (raises on error).
-  live = client.Live.load({ "live_id" => "example_live_id", "trip_id" => "example_trip_id" })
-  puts live
+  # load returns the ENTITY — call data_get for the City record (raises on error).
+  city = client.City.load({ "id" => "example_id" })
+  puts city
 rescue => err
   warn "load failed: #{err}"
 end

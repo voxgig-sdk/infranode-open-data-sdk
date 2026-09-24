@@ -43,18 +43,16 @@ local citys, err = client:City():list()
 if err then error(err) end
 
 for _, item in ipairs(citys) do
-  print(item["id"], item["data"])
+  print(item["id"])
 end
 ```
 
-### 3. Load a live
-
-Live is nested under live, so provide the `live_id`.
+### 3. Load a city
 
 ```lua
-local live, err = client:Live():load({ live_id = "example_live_id", trip_id = "example_trip_id" })
+local city, err = client:City():load({ id = "example_id" })
 if err then error(err) end
-print(live)
+print(city)
 ```
 
 
