@@ -1,5 +1,5 @@
 {
-  "name": "voxgig-sdk/infranode-open-data",
+  "name": "voxgig-sdk/infranode-open-data-sdk",
   "description": "Unofficial generated PHP SDK for the InfraNode public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
   "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "infranode-open-data"],
